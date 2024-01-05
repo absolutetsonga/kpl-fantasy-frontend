@@ -1,4 +1,4 @@
-import { TEAMS_IDS } from "../../constants";
+import { TEAMS_IDS } from "../../lib/constants";
 
 import { APIClient, api_client } from "../client/index";
 import { IPlayerTransfermarkt } from "../../models";

@@ -1,4 +1,4 @@
-import { CLUBS_TRANSFERMARKT_IDS } from "../../constants";
+import { CLUBS_TRANSFERMARKT_IDS } from "../../lib/constants";
 import { APIClient, api_client } from "../client/";
 
 type TeamName = string;
