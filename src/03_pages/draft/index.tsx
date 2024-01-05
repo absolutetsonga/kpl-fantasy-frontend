@@ -1,4 +1,4 @@
-import { PageContainer } from "@/src/07_shared/ui/PageLayout";
+import { PageContainer } from "@/src/07_shared/ui/PageContainer";
 import { Field } from "@/src/04_widgets/field/ui";
 
 import React from "react";

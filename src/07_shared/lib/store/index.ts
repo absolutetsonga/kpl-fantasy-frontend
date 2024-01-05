@@ -12,10 +12,12 @@ import {
 export const allPlayersAtom = atom<IPlayer[]>([]);
 
 export const draftAtom = atom<IDraft | null>(null);
+export const draftPlayersAtom = atom<IDraftPlayer[]>([]);
 export const draftPlayerAtom = atom<IDraftPlayer | null>(null);
+export const draftPlayersDataAtom = atom<IPlayer[]>([]);
 
-export const playerAtom = atom<IPlayer | null>(null);
 export const playersAtom = atom<IPlayer[]>([]);
+export const playerAtom = atom<IPlayer | null>(null);
 
 export const fetchedPlayersDataAtom = atom<IPosition[] | IPlayer[]>([]);
 

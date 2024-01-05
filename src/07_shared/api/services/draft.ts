@@ -1,12 +1,12 @@
 import { APIClient, api_client } from "../client";
 
-type SquadId = number;
+type DraftId = number;
 type UserId = number;
 
 interface IDraftService {
-  getSquad(squad_id: SquadId): Promise<void>;
-  createSquad(user_id: UserId): Promise<void>;
-  deleteSquad(squad_id: SquadId): Promise<void>;
+  getDraft(draft_id: DraftId): Promise<void>;
+  createDraft(user_id: UserId): Promise<void>;
+  deleteDraft(draft_id: DraftId): Promise<void>;
 }
 
 export class DraftService implements IDraftService {
@@ -16,16 +16,16 @@ export class DraftService implements IDraftService {
     this.apiClient = apiClient;
   }
 
-  async getSquad(squad_id: SquadId) {
-    return this.apiClient.makeRequest("GET", `squads/${squad_id}/`);
+  async getDraft(draft_id: DraftId) {
+    return this.apiClient.makeRequest("GET", `squads/${draft_id}/`);
   }
 
-  async createSquad(user_id: UserId) {
+  async createDraft(user_id: UserId) {
     return this.apiClient.makeRequest("POST", "squads/", { user_id });
   }
 
-  async deleteSquad(squad_id: SquadId) {
-    return this.apiClient.makeRequest("DELETE", `squads/${squad_id}/`);
+  async deleteDraft(draft_id: DraftId) {
+    return this.apiClient.makeRequest("DELETE", `squads/${draft_id}/`);
   }
 }
 
