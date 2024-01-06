@@ -1,8 +1,9 @@
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useMemo } from "react";
 import { useCreatePlayer } from "@/src/07_shared/lib/hooks/draft-player";
 
 import {
+  draftPlayersAtom,
   playerPositionAtom,
   playersAtom,
   togglePlaceholderModalWindowAtom,
@@ -14,6 +15,8 @@ import { FilteredPlayerCard } from "@/src/06_entities/filtered-player-card/ui";
 export const PopulateFilteredPlayers = () => {
   const playerPosition = useAtomValue(playerPositionAtom);
   const players = useAtomValue(playersAtom);
+  const [draftPlayers, setDraftPlayers] = useAtom(draftPlayersAtom);
+
   const filteredPlayers = useMemo(
     () =>
       players.filter(
@@ -32,7 +35,7 @@ export const PopulateFilteredPlayers = () => {
   return (
     <div className="flex flex-col gap-2">
       {filteredPlayers.map((player) => {
-        const squadPlayer = {
+        const draftPlayer = {
           id: 0,
           squad: 17,
           player: player.id,
@@ -43,8 +46,10 @@ export const PopulateFilteredPlayers = () => {
         };
 
         const hanldeSelectPlayer = async () => {
-          createPlayer.mutate(squadPlayer, {
-            onSuccess: () => console.log("Draft player created successfully"),
+          createPlayer.mutate(draftPlayer, {
+            onSuccess: () => {
+              setDraftPlayers([...draftPlayers, { ...draftPlayer }]);
+            },
             onError: (error) => console.log(error),
             onSettled: () => setPlaceholderModalWindow(false),
           });
