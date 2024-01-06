@@ -1,28 +1,18 @@
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom, useAtom } from "jotai";
 import {
-  draftPlayerAtom,
-  draftPlayersAtom,
   playerAtom,
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
 
 import { Button } from "@/src/07_shared/ui";
 import { ModalWindowButton } from ".";
-import { find_draft_substitution_draft_position } from "../lib/utils";
+import { useSwitchDraftPlayers } from "../lib/hooks/useSwitchDraftPlayers";
 
 export const PlayerModalWindow = () => {
-  const draftPlayers = useAtomValue(draftPlayersAtom);
-  const draftPlayer = useAtomValue(draftPlayerAtom);
+  const handleSwitchDraftPlayers = useSwitchDraftPlayers();
+
   const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
   const player = useAtomValue(playerAtom);
-
-  const handleSwitchClick = () => {
-    const substitutionPlayer = draftPlayers.find(
-      (drPl) =>
-        drPl.position ===
-        find_draft_substitution_draft_position(draftPlayer?.position)
-    );
-  };
 
   const handleMakeCaptainClick = () => {};
   const handleMakeViceCaptainClick = () => {};
@@ -37,7 +27,7 @@ export const PlayerModalWindow = () => {
         </h3>
         <div className="mt-2 px-7 py-3">
           <ModalWindowButton
-            onClick={handleSwitchClick}
+            onClick={handleSwitchDraftPlayers}
             colorStyles="bg-purple-600 hover:bg-purple-700"
           >
             Substitute

@@ -18,7 +18,7 @@ import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
 
 import { useGetDraft } from "@/src/07_shared/lib/hooks/draft";
 import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
-
+import { PlayerModalWindow } from "@/src/05_features/selectPlayer/ui";
 
 export const Field = () => {
   const [, setDraftPlayers] = useAtom(draftPlayersAtom);
@@ -54,7 +54,7 @@ export const Field = () => {
 
       <PopulatePlayers draftPlayersData={draftPlayersData} />
 
-      {/* {togglePlayerModalWindow && <PlayerModalWindow />} */}
+      {togglePlayerModalWindow && <PlayerModalWindow />}
       {/* {togglePlaceholderModalWindow && <PlaceholderModalWindow />} */}
     </div>
   );
