@@ -33,13 +33,9 @@ export class APIClient implements IAPIClient {
       params,
     };
 
-    try {
-      const response = await this.axiosInstance.request(options);
+    const response = await this.axiosInstance.request(options);
 
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
+    return response.data;
   }
 }
 

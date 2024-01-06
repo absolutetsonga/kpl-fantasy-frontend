@@ -9,6 +9,6 @@ export function useCreatePlayer() {
     mutationFn: async (data: IDraftPlayer) =>
       await draft_player_service.createDraftPlayer(data),
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["squad_players"] }),
+      queryClient.invalidateQueries({ queryKey: ["squad_players", "squad"] }),
   });
 }
