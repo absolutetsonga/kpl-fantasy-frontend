@@ -8,7 +8,7 @@ export function useDeletePlayer() {
     mutationFn: async (draftPlayerId: number) =>
       await draft_player_service.deleteDraftPlayer(draftPlayerId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["squad", "squad_players"] });
+      queryClient.invalidateQueries({ queryKey: ["draft"] });
     },
   });
 }

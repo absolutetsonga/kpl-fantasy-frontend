@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function useGetDraft(id: number) {
   return useQuery({
-    queryKey: ["draft", id],
     queryFn: async () => await draft_service.getDraft(id),
+    queryKey: ["draft", { id }],
   });
 }

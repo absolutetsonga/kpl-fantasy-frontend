@@ -8,7 +8,6 @@ export function useUpdatePlayer() {
   return useMutation({
     mutationFn: async (data: IDraftPlayer) =>
       await draft_player_service.updateDraftPlayer(data),
-    onSuccess: () =>
-      query_client.invalidateQueries({ queryKey: ["squad", "squad_players"] }),
+    onSuccess: () => query_client.invalidateQueries({ queryKey: ["draft"] }),
   });
 }
