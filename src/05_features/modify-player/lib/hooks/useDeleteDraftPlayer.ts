@@ -1,5 +1,4 @@
 import { useDeletePlayer } from "@/src/07_shared/lib/hooks/draft-player";
-import { draft_player_service } from "@/src/07_shared/api/services";
 import { useSetAtom } from "jotai";
 import { togglePlayerModalWindowAtom } from "@/src/07_shared/lib/store";
 
