@@ -7,7 +7,13 @@ import {
 
 import { Button } from "@/src/07_shared/ui";
 import { ModalWindowButton } from ".";
-import { useMakeCaptainDraftPlayer, useSwitchDraftPlayers } from "../lib/hooks";
+import {
+  useDeleteDraftPlayer,
+  useMakeCaptainDraftPlayer,
+  useMakeViceCaptainDraftPlayer,
+  useSwitchDraftPlayers,
+  useViewDraftPlayerInformation,
+} from "../lib/hooks";
 import { IDraftPlayer } from "@/src/07_shared/models";
 
 export const PlayerModalWindow = () => {
@@ -23,11 +29,14 @@ export const PlayerModalWindow = () => {
   const handleMakeCaptainDraftPlayer = useMakeCaptainDraftPlayer({
     draftPlayer,
   });
+  const handleMakeViceCaptainDraftPlayer = useMakeViceCaptainDraftPlayer({
+    draftPlayer,
+  });
+  const handleViewInformationClick = useViewDraftPlayerInformation({
+    draftPlayer,
+  });
 
-  const handleMakeCaptainClick = () => {};
-  const handleMakeViceCaptainClick = () => {};
-  const handleViewInformationClick = () => {};
-  const handleDeletePlayerClick = () => {};
+  const handleDeleteDraftPlayer = useDeleteDraftPlayer(draftPlayer?.id);
 
   return (
     <div className="flex flex-col gap-10 rounded-2xl bg-gray-600 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -51,7 +60,7 @@ export const PlayerModalWindow = () => {
           </ModalWindowButton>
 
           <ModalWindowButton
-            onClick={handleMakeViceCaptainClick}
+            onClick={handleMakeViceCaptainDraftPlayer}
             colorStyles="bg-teal-400 hover:bg-teal-500"
           >
             Make Vice-Captain
@@ -65,7 +74,7 @@ export const PlayerModalWindow = () => {
           </ModalWindowButton>
 
           <ModalWindowButton
-            onClick={handleDeletePlayerClick}
+            onClick={handleDeleteDraftPlayer}
             colorStyles="bg-red-500 bg-red-500"
           >
             Delete Player
