@@ -1,13 +1,19 @@
 import Image from "next/image";
-import { IPlayer } from "../models";
+import { IDraftPlayer, IPlayer } from "../models";
 
 type PlayerProps = {
   player: IPlayer;
+  draftPlayer: IDraftPlayer | undefined;
   positionStyle: string;
   handleClick: () => void;
 };
 
-export const Player = ({ player, positionStyle, handleClick }: PlayerProps) => {
+export const Player = ({
+  player,
+  positionStyle,
+  draftPlayer,
+  handleClick,
+}: PlayerProps) => {
   const [firstName, lastName] = player.name.split(" ");
 
   const name = player.name ? `${firstName[0].toUpperCase()}. ${lastName}` : "";
@@ -32,6 +38,26 @@ export const Player = ({ player, positionStyle, handleClick }: PlayerProps) => {
           </p>
         )}
       </div>
+
+      {draftPlayer?.is_vice_captain && (
+        <Image
+          src="/images/vice-captain-logo.svg"
+          width={20}
+          height={20}
+          alt="vice-captain"
+          className="absolute right-0 top-6"
+        />
+      )}
+
+      {draftPlayer?.is_captain && (
+        <Image
+          src="/images/captain-logo.svg"
+          width={20}
+          height={20}
+          alt="captain"
+          className="absolute right-0 top-6"
+        />
+      )}
     </button>
   );
 };

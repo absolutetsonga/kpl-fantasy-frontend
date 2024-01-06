@@ -1,13 +1,17 @@
 import { CustomHookParams } from "../types";
 import { useUpdatePlayer } from "@/src/07_shared/lib/hooks/draft-player";
-import { useSetAtom } from "jotai";
-import { togglePlayerModalWindowAtom } from "@/src/07_shared/lib/store";
+import { useSetAtom, useAtom } from "jotai";
+import {
+  draftPlayersAtom,
+  togglePlayerModalWindowAtom,
+} from "@/src/07_shared/lib/store";
 
 export const useMakeViceCaptainDraftPlayer = ({
   draftPlayer,
 }: CustomHookParams) => {
   const updatePlayer = useUpdatePlayer();
   const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
+  const [draftPlayers, setDraftPlayers] = useAtom(draftPlayersAtom);
 
   const handleMakeViceCaptainDraftPlayer = async () => {
     if (!draftPlayer) return null;
@@ -23,7 +27,20 @@ export const useMakeViceCaptainDraftPlayer = ({
     };
 
     updatePlayer.mutate(draftPlayerUpdatedData, {
-      onSuccess: () => console.log(`Draft player now is a vice-captain.`),
+      onSuccess: () => {
+        const updatedDraftPlayers = draftPlayers.filter(
+          (drPl) => drPl.id !== draftPlayer.id
+        );
+
+        console.log(updatedDraftPlayers);
+
+        setDraftPlayers([
+          ...updatedDraftPlayers,
+          { ...draftPlayerUpdatedData },
+        ]);
+        
+        console.log(`Draft player now is a vice-captain.`);
+      },
       onError: (error) => console.log(error),
       onSettled: () => setPlayerModalWindow(false),
     });
