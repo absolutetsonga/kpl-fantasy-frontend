@@ -39,43 +39,41 @@ export const PlayerModalWindow = () => {
   const handleDeleteDraftPlayer = useDeleteDraftPlayer(draftPlayer?.id);
 
   return (
-    <div className="flex flex-col gap-10 rounded-2xl bg-gray-600 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="flex flex-col gap-10 rounded-2xl bg-white text-fuchsia-50 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl bg-gradient-to-b from-emerald-500 via-sky-200 to-sky-100">
       <div className="mt-3 text-center">
-        <h3 className="text-lg leading-6 font-medium text-gray-900">
-          {player?.name}
-        </h3>
-        <div className="mt-2 px-7 py-3">
+        <h3 className="text-lg leading-6  font-bold">{player?.name}</h3>
+        <div className="flex flex-col items-center justify-center mt-2 px-7 py-3 text-md">
           <ModalWindowButton
             onClick={handleSwitchDraftPlayers}
-            colorStyles="bg-purple-600 hover:bg-purple-700"
+            colorStyles="bg-gradient-to-tl from-violet-100 via-violet-600 to-cyan-700"
           >
             Substitute
           </ModalWindowButton>
 
           <ModalWindowButton
             onClick={handleMakeCaptainDraftPlayer}
-            colorStyles="bg-green-500 hover:bg-green-600"
+            colorStyles="bg-gradient-to-tl from-green-100 via-green-500 to-blue-700"
           >
             Make Captain
           </ModalWindowButton>
 
           <ModalWindowButton
             onClick={handleMakeViceCaptainDraftPlayer}
-            colorStyles="bg-teal-400 hover:bg-teal-500"
+            colorStyles="bg-gradient-to-tl from-pink-100 via-pink-500 to-purple-700"
           >
             Make Vice-Captain
           </ModalWindowButton>
 
           <ModalWindowButton
             onClick={handleViewInformationClick}
-            colorStyles="bg-blue-500 hover:bg-blue-600 "
+            colorStyles="bg-gradient-to-tl from-yellow-100 via-yellow-500 to-red-700"
           >
             View Information
           </ModalWindowButton>
 
           <ModalWindowButton
             onClick={handleDeleteDraftPlayer}
-            colorStyles="bg-red-500 bg-red-500"
+            colorStyles="bg-gradient-to-tl from-slate-400 via-red-700 to-red-800"
           >
             Delete Player
           </ModalWindowButton>

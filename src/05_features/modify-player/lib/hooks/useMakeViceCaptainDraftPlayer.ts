@@ -31,20 +31,6 @@ export const useMakeViceCaptainDraftPlayer = ({
         on_bench: draftPlayer?.on_bench,
       };
 
-      const updatedDraftPlayers = draftPlayers.map((drPl: IDraftPlayer) => {
-        if (drPl.id === draftPlayer.id) {
-          return { ...drPl, is_vice_captain: true };
-        } else if (oldViceCaptain && drPl.id === oldViceCaptain?.id) {
-          return {
-            ...drPl,
-            is_vice_captain: false,
-          };
-        }
-        return drPl;
-      });
-
-      setDraftPlayers(updatedDraftPlayers);
-
       if (oldViceCaptain) {
         const draftOldViceCaptainPlayerUpdatedData = {
           id: oldViceCaptain.id,

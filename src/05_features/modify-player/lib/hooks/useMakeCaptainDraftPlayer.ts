@@ -5,7 +5,6 @@ import {
   togglePlayerModalWindowAtom,
   draftPlayersAtom,
 } from "@/src/07_shared/lib/store";
-import { IDraftPlayer } from "@/src/07_shared/models";
 
 export const useMakeCaptainDraftPlayer = ({
   draftPlayer,
@@ -27,20 +26,6 @@ export const useMakeCaptainDraftPlayer = ({
         is_vice_captain: draftPlayer?.is_vice_captain,
         on_bench: draftPlayer?.on_bench,
       };
-
-      const updatedDraftPlayers = draftPlayers.map((drPl: IDraftPlayer) => {
-        if (drPl.id === draftPlayer.id) {
-          return { ...drPl, is_captain: true };
-        } else if (oldCaptain && drPl.id === oldCaptain?.id) {
-          return {
-            ...drPl,
-            is_captain: false,
-          };
-        }
-        return drPl;
-      });
-
-      setDraftPlayers(updatedDraftPlayers);
 
       if (oldCaptain) {
         const draftOldCaptainPlayerUpdatedData = {

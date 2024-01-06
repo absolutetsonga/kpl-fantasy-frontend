@@ -20,6 +20,7 @@ import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
 import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
 import { PlayerModalWindow } from "@/src/05_features/modify-player/ui";
 import { PlaceholderModalWindow } from "@/src/05_features/select-player/ui";
+import { Bench } from "@/src/06_entities/bench/ui/Bench";
 
 export const Field = () => {
   const [, setDraftPlayers] = useAtom(draftPlayersAtom);
@@ -54,6 +55,8 @@ export const Field = () => {
       />
 
       <PopulatePlayers draftPlayersData={draftPlayersData} />
+
+      <Bench />
 
       {togglePlayerModalWindow && <PlayerModalWindow />}
       {togglePlaceholderModalWindow && <PlaceholderModalWindow />}

@@ -11,7 +11,7 @@ export const ModalWindowButton = ({
 }: ModalWindowButtonProps) => {
   return (
     <button
-      className={`${colorStyles} mb-2 text-white w-full py-2 rounded focus:outline-none`}
+      className={`${colorStyles} mb-2 text-white text-sm py-2 rounded focus:outline-none w-full shadow-md`}
       onClick={onClick}
     >
       {children}

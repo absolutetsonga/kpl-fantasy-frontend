@@ -33,23 +33,23 @@ export const TEAMS_IDS: { [key: number]: string } = {
 };
 
 export const PLAYERS_STYLE_POSITIONS = [
-  { name: "GK", className: "absolute top-10 left-[400px]" },
+  { name: "GK", className: "absolute top-10 left-[380px]" },
 
   { name: "LD", className: "absolute top-40 left-20" },
   { name: "LCD", className: "absolute top-40 left-[270px]" },
   { name: "RCD", className: "absolute top-40 right-[270px]" },
   { name: "RD", className: "absolute top-40 right-20" },
 
-  { name: "LM", className: "absolute top-[360px] left-40" },
-  { name: "RM", className: "absolute top-[360px] right-40" },
-  { name: "CM", className: "absolute top-[360px] left-[400px]" },
+  { name: "LM", className: "absolute top-[320px] left-40" },
+  { name: "RM", className: "absolute top-[320px] right-40" },
+  { name: "CM", className: "absolute top-[320px] left-[380px]" },
 
-  { name: "LS", className: "absolute top-[580px] left-40" },
-  { name: "RS", className: "absolute top-[580px] right-40" },
-  { name: "CS", className: "absolute top-[600px] left-[400px]" },
+  { name: "LS", className: "absolute top-[500px] left-40" },
+  { name: "RS", className: "absolute top-[500px] right-40" },
+  { name: "CS", className: "absolute top-[520px] left-[380px]" },
 
-  { name: "SGK", className: "absolute -bottom-[200px] left-10" },
-  { name: "SD", className: "absolute -bottom-[200px] left-[160px]" },
-  { name: "SM", className: "absolute -bottom-[200px] left-[280px]" },
-  { name: "SS", className: "absolute -bottom-[200px] left-[400px]" },
+  { name: "SGK", className: "absolute bottom-[30px] left-[120px]" },
+  { name: "SD", className: "absolute bottom-[30px] left-[292px]" },
+  { name: "SM", className: "absolute bottom-[30px] left-[464px]" },
+  { name: "SS", className: "absolute bottom-[30px] left-[636px]" },
 ];
