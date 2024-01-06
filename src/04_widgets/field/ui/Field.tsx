@@ -13,11 +13,11 @@ import {
 
 import { generate_draft_placeholder_players } from "../lib/utils";
 
-import { PopulatePlayers } from "@/src/05_features/populate-players/ui";
+import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
 import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
 
 import { useGetDraft } from "@/src/07_shared/lib/hooks/draft";
-import { useGetPlayers } from "@/src/07_shared/lib/hooks/players";
+import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
 
 // import { PopulatePlayers, PlayerModalWindow, PlaceholderModalWindow } from ".";
 
@@ -50,6 +50,7 @@ export const Field = () => {
         width={880}
         height={833}
         alt="football-field"
+        className="w-auto"
       />
 
       <PopulatePlayers draftPlayersData={draftPlayersData} />

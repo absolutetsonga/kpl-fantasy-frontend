@@ -2,7 +2,7 @@ import { useAtomValue } from "jotai";
 import { playersAtom, draftPlayersAtom } from "@/src/07_shared/lib/store";
 
 import { PLAYERS_STYLE_POSITIONS } from "@/src/07_shared/lib/constants";
-import { find_draft_player_data } from "@/src/05_features/populate-players/lib/utils/find_draft_player_data";
+import { find_draft_player_data } from "@/src/06_entities/populate-players/lib/utils/find_draft_player_data";
 import { IDraftPlayer } from "@/src/07_shared/models";
 
 type PopulatePlayersProps = {
