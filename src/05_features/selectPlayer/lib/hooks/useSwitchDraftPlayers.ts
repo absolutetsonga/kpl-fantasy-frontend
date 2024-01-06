@@ -1,31 +1,26 @@
-import { useAtomValue, useSetAtom, useAtom } from "jotai";
+import { useSetAtom, useAtom } from "jotai";
 import { useUpdatePlayer } from "@/src/07_shared/lib/hooks/draft-player";
 import {
   draftPlayersAtom,
-  playerAtom,
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
 
 import { find_draft_substitution_draft_position } from "../utils";
 import { IDraftPlayer } from "@/src/07_shared/models";
+import { CustomHookParams } from "../types";
 
-export const useSwitchDraftPlayers = () => {
+export const useSwitchDraftPlayers = ({ draftPlayer }: CustomHookParams) => {
   const updatePlayer = useUpdatePlayer();
   const [draftPlayers, setDraftPlayers] = useAtom(draftPlayersAtom);
   const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
-  const player = useAtomValue(playerAtom);
+
+  const substitutionPlayer = draftPlayers.find(
+    (drPl: IDraftPlayer) =>
+      drPl.position ===
+      find_draft_substitution_draft_position(draftPlayer?.position)
+  );
 
   const handleSwitchDraftPlayers = () => {
-    const draftPlayer = draftPlayers.find(
-      (drPl: IDraftPlayer) => drPl.player === player?.id
-    );
-
-    const substitutionPlayer = draftPlayers.find(
-      (drPl: IDraftPlayer) =>
-        drPl.position ===
-        find_draft_substitution_draft_position(draftPlayer?.position)
-    );
-
     if (substitutionPlayer?.id && draftPlayer?.id) {
       const updatedDraftPlayers = draftPlayers.map((drPl: IDraftPlayer) => {
         if (drPl.id === draftPlayer.id) {
@@ -71,6 +66,6 @@ export const useSwitchDraftPlayers = () => {
       });
     }
   };
-  
+
   return handleSwitchDraftPlayers;
 };

@@ -1,18 +1,28 @@
-import { useAtomValue, useSetAtom, useAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import {
+  draftPlayersAtom,
   playerAtom,
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
 
 import { Button } from "@/src/07_shared/ui";
 import { ModalWindowButton } from ".";
-import { useSwitchDraftPlayers } from "../lib/hooks/useSwitchDraftPlayers";
+import { useMakeCaptainDraftPlayer, useSwitchDraftPlayers } from "../lib/hooks";
+import { IDraftPlayer } from "@/src/07_shared/models";
 
 export const PlayerModalWindow = () => {
-  const handleSwitchDraftPlayers = useSwitchDraftPlayers();
-
-  const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
+  const draftPlayers = useAtomValue(draftPlayersAtom);
   const player = useAtomValue(playerAtom);
+  const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
+
+  const draftPlayer = draftPlayers.find(
+    (drPl: IDraftPlayer) => drPl.player === player?.id
+  );
+
+  const handleSwitchDraftPlayers = useSwitchDraftPlayers({ draftPlayer });
+  const handleMakeCaptainDraftPlayer = useMakeCaptainDraftPlayer({
+    draftPlayer,
+  });
 
   const handleMakeCaptainClick = () => {};
   const handleMakeViceCaptainClick = () => {};
@@ -34,7 +44,7 @@ export const PlayerModalWindow = () => {
           </ModalWindowButton>
 
           <ModalWindowButton
-            onClick={handleMakeCaptainClick}
+            onClick={handleMakeCaptainDraftPlayer}
             colorStyles="bg-green-500 hover:bg-green-600"
           >
             Make Captain
