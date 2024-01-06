@@ -10,7 +10,7 @@ interface IPlayerService {
   getPlayer(player_id: PlayerId): Promise<void>;
   getPlayers(): Promise<void>;
   createPlayer(player: IPlayerTransfermarkt, teamId: TeamId): Promise<void>;
-  deletePlayers(): Promise<void>;
+  deletePlayer(): Promise<void>;
 }
 
 export class PlayerService implements IPlayerService {
@@ -48,7 +48,7 @@ export class PlayerService implements IPlayerService {
     return this.apiClient.makeRequest("POST", "players/", data);
   }
 
-  async deletePlayers() {
+  async deletePlayer() {
     return this.apiClient.makeRequest("DELETE", "players/delete-all/");
   }
 }
