@@ -5,45 +5,72 @@ import {
   draftPlayersAtom,
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
+import { IDraftPlayer } from "@/src/07_shared/models";
 
 export const useMakeViceCaptainDraftPlayer = ({
   draftPlayer,
 }: CustomHookParams) => {
-  const updatePlayer = useUpdatePlayer();
-  const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
   const [draftPlayers, setDraftPlayers] = useAtom(draftPlayersAtom);
 
+  const updatePlayer = useUpdatePlayer();
+  const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
+
+  const oldViceCaptain = draftPlayers.find(
+    (drPl) => drPl.is_vice_captain === true
+  );
+
   const handleMakeViceCaptainDraftPlayer = async () => {
-    if (!draftPlayer) return null;
+    if (draftPlayer) {
+      const draftPlayerUpdatedData = {
+        id: draftPlayer?.id,
+        squad: draftPlayer?.squad,
+        player: draftPlayer?.player,
+        position: draftPlayer?.position,
+        is_captain: draftPlayer?.is_captain,
+        is_vice_captain: true,
+        on_bench: draftPlayer?.on_bench,
+      };
 
-    const draftPlayerUpdatedData = {
-      id: draftPlayer?.id,
-      squad: draftPlayer?.squad,
-      player: draftPlayer?.player,
-      position: draftPlayer?.position,
-      is_captain: draftPlayer?.is_captain,
-      is_vice_captain: true,
-      on_bench: draftPlayer?.on_bench,
-    };
+      const updatedDraftPlayers = draftPlayers.map((drPl: IDraftPlayer) => {
+        if (drPl.id === draftPlayer.id) {
+          return { ...drPl, is_vice_captain: true };
+        } else if (oldViceCaptain && drPl.id === oldViceCaptain?.id) {
+          return {
+            ...drPl,
+            is_vice_captain: false,
+          };
+        }
+        return drPl;
+      });
 
-    updatePlayer.mutate(draftPlayerUpdatedData, {
-      onSuccess: () => {
-        const updatedDraftPlayers = draftPlayers.filter(
-          (drPl) => drPl.id !== draftPlayer.id
-        );
+      setDraftPlayers(updatedDraftPlayers);
 
-        console.log(updatedDraftPlayers);
+      if (oldViceCaptain) {
+        const draftOldViceCaptainPlayerUpdatedData = {
+          id: oldViceCaptain.id,
+          squad: oldViceCaptain.squad,
+          player: oldViceCaptain.player,
+          position: oldViceCaptain.position,
+          is_captain: oldViceCaptain.is_captain,
+          is_vice_captain: false,
+          on_bench: oldViceCaptain.on_bench,
+        };
 
-        setDraftPlayers([
-          ...updatedDraftPlayers,
-          { ...draftPlayerUpdatedData },
-        ]);
-        
-        console.log(`Draft player now is a vice-captain.`);
-      },
-      onError: (error) => console.log(error),
-      onSettled: () => setPlayerModalWindow(false),
-    });
+        await updatePlayer.mutateAsync(draftOldViceCaptainPlayerUpdatedData, {
+          onSuccess: () => console.log(`Old vice-captain updated successfully`),
+          onError: (error) => console.log(error),
+          onSettled: () => setPlayerModalWindow(false),
+        });
+      }
+
+      updatePlayer.mutate(draftPlayerUpdatedData, {
+        onSuccess: () => {
+          console.log(`Draft player now is a vice-captain.`);
+        },
+        onError: (error) => console.log(error),
+        onSettled: () => setPlayerModalWindow(false),
+      });
+    }
   };
 
   return handleMakeViceCaptainDraftPlayer;
