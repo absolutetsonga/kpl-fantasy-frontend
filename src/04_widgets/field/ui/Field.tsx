@@ -13,12 +13,13 @@ import {
 
 import { generate_draft_placeholder_players } from "../lib/utils";
 
-import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
 import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
-
 import { useGetDraft } from "@/src/07_shared/lib/hooks/draft";
 import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
+
+import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
 import { PlayerModalWindow } from "@/src/05_features/modify-player/ui";
+import { PlaceholderModalWindow } from "@/src/05_features/select-player/ui";
 
 export const Field = () => {
   const [, setDraftPlayers] = useAtom(draftPlayersAtom);
@@ -55,7 +56,7 @@ export const Field = () => {
       <PopulatePlayers draftPlayersData={draftPlayersData} />
 
       {togglePlayerModalWindow && <PlayerModalWindow />}
-      {/* {togglePlaceholderModalWindow && <PlaceholderModalWindow />} */}
+      {togglePlaceholderModalWindow && <PlaceholderModalWindow />}
     </div>
   );
 };

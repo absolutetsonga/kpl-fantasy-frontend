@@ -22,7 +22,7 @@ export const useMakeCaptainDraftPlayer = ({
       is_vice_captain: draftPlayer?.is_vice_captain,
       on_bench: draftPlayer?.on_bench,
     };
-
+    
     updatePlayer.mutate(draftPlayerUpdatedData, {
       onSuccess: () => console.log(`Draft player now is a captain.`),
       onError: (error) => console.log(error),

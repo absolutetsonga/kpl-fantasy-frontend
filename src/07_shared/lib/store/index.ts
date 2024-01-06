@@ -9,8 +9,6 @@ import {
   IDraftPlayer,
 } from "../../models";
 
-export const allPlayersAtom = atom<IPlayer[]>([]);
-
 export const draftAtom = atom<IDraft | null>(null);
 export const draftPlayersAtom = atom<IDraftPlayer[]>([]);
 export const draftPlayerAtom = atom<IDraftPlayer | null>(null);

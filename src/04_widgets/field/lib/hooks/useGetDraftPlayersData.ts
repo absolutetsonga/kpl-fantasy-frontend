@@ -15,7 +15,7 @@ export const useGetDraftPlayersData = ({
   const draftExistingPlayers = useAtomValue(draftPlayersAtom);
   const players = useAtomValue(playersAtom);
 
-  return draft_placeholder_players.map((phPl, index) => {
+  return draft_placeholder_players.map((phPl) => {
     const draftExistingPlayer = draftExistingPlayers.find(
       (drPl) => drPl.position === phPl.position
     );
