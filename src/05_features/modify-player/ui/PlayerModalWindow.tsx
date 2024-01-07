@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { useAtomValue, useSetAtom } from "jotai";
 import {
   draftPlayersAtom,
@@ -5,7 +7,6 @@ import {
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
 
-import { Button } from "@/src/07_shared/ui";
 import { ModalWindowButton } from ".";
 import {
   useDeleteDraftPlayer,
@@ -15,6 +16,8 @@ import {
   useViewDraftPlayerInformation,
 } from "../lib/hooks";
 import { IDraftPlayer } from "@/src/07_shared/models";
+
+import { CloseButton } from "@/src/06_entities/close-button/ui";
 
 export const PlayerModalWindow = () => {
   const draftPlayers = useAtomValue(draftPlayersAtom);
@@ -38,31 +41,50 @@ export const PlayerModalWindow = () => {
 
   const handleDeleteDraftPlayer = useDeleteDraftPlayer(draftPlayer?.id);
 
+  const benchPositions = ["SGK", "SD", "SM", "SS"];
+
   return (
     <div className="flex flex-col gap-10 rounded-2xl bg-white text-fuchsia-50 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl bg-gradient-to-b from-emerald-500 via-sky-200 to-sky-100">
       <div className="mt-3 text-center">
-        <h3 className="text-lg leading-6  font-bold">{player?.name}</h3>
+        <div className="flex flex-row items-center justify-between">
+          <h3 className="flex-1 text-lg leading-6 font-bold text-center">
+            {player?.name}
+          </h3>
+          <CloseButton
+            onClick={() => setPlayerModalWindow(false)}
+            className="flex items-center absolute top-2 right-2 px-4 py-3 bg-slate-50 bg-opacity-20 rounded-xl"
+          />
+        </div>
+
         <div className="flex flex-col items-center justify-center mt-2 px-7 py-3 text-md">
-          <ModalWindowButton
-            onClick={handleSwitchDraftPlayers}
-            colorStyles="bg-gradient-to-tl from-violet-100 via-violet-600 to-cyan-700"
-          >
-            Substitute
-          </ModalWindowButton>
+          {!benchPositions.includes(draftPlayer?.position ?? "") && (
+            <ModalWindowButton
+              onClick={handleSwitchDraftPlayers}
+              colorStyles="bg-gradient-to-tl from-violet-100 via-violet-600 to-cyan-700"
+            >
+              Substitute
+            </ModalWindowButton>
+          )}
 
-          <ModalWindowButton
-            onClick={handleMakeCaptainDraftPlayer}
-            colorStyles="bg-gradient-to-tl from-green-100 via-green-500 to-blue-700"
-          >
-            Make Captain
-          </ModalWindowButton>
+          {draftPlayer?.is_captain ||
+            (!benchPositions.includes(draftPlayer?.position ?? "") && (
+              <ModalWindowButton
+                onClick={handleMakeCaptainDraftPlayer}
+                colorStyles="bg-gradient-to-tl from-green-100 via-green-500 to-blue-700"
+              >
+                Make Captain
+              </ModalWindowButton>
+            ))}
 
-          <ModalWindowButton
-            onClick={handleMakeViceCaptainDraftPlayer}
-            colorStyles="bg-gradient-to-tl from-pink-100 via-pink-500 to-purple-700"
-          >
-            Make Vice-Captain
-          </ModalWindowButton>
+          {draftPlayer?.is_vice_captain ||
+            (!benchPositions.includes(draftPlayer?.position ?? "") && (
+              <ModalWindowButton
+                onClick={handleMakeViceCaptainDraftPlayer}
+                colorStyles="bg-gradient-to-tl from-pink-100 via-pink-500 to-purple-700"
+              >
+                Make Vice-Captain
+              </ModalWindowButton>
+            ))}
 
           <ModalWindowButton
             onClick={handleViewInformationClick}
@@ -77,10 +99,6 @@ export const PlayerModalWindow = () => {
           >
             Delete Player
           </ModalWindowButton>
-        </div>
-
-        <div className="items-center px-4 py-3">
-          <Button onClick={() => setPlayerModalWindow(false)}>Close</Button>
         </div>
       </div>
     </div>

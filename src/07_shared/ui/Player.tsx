@@ -27,13 +27,15 @@ export const Player = ({
         width={90}
         height={90}
         alt={player.name}
-        className="object-contain max-h-[90px]"
+        className="object-contain max-h-[90px] rounded-2xl"
         onClick={handleClick}
       />
 
-      <div className="w-full rounded-b-2xl bg-violet-950">
-        {name && (
+      <div className="w-full rounded-b-2xl bg-violet-950 ">
+        {name ? (
           <p className="w-full text-xs font-bold px-2 py-[0.4em]">{name}</p>
+        ) : (
+          <p className="w-full px-4 py-3"> </p>
         )}
       </div>
 
