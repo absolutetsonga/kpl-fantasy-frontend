@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-import Layout from "@/src/01_app";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Layout } from "@/src/01_app";
 
 export const metadata: Metadata = {
   title: "Fantasy KPL",
@@ -16,11 +13,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <Layout>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </Layout>
-  );
+  return <Layout>{children}</Layout>;
 }
