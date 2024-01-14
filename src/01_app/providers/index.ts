@@ -1,3 +1,4 @@
 import { ReactQueryProvider } from "./ReactQueryProvider";
+import { JotaiProvider } from "./JotaiProvider";
 
-export { ReactQueryProvider };
+export { ReactQueryProvider, JotaiProvider };

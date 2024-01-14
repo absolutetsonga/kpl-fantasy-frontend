@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { ReactQueryProvider } from "@/src/01_app/providers";
-import { JotaiProvider } from "@/src/01_app/providers/JotaiProvider";
+import Layout from "@/src/01_app";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <JotaiProvider>
-      <ReactQueryProvider>
-        <html lang="en">
-          <body className={inter.className}>{children}</body>
-        </html>
-      </ReactQueryProvider>
-    </JotaiProvider>
+    <Layout>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </Layout>
   );
 }
