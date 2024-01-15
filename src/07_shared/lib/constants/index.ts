@@ -53,3 +53,5 @@ export const PLAYERS_STYLE_POSITIONS = [
   { name: "SM", className: "absolute bottom-[30px] left-[464px]" },
   { name: "SS", className: "absolute bottom-[30px] left-[636px]" },
 ];
+
+export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;

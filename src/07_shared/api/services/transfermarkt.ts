@@ -23,12 +23,10 @@ class TransfermarktService implements ITransfermarktService {
       domain: "com",
     };
 
-    const response = await this.apiClient.makeRequest(
+    const response = await this.apiClient.makeTransfermarktRequest(
       "GET",
       `${this.url}/clubs/get-squad`,
-      {},
-      params,
-      true
+      params
     );
 
     return response.squad;
@@ -37,12 +35,10 @@ class TransfermarktService implements ITransfermarktService {
   async getTeam(teamName: TeamName) {
     const params = { id: CLUBS_TRANSFERMARKT_IDS[teamName], domain: "com" };
 
-    const response = await this.apiClient.makeRequest(
+    const response = await this.apiClient.makeTransfermarktRequest(
       "GET",
       `${this.url}/clubs/get-header-info`,
-      {},
-      params,
-      true
+      params
     );
 
     return response.club;

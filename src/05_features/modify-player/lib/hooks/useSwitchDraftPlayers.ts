@@ -55,13 +55,13 @@ export const useSwitchDraftPlayers = ({ draftPlayer }: CustomHookParams) => {
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
         onSuccess: () => console.log("Draft Player updated successfully"),
-        onError: (error) => console.log(error),
+        onError: (error) => console.error(error),
         onSettled: () => setPlayerModalWindow(false),
       });
 
       updatePlayer.mutate(substitutePlayerUpdatedData, {
         onSuccess: () => console.log("Draft Player updated successfully"),
-        onError: (error) => console.log(error),
+        onError: (error) => console.error(error),
         onSettled: () => setPlayerModalWindow(false),
       });
     }

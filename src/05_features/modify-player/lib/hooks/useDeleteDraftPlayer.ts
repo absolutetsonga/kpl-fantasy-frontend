@@ -21,7 +21,7 @@ export const useDeleteDraftPlayer = (draftPlayerId: number | undefined) => {
           setDraftPlayers(updatedDraftPlayers);
           console.log(`Player deleted successfully`);
         },
-        onError: (error) => console.log(error),
+        onError: (error) => console.error(error),
         onSettled: () => setPlayerModalWindow(false),
       });
     }

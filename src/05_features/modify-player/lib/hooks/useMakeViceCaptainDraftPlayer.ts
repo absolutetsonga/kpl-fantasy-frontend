@@ -53,7 +53,7 @@ export const useMakeViceCaptainDraftPlayer = ({
         onSuccess: () => {
           console.log(`Draft player now is a vice-captain.`);
         },
-        onError: (error) => console.log(error),
+        onError: (error) => console.error(error),
         onSettled: () => setPlayerModalWindow(false),
       });
     }

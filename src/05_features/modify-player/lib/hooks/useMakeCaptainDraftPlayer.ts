@@ -40,7 +40,7 @@ export const useMakeCaptainDraftPlayer = ({
 
         await updatePlayer.mutateAsync(draftOldCaptainPlayerUpdatedData, {
           onSuccess: () => console.log(`Old captain updated successfully`),
-          onError: (error) => console.log(error),
+          onError: (error) => console.error(error),
           onSettled: () => setPlayerModalWindow(false),
         });
       }

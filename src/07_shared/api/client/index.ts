@@ -18,18 +18,29 @@ export class APIClient implements IAPIClient {
     url: string,
     data = {},
     params = {},
-    isTransfermarkt = false
+    headers = {}
   ) {
     const options: AxiosRequestConfig = {
       method,
-      url: `${isTransfermarkt ? "" : process.env.NEXT_PUBLIC_API_URL}${url}`,
-      headers: isTransfermarkt
-        ? {
-            "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
-            "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPID_HOST,
-          }
-        : { "Content-Type": "application/json" },
+      url: process.env.NEXT_PUBLIC_API_URL + url,
+      headers: headers ? headers : { "Content-Type": "application/json" },
       data,
+      params,
+    };
+
+    const response = await this.axiosInstance.request(options);
+
+    return response.data;
+  }
+
+  async makeTransfermarktRequest(method: string, url: string, params = {}) {
+    const options: AxiosRequestConfig = {
+      method,
+      url,
+      headers: {
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
+        "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPID_HOST,
+      },
       params,
     };
 
