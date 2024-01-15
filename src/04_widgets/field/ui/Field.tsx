@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { useEffect } from "react";
 
 import {
@@ -23,8 +23,8 @@ import { PlaceholderModalWindow } from "@/src/05_features/select-player/ui";
 import { Bench } from "@/src/06_entities/bench/ui";
 
 export const Field = () => {
-  const [, setDraftPlayers] = useAtom(draftPlayersAtom);
-  const [, setPlayers] = useAtom(playersAtom);
+  const setDraftPlayers = useSetAtom(draftPlayersAtom);
+  const setPlayers = useSetAtom(playersAtom);
 
   const { data: draftData } = useGetDraft(17);
   const { data: playersData } = useGetPlayers();

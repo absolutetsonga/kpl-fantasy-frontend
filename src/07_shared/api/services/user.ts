@@ -2,13 +2,6 @@ import { APIClient, api_client } from "../client";
 
 interface IUserService {
   getUser(): void;
-  createUser(
-    first_name: string,
-    second_name: string,
-    email: string,
-    password: string,
-    re_password: string
-  ): void;
   loginUser(email: string, password: string): void;
   googleUser(state: string, code: string): void;
   verifyUser(): void;
@@ -18,6 +11,13 @@ interface IUserService {
   resetPasswordConfirmUser(
     uid: string,
     token: string,
+    password: string,
+    re_password: string
+  ): void;
+  createUser(
+    first_name: string,
+    second_name: string,
+    email: string,
     password: string,
     re_password: string
   ): void;

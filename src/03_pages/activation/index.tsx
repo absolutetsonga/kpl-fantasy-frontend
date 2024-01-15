@@ -2,6 +2,7 @@
 
 import { useGetUser } from "@/src/07_shared/lib/hooks/auth/useGetUser";
 import { useGoogleUser } from "@/src/07_shared/lib/hooks/auth/useGoogleUser";
+import { PageContainer } from "@/src/07_shared/ui";
 
 export const Activation = () => {
   const { data: user, isLoading, isSuccess, isError } = useGetUser();
@@ -22,5 +23,5 @@ export const Activation = () => {
     console.log(response);
   };
 
-  return <div onClick={handleClick}>Activation</div>;
+  return <PageContainer>Activation</PageContainer>;
 };
