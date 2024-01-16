@@ -5,6 +5,7 @@ import { Form } from "@/src/04_widgets/form/ui";
 
 import { useRegisterForm } from "@/src/05_features/register-user/lib/hooks";
 import { useRouter } from "next/navigation";
+import { ToastSetup } from "@/src/01_app/providers";
 
 export const Register = () => {
   const router = useRouter();
@@ -14,6 +15,8 @@ export const Register = () => {
 
   return (
     <PageContainer>
+      <ToastSetup />
+
       <div className="sm:mx-auto sm:w-full sm:max-w-sm text-gray-950 dark:text-gray-50">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
           Sign up for your account

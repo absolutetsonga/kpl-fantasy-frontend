@@ -1,4 +1,4 @@
-import { JotaiProvider, ReactQueryProvider, ToastSetup } from "./providers";
+import { JotaiProvider, ReactQueryProvider } from "./providers";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 
@@ -13,7 +13,6 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <ReactQueryProvider>
         <html lang="en">
           <body className={inter.className}>
-            <ToastSetup />
             <Navbar />
             {children}
             <Footer />
