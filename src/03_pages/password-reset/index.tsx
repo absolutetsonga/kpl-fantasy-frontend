@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Password Reset Page",
-  description: "KPL Password Reset Page",
+  description: "KPL Fantasy Password Reset Page",
 };
 
 export const PasswordReset = () => {

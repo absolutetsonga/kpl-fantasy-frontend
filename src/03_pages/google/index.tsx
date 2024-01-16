@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Google Account Activation Page",
-  description: "KPL Google Account Activation Page",
+  description: "KPL Fantasy Google Account Activation Page",
 };
 
 export const Google = () => {
