@@ -1,12 +1,6 @@
-import { IUser } from "@/src/07_shared/models";
+import { FormFieldInfoType } from "./types";
 
-type FormFieldInfoType = {
-  name: keyof IUser;
-  type: string;
-  text: string;
-};
-
-export const FORMFIELDINFO: FormFieldInfoType[] = [
+export const REGISTER_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "first_name",
     type: "text",
@@ -31,5 +25,18 @@ export const FORMFIELDINFO: FormFieldInfoType[] = [
     name: "re_password",
     type: "password",
     text: "Confirm Password",
+  },
+];
+
+export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoType[] = [
+  {
+    name: "email",
+    type: "email",
+    text: "Email",
+  },
+  {
+    name: "password",
+    type: "password",
+    text: "Password",
   },
 ];

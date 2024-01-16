@@ -1,22 +1,34 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-import { PopulateFormField } from "@/src/06_entities/populate-form-fields/ui";
+import { PopulateFormFields } from "@/src/06_entities/populate-form-fields/ui";
 import { IUser } from "@/src/07_shared/models";
 
 import { Spinner } from "@/src/07_shared/ui";
+import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/types";
 
 type FormProps = {
   onSubmit: () => void;
   register: UseFormRegister<IUser>;
   errors: FieldErrors<IUser>;
   status: string;
+  formFields: FormFieldInfoType[];
 };
 
-export const Form = ({ onSubmit, register, errors, status }: FormProps) => {
+export const Form = ({
+  onSubmit,
+  register,
+  errors,
+  status,
+  formFields,
+}: FormProps) => {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm text-gray-950 dark:text-gray-50">
       <form className="space-y-6" onSubmit={onSubmit}>
-        <PopulateFormField register={register} errors={errors} />
+        <PopulateFormFields
+          register={register}
+          errors={errors}
+          formFields={formFields}
+        />
 
         <div>
           <button

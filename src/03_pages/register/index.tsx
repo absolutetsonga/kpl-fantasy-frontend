@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { ToastSetup } from "@/src/01_app/providers";
 import { Metadata } from "next";
 
+import { REGISTER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
+
 export const metadata: Metadata = {
   title: "KPL Fantasy | Register Page",
   description: "KPL Fantasy Register Page",
@@ -34,6 +36,7 @@ export const Register = () => {
         register={register}
         errors={errors}
         status={status}
+        formFields={REGISTER_FORM_FIELDS_INFO}
       />
     </PageContainer>
   );
