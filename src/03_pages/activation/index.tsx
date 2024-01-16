@@ -1,27 +1,62 @@
 "use client";
 
-import { useGetUser } from "@/src/07_shared/lib/hooks/auth/useGetUser";
-import { useGoogleUser } from "@/src/07_shared/lib/hooks/auth/useGoogleUser";
 import { PageContainer } from "@/src/07_shared/ui";
+import { ToastSetup } from "@/src/01_app/providers";
 
-export const Activation = () => {
-  const { data: user, isLoading, isSuccess, isError } = useGetUser();
-  const googleUser = useGoogleUser();
+import { useEffect } from "react";
+import { useActivateUser } from "@/src/07_shared/lib/hooks/auth";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { Metadata } from "next";
 
-  const handleClick = () => {
-    const response = googleUser.mutate(
+export const metadata: Metadata = {
+  title: "KPL Fantasy | Account Activation Page",
+  description: "KPL Fantasy Account Activation Page",
+};
+
+type Props = {
+  params: {
+    uid: string;
+    token: string;
+  };
+};
+
+export const Activation = ({ params }: Props) => {
+  const { uid, token } = params;
+
+  const activateUser = useActivateUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    activateUser.mutate(
+      { uid, token },
       {
-        state: "JMluI69k2i9Jp9LWdSma17G9aOKeqvuG",
-        code: "4%2F0AfJohXkhKK2vH7P1W4neDvnhBfma0fWNnsDRKdXGYpIbaAlBa_jlJzfbryPb9zuZL7Q6_g",
-      },
-      {
-        onSuccess: () => console.log("success"),
-        onError: () => console.log("error"),
+        onSuccess: () => {
+          toast.success("Account activated");
+        },
+
+        onError: () => {
+          toast.error("Failed to activate account");
+        },
+
+        onSettled: () => {
+          router.push("/auth/login");
+        },
       }
     );
+  }, [activateUser, uid, token, router]);
 
-    console.log(response);
-  };
+  return (
+    <PageContainer>
+      <ToastSetup />
 
-  return <PageContainer>Activation</PageContainer>;
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+            Activating your account...
+          </h1>
+        </div>
+      </div>
+    </PageContainer>
+  );
 };

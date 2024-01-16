@@ -6,6 +6,12 @@ import { Form } from "@/src/04_widgets/form/ui";
 import { useRegisterForm } from "@/src/05_features/register-user/lib/hooks";
 import { useRouter } from "next/navigation";
 import { ToastSetup } from "@/src/01_app/providers";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "KPL Fantasy | Register Page",
+  description: "KPL Fantasy Register Page",
+};
 
 export const Register = () => {
   const router = useRouter();
