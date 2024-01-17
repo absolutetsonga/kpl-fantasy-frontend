@@ -1,7 +1,8 @@
-import { useAtom, useSetAtom } from "jotai";
-import { authTokenAtom, isAuthenticatedAtom } from "../../store";
+import { useSetAtom } from "jotai";
+import { isAuthenticatedAtom } from "../../store";
 import { Mutex } from "async-mutex";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 type reAuthArgs = {
   url: string;
@@ -11,27 +12,17 @@ type reAuthArgs = {
 
 export const useReAuth = () => {
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
-  const [authToken, setAuthToken] = useAtom(authTokenAtom);
 
   const mutex = new Mutex();
 
   const reAuth = async ({ url, method, data = {} }: reAuthArgs) => {
     await mutex.waitForUnlock();
 
-    let headers = {
-      Authorization: "",
-    };
-
-    if (authToken) {
-      headers["Authorization"] = `Bearer ${authToken}`;
-    }
-
     const options = {
       url,
       method,
       data,
-      headers,
-      credentials: "include",
+      withCredentials: true,
     };
 
     let response = await axios.request(options);
@@ -45,24 +36,22 @@ export const useReAuth = () => {
             `${process.env.NEXT_PUBLIC_API_URL}jwt/refresh/`,
             {
               method: "POST",
-              credentials: "include",
             }
           );
 
           if (refreshResponse.ok) {
             const newToken = await refreshResponse.json();
 
-            console.log({ newToken });
-            setAuthToken(newToken);
-            setIsAuthenticated(true);
+            Cookies.set("access", newToken);
 
-            headers["Authorization"] = `Bearer ${newToken}`;
+            setIsAuthenticated(true);
 
             response = await axios.request(options);
           } else {
-            setAuthToken(null);
             setIsAuthenticated(false);
           }
+        } catch (error) {
+          console.error(error);
         } finally {
           release();
         }

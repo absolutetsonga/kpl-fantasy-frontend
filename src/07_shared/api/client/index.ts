@@ -10,6 +10,7 @@ export class APIClient implements IAPIClient {
   constructor(baseURL: string) {
     this.axiosInstance = axios.create({
       baseURL,
+      withCredentials: true,
     });
   }
 

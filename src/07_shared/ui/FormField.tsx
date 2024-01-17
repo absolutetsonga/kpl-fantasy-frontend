@@ -1,5 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
 import { IUser } from "@/src/07_shared/models";
+import Link from "next/link";
 
 type FormFieldProps = {
   name: "email" | "first_name" | "last_name" | "password" | "re_password";
@@ -7,6 +8,10 @@ type FormFieldProps = {
   type: string;
   errorMessage: string | undefined;
   register: UseFormRegister<IUser>;
+  link?: {
+    linkText: string;
+    linkUrl: string;
+  };
 };
 
 export const FormField = ({
@@ -15,12 +20,25 @@ export const FormField = ({
   text,
   errorMessage,
   register,
+  link,
 }: FormFieldProps) => {
   return (
     <div>
-      <label htmlFor={name} className="block text-sm font-medium leading-6">
-        {text}
-      </label>
+      <div className="flex flex-row items-center justfiy-between">
+        <label htmlFor={name} className="flex-1 block text-sm font-medium leading-6">
+          {text}
+        </label>
+        {link && (
+          <div className="block text-sm font-medium leading-6">
+            <Link
+              className="font-semibold text-indigo-600 dark:text-indigo-300 hover:text-indigo-500"
+              href={link.linkUrl}
+            >
+              {link.linkText}
+            </Link>
+          </div>
+        )}
+      </div>
 
       <div className="mt-2">
         <input

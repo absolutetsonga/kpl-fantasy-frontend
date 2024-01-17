@@ -38,5 +38,9 @@ export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoType[] = [
     name: "password",
     type: "password",
     text: "Password",
+    link: {
+      linkText: "Forgot password?",
+      linkUrl: "/password-reset",
+    },
   },
 ];

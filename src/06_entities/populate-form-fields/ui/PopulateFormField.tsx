@@ -25,6 +25,7 @@ export const PopulateFormFields = ({
             text={ff.text}
             register={register}
             errorMessage={errors?.[ff.name]?.message}
+            link={ff.link}
           />
         );
       })}

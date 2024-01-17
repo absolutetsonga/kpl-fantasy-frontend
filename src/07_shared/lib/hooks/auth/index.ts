@@ -1,4 +1,5 @@
 import { useGetUser } from "./useGetUser";
+import { useRegisterUser } from "./useRegisterUser";
 import { useGoogleUser } from "./useGoogleUser";
 import { useVerifyUser } from "./useVerifyUser";
 import { useActivateUser } from "./useActivateUser";
@@ -9,6 +10,7 @@ import { useResetPasswordConfirmUser } from "./usePasswordConfirmUser";
 
 export {
   useGetUser,
+  useRegisterUser,
   useGoogleUser,
   useVerifyUser,
   useActivateUser,

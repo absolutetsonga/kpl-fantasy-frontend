@@ -40,4 +40,5 @@ export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
 export const isAuthenticatedAtom = atom<boolean>(false);
 export const isLoadingAtom = atom<boolean>(true);
 
-export const authTokenAtom = atom<string | null>(null);
+export const authAccessTokenAtom = atom<string | null>(null);
+export const authRefreshTokenAtom = atom<string | null>(null);

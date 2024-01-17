@@ -44,7 +44,7 @@ export const Activation = ({ params }: Props) => {
         },
       }
     );
-  }, [activateUser, uid, token, router]);
+  }, [uid, token, router]);
 
   return (
     <PageContainer>

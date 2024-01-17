@@ -12,6 +12,7 @@ type FormProps = {
   errors: FieldErrors<IUser>;
   status: string;
   formFields: FormFieldInfoType[];
+  buttonText: string;
 };
 
 export const Form = ({
@@ -20,6 +21,7 @@ export const Form = ({
   errors,
   status,
   formFields,
+  buttonText,
 }: FormProps) => {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm text-gray-950 dark:text-gray-50">
@@ -35,7 +37,7 @@ export const Form = ({
             type="submit"
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            {status === "pending" ? <Spinner /> : "Sign up"}
+            {status === "pending" ? <Spinner /> : buttonText}
           </button>
         </div>
       </form>
