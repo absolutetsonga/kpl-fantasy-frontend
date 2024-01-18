@@ -1,85 +1,18 @@
 "use client";
 
-import Image from "next/image";
-
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Fragment } from "react";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { usePathname, useRouter } from "next/navigation";
 import { useLogoutUser } from "@/src/07_shared/lib/hooks/auth";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 
 import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
 
-import { NavLink } from "@/src/07_shared/ui";
-import { toast } from "react-toastify";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { AuthLinks, GuestLinks } from "../lib/constants";
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const logoutUser = useLogoutUser();
-  const router = useRouter();
-
-  const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
-
-  const isSelected = (path: string) => (pathname === path ? true : false);
-
-  const handleLogout = () => {
-    logoutUser.mutate(undefined, {
-      onSuccess: () => {
-        toast.success("Successfully logged out");
-        setIsAuthenticated(false);
-      },
-
-      onError: () => {
-        toast.error("Failed to log out");
-      },
-
-      onSettled: () => {
-        router.push("/auth/login");
-      },
-    });
-  };
-
-  const authLinks = (isMobile: boolean) => (
-    <>
-      <NavLink
-        isSelected={isSelected("/draft")}
-        isMobile={isMobile}
-        href="/draft"
-      >
-        Draft
-      </NavLink>
-      <NavLink isMobile={isMobile} onClick={handleLogout}>
-        Logout
-      </NavLink>
-    </>
-  );
-
-  const guestLinks = (isMobile: boolean) => (
-    <>
-      <NavLink
-        isSelected={isSelected("/auth/login")}
-        isMobile={isMobile}
-        href="/auth/login"
-      >
-        Login
-      </NavLink>
-      <NavLink
-        isSelected={isSelected("/auth/register")}
-        isMobile={isMobile}
-        href="/auth/register"
-      >
-        Register
-      </NavLink>
-    </>
-  );
-
-  const isAuthenticated = useAtomValue(isAuthenticatedAtom);
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -101,7 +34,11 @@ export default function Navbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {isAuthenticated ? authLinks(false) : guestLinks(false)}
+                    {isAuthenticated ? (
+                      <AuthLinks isMobile={false} />
+                    ) : (
+                      <GuestLinks isMobile={false} />
+                    )}
                   </div>
                 </div>
               </div>
@@ -110,7 +47,11 @@ export default function Navbar() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {isAuthenticated ? authLinks(true) : guestLinks(true)}
+              {isAuthenticated ? (
+                <AuthLinks isMobile={true} />
+              ) : (
+                <GuestLinks isMobile={true} />
+              )}
             </div>
           </Disclosure.Panel>
         </>
