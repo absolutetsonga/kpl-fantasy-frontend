@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hello World
-    </main>
-  )
+import { Home } from "@/src/03_pages/home";
+
+export default function page() {
+  return <Home />;
 }

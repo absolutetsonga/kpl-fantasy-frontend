@@ -18,18 +18,22 @@ export const Setup = () => {
   const reAuth = useReAuth();
 
   useEffect(() => {
-    verifyUser.mutate(undefined, {
-      onSuccess: () => {
-        setIsAuthenticated(true);
-      },
-      onError: async (error) => {
-        console.error("Error in verifying user:", error);
-        await reAuth();
-      },
-      onSettled: () => {
-        setIsLoading(false);
-      },
-    });
+    try {
+      verifyUser.mutate(undefined, {
+        onSuccess: () => {
+          setIsAuthenticated(true);
+        },
+        onError: async (error) => {
+          console.error("Error in verifying user:", error);
+          await reAuth();
+        },
+        onSettled: () => {
+          setIsLoading(false);
+        },
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
   return <ToastContainer />;

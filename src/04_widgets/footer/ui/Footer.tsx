@@ -1,9 +1,13 @@
-import React from 'react'
-
-const Footer = () => {
+export const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
-
-export default Footer
+    <footer className="bg-gray-100 dark:bg-gray-800 h-16">
+      <div className="h-full px-2">
+        <div className="flex items-center justify-center h-full">
+          <p className="text-gray-400 text-xs">
+            &copy; 2023 Full Auth, Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};

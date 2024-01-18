@@ -12,9 +12,10 @@ export const useReAuth = () => {
 
   const reAuth = async () => {
     let response;
-    const access = Cookies.get("access");
 
     try {
+      const access = Cookies.get("access");
+
       if (access === undefined) {
         if (!mutex.isLocked()) {
           const release = await mutex.acquire();
@@ -41,7 +42,6 @@ export const useReAuth = () => {
             }
           } catch (error) {
             console.error("Error during token refresh:", error);
-            throw error; // Re-throw the error after logging
           } finally {
             release();
           }
