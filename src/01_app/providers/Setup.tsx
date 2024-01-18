@@ -18,22 +18,13 @@ export const Setup = () => {
   const reAuth = useReAuth();
 
   useEffect(() => {
-    const reAuthUser = async () => {
-      try {
-        const response = await reAuth();
-        console.log(response);
-      } catch (error) {
-        console.error("Error in re-authenticating user:", error);
-      }
-    };
-
     verifyUser.mutate(undefined, {
       onSuccess: () => {
         setIsAuthenticated(true);
       },
-      onError: (error) => {
+      onError: async (error) => {
         console.error("Error in verifying user:", error);
-        reAuthUser();
+        await reAuth();
       },
       onSettled: () => {
         setIsLoading(false);
