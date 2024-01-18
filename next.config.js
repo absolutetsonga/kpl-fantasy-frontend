@@ -12,6 +12,16 @@ const nextConfig = {
         hostname: "tmssl.akamaized.net",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
     ],
   },
   experimental: {

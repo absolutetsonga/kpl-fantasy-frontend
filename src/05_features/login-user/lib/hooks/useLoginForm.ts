@@ -14,6 +14,8 @@ import { useReAuth } from "@/src/07_shared/lib/hooks/auth/useReAuth";
 import { BASE_URL } from "@/src/07_shared/lib/constants";
 
 import Cookies from "js-cookie";
+import { useSetAtom } from "jotai";
+import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
 
 const userSchema = zod.object({
   email: zod.string().email("Invalid email address"),
@@ -22,6 +24,7 @@ const userSchema = zod.object({
 
 export const useLoginForm = (router: AppRouterInstance) => {
   const loginUser = useLoginUser();
+  const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
   const reAuth = useReAuth();
 
   const {
@@ -35,9 +38,9 @@ export const useLoginForm = (router: AppRouterInstance) => {
   const onSubmit: SubmitHandler<IUser> = (data) => {
     loginUser.mutate(data, {
       onSuccess: async (resData) => {
-        console.log({ resData });
-
         toast.success("Successfully logged in");
+
+        setIsAuthenticated(true);
 
         Cookies.set("access", resData.access);
         Cookies.set("refresh", resData.refresh);
@@ -46,6 +49,8 @@ export const useLoginForm = (router: AppRouterInstance) => {
           url: `${BASE_URL}users/me/`,
           method: "GET",
         });
+
+        router.push("/dashboard");
       },
       onError: () => {
         toast.error("Failed to log in");

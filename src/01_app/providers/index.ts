@@ -1,5 +1,5 @@
 import { ReactQueryProvider } from "./ReactQueryProvider";
 import { JotaiProvider } from "./JotaiProvider";
-import { ToastSetup } from "./ToastSetup";
+import { Setup } from "./Setup";
 
-export { ReactQueryProvider, JotaiProvider, ToastSetup };
+export { ReactQueryProvider, JotaiProvider, Setup };

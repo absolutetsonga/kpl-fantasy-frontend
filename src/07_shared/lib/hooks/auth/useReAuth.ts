@@ -1,67 +1,56 @@
 import { useSetAtom } from "jotai";
+import { api_client } from "@/src/07_shared/api/client";
 import { isAuthenticatedAtom } from "../../store";
 import { Mutex } from "async-mutex";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-type reAuthArgs = {
-  url: string;
-  method: string;
-  data?: object;
-};
+const mutex = new Mutex();
 
 export const useReAuth = () => {
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
 
-  const mutex = new Mutex();
+  const reAuth = async () => {
+    let response;
+    const access = Cookies.get("access");
 
-  const reAuth = async ({ url, method, data = {} }: reAuthArgs) => {
-    await mutex.waitForUnlock();
+    try {
+      if (access === undefined) {
+        if (!mutex.isLocked()) {
+          const release = await mutex.acquire();
+          try {
+            // Ensure the mutex was not acquired in the meantime
+            if (access === undefined) {
+              const refreshResponse = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}jwt/refresh/`,
+                {},
+                { withCredentials: true }
+              );
 
-    const options = {
-      url,
-      method,
-      data,
-      withCredentials: true,
-    };
+              if (refreshResponse.status === 200) {
+                const newToken = refreshResponse.data.access;
 
-    let response = await axios.request(options);
+                Cookies.set("access", newToken);
+                setIsAuthenticated(true);
 
-    if (response.status === 401) {
-      if (!mutex.isLocked()) {
-        const release = await mutex.acquire();
-
-        try {
-          const refreshResponse = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}jwt/refresh/`,
-            {
-              method: "POST",
+                response = await api_client.makeRequest("GET", "users/me/");
+              } else {
+                setIsAuthenticated(false);
+                throw new Error("Failed to refresh token");
+              }
             }
-          );
-
-          if (refreshResponse.ok) {
-            const newToken = await refreshResponse.json();
-
-            Cookies.set("access", newToken);
-
-            setIsAuthenticated(true);
-
-            response = await axios.request(options);
-          } else {
-            setIsAuthenticated(false);
+          } catch (error) {
+            console.error("Error during token refresh:", error);
+            throw error; // Re-throw the error after logging
+          } finally {
+            release();
           }
-        } catch (error) {
-          console.error(error);
-        } finally {
-          release();
         }
       }
-    } else {
-      await mutex.waitForUnlock();
-
-      response = await axios.request(options);
+    } catch (err) {
+      console.error("Request error:", err);
+      throw err; // Re-throw the error after logging
     }
-
     return response;
   };
 
