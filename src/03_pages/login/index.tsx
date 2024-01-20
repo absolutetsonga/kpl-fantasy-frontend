@@ -9,6 +9,7 @@ import { Form } from "@/src/04_widgets/form/ui";
 
 import { Metadata } from "next";
 import { useLoginForm } from "@/src/05_features/auth-user/lib/hooks";
+import { SocialButtons } from "@/src/04_widgets/social-auth/ui";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Login Page",
@@ -37,6 +38,8 @@ export const Login = () => {
         formFields={LOGIN_FORM_FIELDS_INFO}
         buttonText={"Sign in"}
       />
+
+      <SocialButtons/>
     </PageContainer>
   );
 };

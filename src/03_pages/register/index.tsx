@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Metadata } from "next";
 
 import { REGISTER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
+import { SocialButtons } from "@/src/04_widgets/social-auth/ui";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Register Page",
@@ -36,6 +37,8 @@ export const Register = () => {
         formFields={REGISTER_FORM_FIELDS_INFO}
         buttonText={"Sign in"}
       />
+
+      <SocialButtons />
     </PageContainer>
   );
 };

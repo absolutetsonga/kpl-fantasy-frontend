@@ -1,5 +1,5 @@
 type PropsButton = {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   className: string;
 }
