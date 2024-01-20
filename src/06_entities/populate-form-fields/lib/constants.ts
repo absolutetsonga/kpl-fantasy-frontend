@@ -44,3 +44,24 @@ export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoType[] = [
     },
   },
 ];
+
+export const REQUEST_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
+  {
+    name: "email",
+    type: "email",
+    text: "Email",
+  },
+];
+
+export const RESET_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
+  {
+    name: "password",
+    type: "password",
+    text: "Password",
+  },
+  {
+    name: "re_password",
+    type: "password",
+    text: "Confirm Password",
+  },
+];

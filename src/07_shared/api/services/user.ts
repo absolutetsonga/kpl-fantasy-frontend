@@ -122,8 +122,8 @@ class UserService implements IUserService {
   ) {
     const response = await this.apiClient.makeRequest(
       "POST",
-      "users/reset_password/",
-      { uid, token, password, re_password }
+      "users/reset_password_confirm/",
+      { uid, token, new_password: password, re_new_password: re_password }
     );
 
     return response;

@@ -8,7 +8,7 @@ import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/ty
 
 type FormProps = {
   onSubmit: () => void;
-  register: UseFormRegister<IUser>;
+  register: UseFormRegister<any>;
   errors: FieldErrors<IUser>;
   status: string;
   formFields: FormFieldInfoType[];

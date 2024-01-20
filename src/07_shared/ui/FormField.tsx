@@ -1,5 +1,4 @@
 import { UseFormRegister } from "react-hook-form";
-import { IUser } from "@/src/07_shared/models";
 import Link from "next/link";
 
 type FormFieldProps = {
@@ -7,7 +6,7 @@ type FormFieldProps = {
   text: string;
   type: string;
   errorMessage: string | undefined;
-  register: UseFormRegister<IUser>;
+  register: UseFormRegister<any>;
   link?: {
     linkText: string;
     linkUrl: string;
@@ -25,7 +24,10 @@ export const FormField = ({
   return (
     <div>
       <div className="flex flex-row items-center justfiy-between">
-        <label htmlFor={name} className="flex-1 block text-sm font-medium leading-6">
+        <label
+          htmlFor={name}
+          className="flex-1 block text-sm font-medium leading-6"
+        >
           {text}
         </label>
         {link && (

@@ -5,7 +5,7 @@ import { useVerifyUser } from "./useVerifyUser";
 import { useActivateUser } from "./useActivateUser";
 import { useLoginUser } from "./useLoginUser";
 import { useLogoutUser } from "./useLogoutUser";
-import { usePasswordResetUser } from "./usePasswordResetUser";
+import { useResetPasswordUser } from "./usePasswordResetUser";
 import { useResetPasswordConfirmUser } from "./usePasswordConfirmUser";
 
 export {
@@ -16,6 +16,6 @@ export {
   useActivateUser,
   useLoginUser,
   useLogoutUser,
-  usePasswordResetUser,
+  useResetPasswordUser,
   useResetPasswordConfirmUser,
 };

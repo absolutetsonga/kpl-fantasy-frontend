@@ -1,7 +1,7 @@
 import { user_service } from "@/src/07_shared/api/services";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const usePasswordResetUser = () => {
+export const useResetPasswordUser = () => {
   const query_client = useQueryClient();
 
   return useMutation({
