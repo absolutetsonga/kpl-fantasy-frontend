@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 import { UseMutationResult } from "@tanstack/react-query";
+import { useSetAtom } from "jotai";
+import { isAuthenticatedAtom, isLoadingAtom } from "@/src/07_shared/lib/store";
 
 export default function useSocialAuth(
   authenticate: UseMutationResult<any, Error, any, unknown>,
@@ -9,6 +11,8 @@ export default function useSocialAuth(
 ) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
+  const setIsLoading = useSetAtom(isLoadingAtom);
 
   useEffect(() => {
     const state = searchParams.get("state");
@@ -20,6 +24,8 @@ export default function useSocialAuth(
         {
           onSuccess: () => {
             toast.success("Logged In");
+            setIsAuthenticated(true);
+            setIsLoading(false);
           },
           onError: (err) => {
             console.log(err);
