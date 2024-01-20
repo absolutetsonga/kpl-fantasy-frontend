@@ -10,7 +10,7 @@ const userSchema = zod.object({
   email: zod.string().email("Invalid email address"),
 });
 
-export const useResetPasswordRequest = () => {
+export const useResetPasswordRequestForm = () => {
   const resetPassword = useResetPasswordUser();
 
   const {

@@ -8,7 +8,7 @@ import { PageContainer } from "@/src/07_shared/ui";
 import { Form } from "@/src/04_widgets/form/ui";
 
 import { Metadata } from "next";
-import { useLoginForm } from "@/src/05_features/login-user/lib/hooks";
+import { useLoginForm } from "@/src/05_features/auth-user/lib/hooks";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Login Page",

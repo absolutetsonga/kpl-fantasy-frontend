@@ -21,7 +21,7 @@ const userSchema = zod.object({
     .min(6, "Password must be at least 6 characters long"),
 });
 
-export const useResetPasswordConfirm = ({
+export const useResetPasswordConfirmForm = ({
   uid,
   token,
   router,

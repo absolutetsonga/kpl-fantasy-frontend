@@ -1,4 +1,11 @@
-import { useResetPasswordConfirm } from "./useResetPasswordConfirm";
-import { useResetPasswordRequest } from "./useResetPasswordRequest";
+import { useResetPasswordConfirmForm } from "./useResetPasswordConfirmForm";
+import { useResetPasswordRequestForm } from "./useResetPasswordRequestForm";
+import { useRegisterForm } from "./useRegisterForm";
+import { useLoginForm } from "./useLoginForm";
 
-export { useResetPasswordConfirm, useResetPasswordRequest };
+export {
+  useRegisterForm,
+  useLoginForm,
+  useResetPasswordConfirmForm,
+  useResetPasswordRequestForm,
+};

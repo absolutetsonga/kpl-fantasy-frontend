@@ -6,7 +6,7 @@ import { Form } from "@/src/04_widgets/form/ui";
 import { Metadata } from "next";
 
 import { RESET_PASSWORD_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
-import { useResetPasswordConfirm } from "@/src/05_features/auth-user/lib/hooks";
+import { useResetPasswordConfirmForm } from "@/src/05_features/auth-user/lib/hooks";
 import { useRouter } from "next/navigation";
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export const PasswordResetPage = ({ params }: Props) => {
   const router = useRouter()
 
   const { register, handleSubmit, onSubmit, onInvalid, errors, status } =
-    useResetPasswordConfirm({ uid, token, router });
+    useResetPasswordConfirmForm({ uid, token, router });
 
   return (
     <PageContainer>

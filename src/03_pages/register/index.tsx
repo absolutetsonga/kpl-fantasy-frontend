@@ -3,7 +3,7 @@
 import { PageContainer } from "@/src/07_shared/ui";
 import { Form } from "@/src/04_widgets/form/ui";
 
-import { useRegisterForm } from "@/src/05_features/register-user/lib/hooks";
+import { useRegisterForm } from "@/src/05_features/auth-user/lib/hooks";
 import { useRouter } from "next/navigation";
 import { Metadata } from "next";
 

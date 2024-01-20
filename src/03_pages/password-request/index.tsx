@@ -3,7 +3,7 @@
 import { PageContainer } from "@/src/07_shared/ui";
 
 import { Form } from "@/src/04_widgets/form/ui";
-import { useResetPasswordRequest } from "@/src/05_features/auth-user/lib/hooks";
+import { useResetPasswordRequestForm } from "@/src/05_features/auth-user/lib/hooks";
 import { REQUEST_PASSWORD_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 
 import { Metadata } from "next";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export const PasswordRequestPage = () => {
   const { register, handleSubmit, onSubmit, onInvalid, errors, status } =
-    useResetPasswordRequest();
+    useResetPasswordRequestForm();
 
   return (
     <PageContainer>
