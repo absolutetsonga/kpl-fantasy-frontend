@@ -9,7 +9,7 @@ import { isAuthenticatedAtom, isLoadingAtom } from "@/src/07_shared/lib/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const Setup = () => {
+const Setup = () => {
   const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const setIsLoading = useSetAtom(isLoadingAtom);
 
@@ -31,3 +31,5 @@ export const Setup = () => {
 
   return <ToastContainer />;
 };
+
+export default Setup;
