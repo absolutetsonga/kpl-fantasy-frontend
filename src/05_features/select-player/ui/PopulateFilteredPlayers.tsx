@@ -8,7 +8,8 @@ import {
   playersAtom,
   togglePlaceholderModalWindowAtom,
 } from "@/src/07_shared/lib/store";
-import { find_draft_substitution_player_position } from "@/src/07_shared/lib/utils";
+
+import { find_draft_substitution_player_position } from "../lib/utils";
 
 import { FilteredPlayerCard } from "@/src/06_entities/filtered-player-card/ui";
 
