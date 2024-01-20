@@ -3,7 +3,7 @@ import { APIClient, api_client } from "../client";
 interface IUserService {
   getUser(): void;
   loginUser(email: string, password: string): void;
-  googleUser(state: string, code: string): void;
+  socialAuthenticateUser(provider: string, state: string, code: string): void;
   verifyUser(): void;
   logoutUser(): void;
   activateUser(uid: string, token: string): void;
@@ -59,10 +59,10 @@ class UserService implements IUserService {
     return response;
   }
 
-  async googleUser(state: string, code: string) {
+  async socialAuthenticateUser(provider: string, state: string, code: string) {
     const response = await this.apiClient.makeRequest(
       "POST",
-      `o/google-oauth2/state=${encodeURIComponent(
+      `o/${provider}/?state=${encodeURIComponent(
         state
       )}&code=${encodeURIComponent(code)}/`,
       {},

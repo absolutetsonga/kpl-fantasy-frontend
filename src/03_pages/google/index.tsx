@@ -1,5 +1,9 @@
+"use client";
+
+import { useSocialAuth } from "@/src/05_features/auth-user/lib/hooks";
+import { useSociaAuthUser } from "@/src/07_shared/lib/hooks/auth/useSocialAuthUser";
 import { PageContainer } from "@/src/07_shared/ui";
-import React from "react";
+import { Spinner } from "@/src/07_shared/ui";
 
 import { Metadata } from "next";
 
@@ -9,5 +13,13 @@ export const metadata: Metadata = {
 };
 
 export const Google = () => {
-  return <PageContainer>Google</PageContainer>;
+  const googleAuthenticate = useSociaAuthUser();
+
+  useSocialAuth(googleAuthenticate, "google-oauth2");
+
+  return (
+    <PageContainer>
+      <Spinner lg />
+    </PageContainer>
+  );
 };

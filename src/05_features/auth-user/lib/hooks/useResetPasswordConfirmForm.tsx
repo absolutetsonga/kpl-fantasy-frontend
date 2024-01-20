@@ -44,7 +44,7 @@ export const useResetPasswordConfirmForm = ({
     confirmUser.mutate(data, {
       onSuccess: async () => {
         toast.success("Password confirmed and changed successfully");
-        router.push("/login");
+        router.push("/auth/login");
       },
       onError: (error) => {
         console.error(error);
