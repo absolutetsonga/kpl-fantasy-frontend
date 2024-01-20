@@ -1,17 +1,9 @@
-import { useReAuth } from "./useReAuth";
+import { user_service } from "@/src/07_shared/api/services";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetUser = () => {
-  const reAuth = useReAuth();
-
-  const fetchUser = async () => {
-    const response = await reAuth();
-
-    return response.data;
-  };
-
   return useQuery({
-    queryFn: async () => await fetchUser(),
+    queryFn: async () => await user_service.getUser(),
     queryKey: ["users"],
   });
 };

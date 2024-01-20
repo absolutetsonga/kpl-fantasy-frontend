@@ -31,8 +31,7 @@ class UserService implements IUserService {
   }
 
   async getUser() {
-    const response = await this.apiClient.makeRequest("POST", "users/me/");
-
+    const response = await this.apiClient.makeRequest("GET", "users/me/");
     return response;
   }
 
@@ -95,6 +94,12 @@ class UserService implements IUserService {
       "users/activation/",
       { uid, token }
     );
+
+    return response;
+  }
+
+  async refreshUser() {
+    const response = await this.apiClient.makeRequest("POST", "jwt/refresh/");
 
     return response;
   }

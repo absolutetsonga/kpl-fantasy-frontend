@@ -4,9 +4,12 @@ import { useHandleLogout } from "../utils/useHandleLogout";
 
 type LinkProps = {
   isMobile: boolean;
+  router: any;
 };
-export const AuthLinks = ({ isMobile }: LinkProps) => {
+
+export const AuthLinks = ({ isMobile, router }: LinkProps) => {
   const pathname = usePathname();
+  const handleLogout = useHandleLogout({ router });
 
   const isSelected = (path: string) => (pathname === path ? true : false);
 
@@ -19,7 +22,7 @@ export const AuthLinks = ({ isMobile }: LinkProps) => {
       >
         Draft
       </NavLink>
-      <NavLink isMobile={isMobile} onClick={useHandleLogout}>
+      <NavLink isMobile={isMobile} onClick={handleLogout}>
         Logout
       </NavLink>
     </>

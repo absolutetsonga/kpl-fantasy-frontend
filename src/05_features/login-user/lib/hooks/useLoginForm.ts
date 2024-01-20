@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useLoginUser } from "@/src/07_shared/lib/hooks/auth/";
-import { useReAuth } from "@/src/07_shared/lib/hooks/auth/useReAuth";
 import { useSetAtom } from "jotai";
 
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
@@ -23,7 +22,6 @@ const userSchema = zod.object({
 export const useLoginForm = (router: AppRouterInstance) => {
   const loginUser = useLoginUser();
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
-  const reAuth = useReAuth();
 
   const {
     register,
@@ -42,8 +40,6 @@ export const useLoginForm = (router: AppRouterInstance) => {
 
         Cookies.set("access", resData.access);
         Cookies.set("refresh", resData.refresh);
-
-        await reAuth();
 
         router.push("/draft");
       },

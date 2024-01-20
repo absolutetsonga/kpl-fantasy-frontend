@@ -3,16 +3,17 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { usePathname, useRouter } from "next/navigation";
-import { useLogoutUser } from "@/src/07_shared/lib/hooks/auth";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 
 import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
 
 import { AuthLinks, GuestLinks } from "../lib/constants";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
+  const isAuthenticated = useAtomValue(isAuthenticatedAtom);
+
+  const router = useRouter();
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -35,9 +36,9 @@ export default function Navbar() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {isAuthenticated ? (
-                      <AuthLinks isMobile={false} />
+                      <AuthLinks isMobile={false} router={router} />
                     ) : (
-                      <GuestLinks isMobile={false} />
+                      <GuestLinks isMobile={false} router={router} />
                     )}
                   </div>
                 </div>
@@ -48,9 +49,9 @@ export default function Navbar() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {isAuthenticated ? (
-                <AuthLinks isMobile={true} />
+                <AuthLinks isMobile={true} router={router} />
               ) : (
-                <GuestLinks isMobile={true} />
+                <GuestLinks isMobile={true} router={router} />
               )}
             </div>
           </Disclosure.Panel>

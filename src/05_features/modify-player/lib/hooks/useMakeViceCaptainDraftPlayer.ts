@@ -5,7 +5,6 @@ import {
   draftPlayersAtom,
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
-import { IDraftPlayer } from "@/src/07_shared/models";
 
 export const useMakeViceCaptainDraftPlayer = ({
   draftPlayer,
