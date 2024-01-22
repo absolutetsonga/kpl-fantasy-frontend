@@ -51,8 +51,6 @@ export const AdminPage = () => {
   const handleCreatePlayers = () => {
     transfermarktPlayers.forEach(async (player) => {
       const team = await team_service.getTeamByName(selectedTeam);
-
-      console.log(team);
       const response = await player_service.createPlayer(player, team.id);
 
       console.log(response);
@@ -61,12 +59,10 @@ export const AdminPage = () => {
 
   const handleCreateTeam = () => {
     if (transfermarktTeam?.name && transfermarktTeam?.image) {
-      setCreatedTeam({
+      team_service.createTeam({
         name: transfermarktTeam?.name,
         image: transfermarktTeam?.image,
       });
-
-      team_service.createTeam(createdTeam);
     }
   };
 
