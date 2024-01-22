@@ -57,12 +57,14 @@ export const AdminPage = () => {
     });
   };
 
-  const handleCreateTeam = () => {
+  const handleCreateTeam = async () => {
     if (transfermarktTeam?.name && transfermarktTeam?.image) {
-      team_service.createTeam({
+      const response = await team_service.createTeam({
         name: transfermarktTeam?.name,
         image: transfermarktTeam?.image,
       });
+
+      console.log(response);
     }
   };
 
