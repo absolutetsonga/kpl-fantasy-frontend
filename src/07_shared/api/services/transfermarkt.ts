@@ -19,7 +19,7 @@ class TransfermarktService implements ITransfermarktService {
   async getPlayers(teamName: TeamName) {
     const params = {
       id: CLUBS_TRANSFERMARKT_IDS[teamName],
-      saison_id: "2024",
+      saison_id: "2023",
       domain: "com",
     };
 
