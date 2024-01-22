@@ -1,11 +1,12 @@
+import { DraftLayout } from "@/src/03_pages/draft/layout";
 import React from "react";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const layout = ({ children }: Props) => {
-  return <div>{children}</div>;
+const Layout = ({ children }: Props) => {
+  return <DraftLayout>{children}</DraftLayout>;
 };
 
-export default layout;
+export default Layout;

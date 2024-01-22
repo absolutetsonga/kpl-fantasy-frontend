@@ -1,14 +1,20 @@
-import { useRouter } from "next/navigation";
+"use client";
+
+import { redirect } from "next/navigation";
 import { useAtom } from "jotai";
 import { isAuthenticatedAtom, isLoadingAtom } from "@/src/07_shared/lib/store";
 import { Spinner } from "@/src/07_shared/ui";
 import { toast } from "react-toastify";
 
-const RequireAuth = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
-
+export default function RequireAuth({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const isLoading = useAtom(isLoadingAtom);
   const isAuthenticated = useAtom(isAuthenticatedAtom);
+
+  console.log(isAuthenticated, isLoading);
 
   if (isLoading) {
     return (
@@ -20,10 +26,8 @@ const RequireAuth = ({ children }: { children: React.ReactNode }) => {
 
   if (isAuthenticated) {
     toast.error("Must be logged in");
-    router.push("/auth/login");
+    redirect("/auth/login");
   }
 
   return children;
-};
-
-export default RequireAuth;
+}

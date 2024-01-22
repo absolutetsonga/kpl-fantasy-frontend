@@ -22,12 +22,14 @@ const Setup = () => {
       },
       onError: async (error) => {
         console.error("Error in verifying user:", error);
+        setIsLoading(false);
+        setIsAuthenticated(false);
       },
       onSettled: () => {
         setIsLoading(false);
       },
     });
-  }, []);
+  }, [setIsAuthenticated, setIsLoading]);
 
   return <ToastContainer />;
 };
