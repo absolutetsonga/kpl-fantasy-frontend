@@ -51,6 +51,8 @@ export const AdminPage = () => {
   const handleCreatePlayers = () => {
     transfermarktPlayers.forEach(async (player) => {
       const team = await team_service.getTeamByName(selectedTeam);
+
+      console.log(team);
       const response = await player_service.createPlayer(player, team.id);
 
       console.log(response);

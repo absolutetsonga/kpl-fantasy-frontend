@@ -42,7 +42,7 @@ export class PlayerService implements IPlayerService {
       price: null,
       is_injured: player.injury !== null,
       is_right_foot: player.foot === "right",
-      teamId: teamId,
+      team: teamId,
     };
 
     return this.apiClient.makeRequest("POST", "players/", data);
