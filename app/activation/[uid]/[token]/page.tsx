@@ -1,4 +1,4 @@
-import { Activation } from "@/src/03_pages/activation";
+import { Activation } from "@/src/03_pages/auth-pages/activation";
 
 type Params = {
   params: {

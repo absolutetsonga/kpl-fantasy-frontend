@@ -1,4 +1,4 @@
-import { Google } from "@/src/03_pages/google";
+import { Google } from "@/src/03_pages/auth-pages/google";
 
 const page = () => {
   return <Google />;
