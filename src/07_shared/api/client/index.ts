@@ -33,22 +33,6 @@ export class APIClient implements IAPIClient {
 
     return response.data;
   }
-
-  async makeTransfermarktRequest(method: string, url: string, params = {}) {
-    const options: AxiosRequestConfig = {
-      method,
-      url,
-      headers: {
-        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
-        "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPID_HOST,
-      },
-      params,
-    };
-
-    const response = await this.axiosInstance.request(options);
-
-    return response.data;
-  }
 }
 
 export const api_client = new APIClient(process.env.NEXT_PUBLIC_API_URL ?? "");

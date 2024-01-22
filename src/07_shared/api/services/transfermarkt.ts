@@ -1,5 +1,5 @@
 import { CLUBS_TRANSFERMARKT_IDS } from "../../lib/constants";
-import { APIClient, api_client } from "../client/";
+import { APIClient, transfermarkt_client } from "../client/transfermarkt";
 
 type TeamName = string;
 
@@ -19,11 +19,11 @@ class TransfermarktService implements ITransfermarktService {
   async getPlayers(teamName: TeamName) {
     const params = {
       id: CLUBS_TRANSFERMARKT_IDS[teamName],
-      saison_id: "2022",
+      saison_id: "2024",
       domain: "com",
     };
 
-    const response = await this.apiClient.makeTransfermarktRequest(
+    const response = await this.apiClient.makeRequest(
       "GET",
       `${this.url}/clubs/get-squad`,
       params
@@ -35,7 +35,7 @@ class TransfermarktService implements ITransfermarktService {
   async getTeam(teamName: TeamName) {
     const params = { id: CLUBS_TRANSFERMARKT_IDS[teamName], domain: "com" };
 
-    const response = await this.apiClient.makeTransfermarktRequest(
+    const response = await this.apiClient.makeRequest(
       "GET",
       `${this.url}/clubs/get-header-info`,
       params
@@ -45,4 +45,6 @@ class TransfermarktService implements ITransfermarktService {
   }
 }
 
-export const transfermarkt_service = new TransfermarktService(api_client);
+export const transfermarkt_service = new TransfermarktService(
+  transfermarkt_client
+);
