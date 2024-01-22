@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
 import { IUser } from "@/src/07_shared/models";
-import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
+import { isAuthenticatedAtom, isLoadingAtom } from "@/src/07_shared/lib/store";
 
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -21,7 +21,9 @@ const userSchema = zod.object({
 
 export const useLoginForm = (router: AppRouterInstance) => {
   const loginUser = useLoginUser();
+
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
+  const setIsLoading = useSetAtom(isLoadingAtom);
 
   const {
     register,
@@ -37,13 +39,15 @@ export const useLoginForm = (router: AppRouterInstance) => {
         toast.success("Successfully logged in");
 
         setIsAuthenticated(true);
+        setIsLoading(false);
 
         Cookies.set("access", resData.access);
         Cookies.set("refresh", resData.refresh);
 
         router.push("/draft");
       },
-      onError: () => {
+      onError: (error) => {
+        console.error(error);
         toast.error("Failed to log in");
       },
     });
