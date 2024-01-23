@@ -12,16 +12,6 @@ export function useCreatePlayer() {
   });
 }
 
-export function useDeletePlayer() {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: async (draftPlayerId: number) =>
-      await draft_player_service.deleteDraftPlayer(draftPlayerId),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["draft"] }),
-  });
-}
-
 export function useUpdatePlayer() {
   const query_client = useQueryClient();
 
@@ -29,5 +19,15 @@ export function useUpdatePlayer() {
     mutationFn: async (data: IDraftPlayer) =>
       await draft_player_service.updateDraftPlayer(data),
     onSuccess: () => query_client.invalidateQueries({ queryKey: ["draft"] }),
+  });
+}
+
+export function useDeletePlayer() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (draftPlayerId: number) =>
+      await draft_player_service.deleteDraftPlayer(draftPlayerId),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["draft"] }),
   });
 }
