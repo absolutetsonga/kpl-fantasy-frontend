@@ -1,8 +1,13 @@
 "use client";
 
 import Image from "next/image";
+
 import { useAtom, useSetAtom } from "jotai";
 import { useEffect } from "react";
+import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
+import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
+import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
+import { useGetDraft, useCreateDraft } from "@/src/07_shared/lib/hooks/draft";
 
 import {
   togglePlaceholderModalWindowAtom,
@@ -13,11 +18,6 @@ import {
 } from "@/src/07_shared/lib/store/";
 
 import { generate_draft_placeholder_players } from "../lib/utils";
-
-import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
-import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
-import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
-import { useGetDraft, useCreateDraft } from "@/src/07_shared/lib/hooks/draft";
 
 import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
 import { PlayerModalWindow } from "@/src/05_features/modify-player/ui";
