@@ -35,7 +35,7 @@ export const createdTeamAtom = atom<ITeam>({ name: "", image: "" });
 export const togglePlayerModalWindowAtom = atom<boolean>(false);
 export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
 
-// use auth
+// auth
 
 export const isAuthenticatedAtom = atom<boolean>(false);
 export const isLoadingAtom = atom<boolean>(true);

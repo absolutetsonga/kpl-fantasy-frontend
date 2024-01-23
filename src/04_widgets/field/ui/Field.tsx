@@ -9,30 +9,48 @@ import {
   togglePlayerModalWindowAtom,
   draftPlayersAtom,
   playersAtom,
+  draftAtom,
 } from "@/src/07_shared/lib/store/";
 
 import { generate_draft_placeholder_players } from "../lib/utils";
 
 import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
-import { useGetDraft } from "@/src/07_shared/lib/hooks/draft";
 import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
+import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
+import { useGetDraft } from "@/src/07_shared/lib/hooks/draft";
+import { useCreateDraft } from "@/src/07_shared/lib/hooks/draft/useCreateDraft";
 
 import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
 import { PlayerModalWindow } from "@/src/05_features/modify-player/ui";
 import { PlaceholderModalWindow } from "@/src/05_features/select-player/ui";
 import { Bench } from "@/src/06_entities/bench/ui";
 
+import { toast } from "react-toastify";
+
 export const Field = () => {
   const setDraftPlayers = useSetAtom(draftPlayersAtom);
   const setPlayers = useSetAtom(playersAtom);
+  const setDraft = useSetAtom(draftAtom);
 
-  const { data: draftData } = useGetDraft(17);
   const { data: playersData } = useGetPlayers();
+  const { data: userData } = useGetUser();
+  const { data: draftData } = useGetDraft(userData?.id);
+
+  const createDraft = useCreateDraft();
 
   useEffect(() => {
     if (playersData) setPlayers(playersData);
     if (draftData) setDraftPlayers(draftData.players);
-  }, [setPlayers, setDraftPlayers, playersData, draftData]);
+    if (!draftData && !userData) {
+      createDraft.mutate(userData?.id, {
+        onSuccess: () => {
+          toast.success("Draft created successfully");
+        },
+      });
+    }
+
+    setDraft(draftData);
+  }, [setPlayers, setDraftPlayers, playersData, draftData, userData?.id]);
 
   const draft_placeholder_players = generate_draft_placeholder_players();
   const draftPlayersData = useGetDraftPlayersData({

@@ -4,7 +4,7 @@ type DraftId = number;
 type UserId = number;
 
 interface IDraftService {
-  getDraft(draft_id: DraftId): Promise<void>;
+  getDraft(user_id: UserId): Promise<void>;
   createDraft(user_id: UserId): Promise<void>;
   deleteDraft(draft_id: DraftId): Promise<void>;
 }
@@ -16,8 +16,13 @@ export class DraftService implements IDraftService {
     this.apiClient = apiClient;
   }
 
-  async getDraft(draft_id: DraftId) {
-    return this.apiClient.makeRequest("GET", `squads/${draft_id}/`);
+  async getDraft(user_id: UserId) {
+    return this.apiClient.makeRequest(
+      "GET",
+      `squads/get-by-user/`,
+      {},
+      { user_id }
+    );
   }
 
   async createDraft(user_id: UserId) {
