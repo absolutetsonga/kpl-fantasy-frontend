@@ -16,7 +16,7 @@ export class DraftService implements IDraftService {
     this.apiClient = apiClient;
   }
 
-  async getDraft(user_id: UserId) {    
+  async getDraft(user_id: UserId) {
     return this.apiClient.makeRequest(
       "GET",
       `squads/get-by-user/`,

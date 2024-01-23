@@ -41,7 +41,7 @@ export const Field = () => {
     if (playersData) setPlayers(playersData);
     if (draftData) setDraftPlayers(draftData.players);
 
-    if (draftData && userData) {
+    if (!draftData) {
       mutate(userData?.id, {
         onSuccess: () => {
           toast.success("Draft created successfully");
