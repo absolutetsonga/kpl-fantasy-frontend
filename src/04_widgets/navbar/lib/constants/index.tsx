@@ -1,15 +1,13 @@
 import { NavLink } from "@/src/06_entities/nav-link";
 import { usePathname } from "next/navigation";
-import { useHandleLogout } from "../utils/useHandleLogout";
 
 type LinkProps = {
   isMobile: boolean;
-  router: any;
+  handleLogout?: () => void;
 };
 
-export const AuthLinks = ({ isMobile, router }: LinkProps) => {
+export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
   const pathname = usePathname();
-  const handleLogout = useHandleLogout({ router });
 
   const isSelected = (path: string) => (pathname === path ? true : false);
 

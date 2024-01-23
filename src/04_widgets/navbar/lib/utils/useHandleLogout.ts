@@ -2,8 +2,9 @@ import { useLogoutUser } from "@/src/07_shared/lib/hooks/auth";
 import { toast } from "react-toastify";
 import { useSetAtom } from "jotai";
 import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const useHandleLogout = ({ router }: any) => {
+export const useHandleLogout = (router : AppRouterInstance) => {
   const logoutUser = useLogoutUser();
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
 
@@ -11,7 +12,7 @@ export const useHandleLogout = ({ router }: any) => {
     logoutUser.mutate(undefined, {
       onSuccess: () => {
         toast.success("Successfully logged out");
-        setIsAuthenticated(false);
+        // setIsAuthenticated(false);
       },
 
       onError: () => {

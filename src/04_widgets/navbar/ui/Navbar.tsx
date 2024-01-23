@@ -3,17 +3,36 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { useAtomValue } from "jotai";
+import { useAtom } from "jotai";
+import { redirect } from "next/navigation";
 
 import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
 
 import { AuthLinks, GuestLinks } from "../lib/constants";
-import { useRouter } from "next/navigation";
+import { useLogoutUser } from "@/src/07_shared/lib/hooks/auth";
+import { toast } from "react-toastify";
 
-export default function Navbar() {
-  const isAuthenticated = useAtomValue(isAuthenticatedAtom);
+export const Navbar = () => {
+  const logoutUser = useLogoutUser();
 
-  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
+
+  const handleLogout = () => {
+    logoutUser.mutate(undefined, {
+      onSuccess: () => {
+        toast.success("Successfully logged out");
+        setIsAuthenticated(false);
+      },
+
+      onError: () => {
+        toast.error("Failed to log out");
+      },
+
+      onSettled: () => {
+        redirect("/auth/login");
+      },
+    });
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -36,9 +55,9 @@ export default function Navbar() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {isAuthenticated ? (
-                      <AuthLinks isMobile={false} router={router} />
+                      <AuthLinks isMobile={false} handleLogout={handleLogout} />
                     ) : (
-                      <GuestLinks isMobile={false} router={router} />
+                      <GuestLinks isMobile={false} />
                     )}
                   </div>
                 </div>
@@ -49,9 +68,9 @@ export default function Navbar() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {isAuthenticated ? (
-                <AuthLinks isMobile={true} router={router} />
+                <AuthLinks isMobile={true} handleLogout={handleLogout} />
               ) : (
-                <GuestLinks isMobile={true} router={router} />
+                <GuestLinks isMobile={true} />
               )}
             </div>
           </Disclosure.Panel>
@@ -59,4 +78,4 @@ export default function Navbar() {
       )}
     </Disclosure>
   );
-}
+};

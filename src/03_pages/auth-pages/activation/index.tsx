@@ -5,7 +5,7 @@ import { PageContainer } from "@/src/07_shared/ui";
 import { useEffect } from "react";
 import { useActivateUser } from "@/src/07_shared/lib/hooks/auth";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,11 +23,10 @@ type Props = {
 export const Activation = ({ params }: Props) => {
   const { uid, token } = params;
 
-  const activateUser = useActivateUser();
-  const router = useRouter();
+  const { mutate } = useActivateUser();
 
   useEffect(() => {
-    activateUser.mutate(
+    mutate(
       { uid, token },
       {
         onSuccess: () => {
@@ -39,11 +38,11 @@ export const Activation = ({ params }: Props) => {
         },
 
         onSettled: () => {
-          router.push("/auth/login");
+          redirect("/auth/login");
         },
       }
     );
-  }, [uid, token, router]);
+  }, [uid, token, mutate]);
 
   return (
     <PageContainer>
