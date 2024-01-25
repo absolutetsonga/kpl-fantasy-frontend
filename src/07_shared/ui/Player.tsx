@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { IDraftPlayer, IPlayer, ITeam } from "../models";
+import { IDraftPlayer, IPlayer } from "../models";
 
 type PlayerProps = {
   player: IPlayer;
@@ -33,7 +33,7 @@ export const Player = ({
         onClick={handleClick}
       />
 
-      <div className="w-full rounded-b-2xl bg-violet-950 ">
+      <div className="w-full rounded-b-2xl bg-[#37003C] ">
         {name ? (
           <p className="w-full text-xs font-bold px-2 py-[0.4em]">{name}</p>
         ) : (

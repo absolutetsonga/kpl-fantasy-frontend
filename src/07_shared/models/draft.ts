@@ -9,5 +9,9 @@ export interface IDraft {
 
   total_budget: number;
 
+  activated_bench_boost: boolean;
+  activated_triple_captain: boolean;
+  activated_free_hit: boolean;
+
   players: IDraftPlayer[];
 }
