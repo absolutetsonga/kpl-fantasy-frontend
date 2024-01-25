@@ -7,13 +7,14 @@ import {
   ITeam,
   ITeamTransfermarkt,
   IDraftPlayer,
+  IDraftPlayerData,
 } from "../../models";
 
 // draft
 export const draftAtom = atom<IDraft | null>(null);
 export const draftPlayersAtom = atom<IDraftPlayer[]>([]);
 export const draftPlayerAtom = atom<IDraftPlayer | null>(null);
-export const draftPlayersDataAtom = atom<IPlayer[]>([]); // player that related to the squad player
+export const draftPlayersDataAtom = atom<IDraftPlayerData[]>([]); // player that related to the squad player
 
 // players
 export const playersAtom = atom<IPlayer[]>([]); // for all players
@@ -28,8 +29,14 @@ export const playerPositionAtom = atom<string>("");
 // team
 export const transfermarktTeamAtom = atom<ITeamTransfermarkt | null>(null);
 
+export const teamsAtom = atom<ITeam[]>([]);
 export const selectedTeamAtom = atom<string>("");
-export const createdTeamAtom = atom<ITeam>({ name: "", image: "" });
+export const createdTeamAtom = atom<ITeam>({
+  id: 0,
+  name: "",
+  image_url: "",
+  players: [],
+});
 
 // toggle
 export const togglePlayerModalWindowAtom = atom<boolean>(false);

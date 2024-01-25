@@ -6,6 +6,7 @@ type TeamName = string;
 
 interface ITeamService {
   createTeam(team: ITeam): Promise<void>;
+  getTeams(): Promise<void>;
   getTeam(teamId: TeamId): Promise<void>;
   getTeamByName(teamName: TeamName): Promise<void>;
 }
@@ -20,12 +21,16 @@ export class TeamService implements ITeamService {
   async createTeam(team: ITeam) {
     const data = { name: team.name, image_url: team.image };
     console.log(data);
-    
+
     return this.apiClient.makeRequest("POST", "teams/", data);
   }
 
-  async getTeam(teamId: TeamId) {
-    return this.apiClient.makeRequest("GET", `teams/${teamId}/`);
+  async getTeams() {
+    return this.apiClient.makeRequest("GET", `teams/`);
+  }
+
+  async getTeam(team: number) {
+    return this.apiClient.makeRequest("GET", `teams/${team}/`);
   }
 
   async getTeamByName(teamName: TeamName) {

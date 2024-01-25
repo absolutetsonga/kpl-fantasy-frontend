@@ -1,17 +1,22 @@
 import Image from "next/image";
-import { IDraftPlayer, IPlayer } from "../models";
+import { IDraftPlayer, IPlayer, ITeam } from "../models";
 
 type PlayerProps = {
   player: IPlayer;
   draftPlayer: IDraftPlayer | undefined;
+  teamImage: string | undefined;
   positionStyle: string;
   handleClick: () => void;
 };
 
+// add club logo:
+// 1. get all teams
+
 export const Player = ({
   player,
-  positionStyle,
   draftPlayer,
+  teamImage,
+  positionStyle,
   handleClick,
 }: PlayerProps) => {
   const [firstName, lastName] = player.name.split(" ");
@@ -56,6 +61,16 @@ export const Player = ({
           height={20}
           alt="vice-captain"
           className="absolute right-1 top-6"
+        />
+      )}
+
+      {teamImage && (
+        <Image
+          src={teamImage}
+          width={32}
+          height={32}
+          alt="team image"
+          className="absolute left-1 top-1"
         />
       )}
 

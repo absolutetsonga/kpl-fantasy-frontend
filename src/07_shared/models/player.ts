@@ -14,7 +14,7 @@ export interface IPlayer {
   name: string;
   nationality_image_url: string;
   position: string;
-  teamId: number | null;
+  team: number;
 
   is_injured: boolean;
   is_right_foot: boolean;

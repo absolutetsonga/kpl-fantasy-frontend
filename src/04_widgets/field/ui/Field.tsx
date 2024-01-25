@@ -4,10 +4,12 @@ import Image from "next/image";
 
 import { useAtom, useSetAtom } from "jotai";
 import { useEffect } from "react";
+
 import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
 import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
 import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
 import { useGetDraft, useCreateDraft } from "@/src/07_shared/lib/hooks/draft";
+import { useGetTeams } from "@/src/07_shared/lib/hooks/team";
 
 import {
   togglePlaceholderModalWindowAtom,
@@ -15,6 +17,8 @@ import {
   draftPlayersAtom,
   playersAtom,
   draftAtom,
+  teamsAtom,
+  draftPlayersDataAtom,
 } from "@/src/07_shared/lib/store/";
 
 import { generate_draft_placeholder_players } from "../lib/utils";
@@ -28,37 +32,17 @@ import { toast } from "react-toastify";
 
 export const Field = () => {
   const setDraftPlayers = useSetAtom(draftPlayersAtom);
+  const setDraftPlayersData = useSetAtom(draftPlayersDataAtom);
   const setPlayers = useSetAtom(playersAtom);
   const setDraft = useSetAtom(draftAtom);
+  const setTeams = useSetAtom(teamsAtom);
 
-  const { data: playersData } = useGetPlayers();
   const { data: userData } = useGetUser();
+  const { data: playersData } = useGetPlayers();
+  const { data: teamsData } = useGetTeams();
   const { data: draftData } = useGetDraft(userData?.id);
 
   const { mutate } = useCreateDraft();
-
-  useEffect(() => {
-    if (playersData) setPlayers(playersData);
-    if (draftData) setDraftPlayers(draftData.players);
-
-    if (!draftData) {
-      mutate(userData?.id, {
-        onSuccess: () => {
-          toast.success("Draft created successfully");
-        },
-      });
-    }
-
-    setDraft(draftData);
-  }, [
-    setPlayers,
-    setDraftPlayers,
-    setDraft,
-    mutate,
-    playersData,
-    draftData,
-    userData,
-  ]);
 
   const draft_placeholder_players = generate_draft_placeholder_players();
   const draftPlayersData = useGetDraftPlayersData({
@@ -70,6 +54,34 @@ export const Field = () => {
     togglePlaceholderModalWindowAtom
   );
 
+  useEffect(() => {
+    if (playersData) setPlayers(playersData);
+    if (draftData) setDraftPlayers(draftData.players);
+    if (teamsData) setTeams(teamsData);
+    if (draftPlayersData) setDraftPlayersData(draftPlayersData);
+    if (!draftData) {
+      mutate(userData?.id, {
+        onSuccess: () => {
+          toast.success("Draft created successfully");
+        },
+      });
+    }
+
+    setDraft(draftData);
+  }, [
+    mutate,
+    setPlayers,
+    setDraftPlayers,
+    setDraft,
+    setTeams,
+    setDraftPlayersData,
+    playersData,
+    draftData,
+    userData,
+    teamsData,
+    draftPlayersData,
+  ]);
+
   return (
     <div className="relative">
       <Image
@@ -80,7 +92,7 @@ export const Field = () => {
         className="w-auto"
       />
 
-      <PopulatePlayers draftPlayersData={draftPlayersData} />
+      <PopulatePlayers/>
 
       <Bench />
 

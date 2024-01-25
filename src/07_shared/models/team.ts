@@ -1,4 +1,8 @@
+import { IPlayer } from ".";
+
 export interface ITeam {
+  id: number;
   name: string;
-  image: string;
+  image_url: string;
+  players: IPlayer[];
 }
