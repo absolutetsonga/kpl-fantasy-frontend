@@ -24,7 +24,7 @@ export const find_draft_player_data = ({
     club: "",
     height: "",
     nationality_image_url: "",
-    teamId: 0,
+    team: 0,
     is_injured: false,
     is_right_foot: false,
 
