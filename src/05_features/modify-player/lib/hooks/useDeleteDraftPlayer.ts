@@ -4,6 +4,7 @@ import {
   draftPlayersAtom,
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
+import { toast } from "react-toastify";
 
 export const useDeleteDraftPlayer = (draftPlayerId: number | undefined) => {
   const setPlayerModalWindow = useSetAtom(togglePlayerModalWindowAtom);
@@ -19,9 +20,8 @@ export const useDeleteDraftPlayer = (draftPlayerId: number | undefined) => {
           );
 
           setDraftPlayers(updatedDraftPlayers);
-          console.log(`Player deleted successfully`);
+          toast.success("Player deleted successfully");
         },
-        onError: (error) => console.error(error),
         onSettled: () => setPlayerModalWindow(false),
       });
     }

@@ -8,6 +8,7 @@ import {
 import { find_draft_substitution_draft_position } from "../utils";
 import { IDraftPlayer } from "@/src/07_shared/models";
 import { CustomHookParams } from "../types";
+import { toast } from "react-toastify";
 
 export const useSwitchDraftPlayers = ({ draftPlayer }: CustomHookParams) => {
   const updatePlayer = useUpdatePlayer();
@@ -54,14 +55,23 @@ export const useSwitchDraftPlayers = ({ draftPlayer }: CustomHookParams) => {
       };
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
-        onSuccess: () => console.log("Draft Player updated successfully"),
-        onError: (error) => console.error(error),
-        onSettled: () => setPlayerModalWindow(false),
+        onSuccess: () => {
+          toast.success("Player substituted successfully");
+        },
+        onError: (error: any) => {
+          const errorMessage = error.response.data.detail;
+          toast.error(errorMessage);
+        },
       });
 
       updatePlayer.mutate(substitutePlayerUpdatedData, {
-        onSuccess: () => console.log("Draft Player updated successfully"),
-        onError: (error) => console.error(error),
+        onSuccess: () => {
+          toast.success("Player substituted successfully");
+        },
+        onError: (error: any) => {
+          const errorMessage = error.response.data.detail;
+          toast.error(errorMessage);
+        },
         onSettled: () => setPlayerModalWindow(false),
       });
     }

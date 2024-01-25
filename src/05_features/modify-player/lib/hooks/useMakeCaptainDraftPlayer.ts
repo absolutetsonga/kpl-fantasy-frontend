@@ -5,6 +5,7 @@ import {
   togglePlayerModalWindowAtom,
   draftPlayersAtom,
 } from "@/src/07_shared/lib/store";
+import { toast } from "react-toastify";
 
 export const useMakeCaptainDraftPlayer = ({
   draftPlayer,
@@ -38,18 +39,13 @@ export const useMakeCaptainDraftPlayer = ({
           on_bench: oldCaptain.on_bench,
         };
 
-        await updatePlayer.mutateAsync(draftOldCaptainPlayerUpdatedData, {
-          onSuccess: () => console.log(`Old captain updated successfully`),
-          onError: (error) => console.error(error),
-          onSettled: () => setPlayerModalWindow(false),
-        });
+        await updatePlayer.mutateAsync(draftOldCaptainPlayerUpdatedData);
       }
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
         onSuccess: () => {
-          console.log(`Draft player now is a captain.`);
+          toast.success(`You added captain`);
         },
-        onError: (error) => console.log(error),
         onSettled: () => setPlayerModalWindow(false),
       });
     }

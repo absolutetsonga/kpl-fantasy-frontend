@@ -6,6 +6,8 @@ import {
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
 
+import { toast } from "react-toastify";
+
 export const useMakeViceCaptainDraftPlayer = ({
   draftPlayer,
 }: CustomHookParams) => {
@@ -41,18 +43,13 @@ export const useMakeViceCaptainDraftPlayer = ({
           on_bench: oldViceCaptain.on_bench,
         };
 
-        await updatePlayer.mutateAsync(draftOldViceCaptainPlayerUpdatedData, {
-          onSuccess: () => console.log(`Old vice-captain updated successfully`),
-          onError: (error) => console.log(error),
-          onSettled: () => setPlayerModalWindow(false),
-        });
+        await updatePlayer.mutateAsync(draftOldViceCaptainPlayerUpdatedData);
       }
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
         onSuccess: () => {
-          console.log(`Draft player now is a vice-captain.`);
+          toast.success("New vice-captain added successfully");
         },
-        onError: (error) => console.error(error),
         onSettled: () => setPlayerModalWindow(false),
       });
     }

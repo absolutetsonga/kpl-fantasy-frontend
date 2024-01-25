@@ -1,10 +1,13 @@
 import { useCreatePlayer } from "@/src/07_shared/lib/hooks/draft-player";
+import { useAtom, useSetAtom } from "jotai";
+
+import { IDraftPlayer } from "@/src/07_shared/models";
+
 import {
   draftPlayersAtom,
   togglePlaceholderModalWindowAtom,
 } from "@/src/07_shared/lib/store";
-import { IDraftPlayer } from "@/src/07_shared/models";
-import { useAtom, useSetAtom } from "jotai";
+import { toast } from "react-toastify";
 
 type Props = {
   draftPlayer: IDraftPlayer;
@@ -22,8 +25,8 @@ export const useSelectPlayer = () => {
     mutate(draftPlayer, {
       onSuccess: () => {
         setDraftPlayers([...draftPlayers, { ...draftPlayer }]);
+        toast.success("Player added successfully");
       },
-      onError: (error) => console.log(error),
       onSettled: () => setPlaceholderModalWindow(false),
     });
   };
