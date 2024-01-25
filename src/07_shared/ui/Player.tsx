@@ -9,9 +9,6 @@ type PlayerProps = {
   handleClick: () => void;
 };
 
-// add club logo:
-// 1. get all teams
-
 export const Player = ({
   player,
   draftPlayer,
@@ -25,7 +22,7 @@ export const Player = ({
 
   return (
     <button
-      className={`${positionStyle} shadow-lg w-[120px] h-[120px] flex flex-col items-center justify-center z-10 rounded-2xl `}
+      className={`${positionStyle} shadow-lg w-[120px] h-[120px] flex flex-col items-center justify-center z-10 rounded-2xl text-white`}
     >
       <Image
         src={player.image_url}

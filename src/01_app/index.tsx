@@ -23,7 +23,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
           <body className={`${inter.className}`}>
             <SetupNoSSR />
             <Navbar />
-            <div className="flex-1">{children}</div>
+            <div className="flex items-center justify-center">{children}</div>
             <Footer />
           </body>
         </html>
