@@ -24,7 +24,7 @@ export const Form = ({
   buttonText,
 }: FormProps) => {
   return (
-    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm text-gray-950 dark:text-gray-50">
+    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm text-gray-950">
       <form className="space-y-6" onSubmit={onSubmit}>
         <PopulateFormFields
           register={register}

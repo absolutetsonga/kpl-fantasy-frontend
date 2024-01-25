@@ -9,6 +9,7 @@ import { Metadata } from "next";
 
 import { REGISTER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { SocialButtons } from "@/src/04_widgets/social-auth/ui";
+import { PageTitle } from "@/src/06_entities/page-title";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Register Page",
@@ -23,11 +24,7 @@ export const Register = () => {
 
   return (
     <PageContainer>
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm text-gray-950 dark:text-gray-50">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
-          Sign up for your account
-        </h2>
-      </div>
+      <PageTitle>Sign up for your account</PageTitle>
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}

@@ -20,10 +20,10 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     <JotaiProvider>
       <ReactQueryProvider>
         <html lang="en">
-          <body className={inter.className}>
+          <body className={`${inter.className}`}>
             <SetupNoSSR />
             <Navbar />
-            {children}
+            <div className="bg-white">{children}</div>
             <Footer />
           </body>
         </html>

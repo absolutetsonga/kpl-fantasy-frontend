@@ -10,6 +10,7 @@ import { Form } from "@/src/04_widgets/form/ui";
 import { Metadata } from "next";
 import { useLoginForm } from "@/src/05_features/auth-user/lib/hooks";
 import { SocialButtons } from "@/src/04_widgets/social-auth/ui";
+import { PageTitle } from "@/src/06_entities/page-title";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Login Page",
@@ -24,11 +25,7 @@ export const Login = () => {
 
   return (
     <PageContainer>
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm text-gray-950 dark:text-gray-50">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
-          Login to your account
-        </h2>
-      </div>
+      <PageTitle>Log in</PageTitle>
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}
@@ -39,7 +36,7 @@ export const Login = () => {
         buttonText={"Sign in"}
       />
 
-      <SocialButtons/>
+      <SocialButtons />
     </PageContainer>
   );
 };
