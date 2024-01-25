@@ -1,8 +1,8 @@
 import { IPlayer } from ".";
 
 export interface ITeam {
-  id: number;
+  id?: number;
   name: string;
   image_url: string;
-  players: IPlayer[];
+  players?: IPlayer[];
 }

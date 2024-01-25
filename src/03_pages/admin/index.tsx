@@ -63,7 +63,7 @@ export const AdminPage = () => {
     if (transfermarktTeam?.name && transfermarktTeam?.image) {
       const response = await team_service.createTeam({
         name: transfermarktTeam?.name,
-        image: transfermarktTeam?.image,
+        image_url: transfermarktTeam?.image,
       });
 
       console.log(response);

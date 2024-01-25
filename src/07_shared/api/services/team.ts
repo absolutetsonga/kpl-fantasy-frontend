@@ -19,8 +19,7 @@ export class TeamService implements ITeamService {
   }
 
   async createTeam(team: ITeam) {
-    const data = { name: team.name, image_url: team.image };
-    console.log(data);
+    const data = { name: team.name, image_url: team.image_url };
 
     return this.apiClient.makeRequest("POST", "teams/", data);
   }
