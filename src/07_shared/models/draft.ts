@@ -3,6 +3,7 @@ import { IDraftPlayer } from ".";
 export interface IDraft {
   id: number;
   user: number;
+  left_transfers: number;
 
   date_created: string;
   date_updated: string;
