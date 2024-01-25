@@ -13,14 +13,14 @@ import {
 import { find_draft_substitution_player_position } from "../lib/utils";
 
 import { FilteredPlayerCard } from "@/src/06_entities/filtered-player-card/ui";
+import { useSelectPlayer } from "../lib/hooks/useSelectPlayer";
 
 export const PopulateFilteredPlayers = () => {
   const playerPosition = useAtomValue(playerPositionAtom);
   const players = useAtomValue(playersAtom);
-  const [draft, setDraft] = useAtom(draftAtom);
+  const [draft] = useAtom(draftAtom);
 
-  const [draftPlayers, setDraftPlayers] = useAtom(draftPlayersAtom);
-
+  const handleSelectPlayer = useSelectPlayer();
   const filteredPlayers = useMemo(
     () =>
       players.filter(
@@ -29,11 +29,6 @@ export const PopulateFilteredPlayers = () => {
           find_draft_substitution_player_position(playerPosition)
       ),
     [players, playerPosition]
-  );
-
-  const createPlayer = useCreatePlayer();
-  const setPlaceholderModalWindow = useSetAtom(
-    togglePlaceholderModalWindowAtom
   );
 
   if (!draft) {
@@ -53,20 +48,11 @@ export const PopulateFilteredPlayers = () => {
           on_bench: false,
         };
 
-        const hanldeSelectPlayer = async () => {
-          createPlayer.mutate(draftPlayer, {
-            onSuccess: () => {
-              setDraftPlayers([...draftPlayers, { ...draftPlayer }]);
-            },
-            onError: (error) => console.log(error),
-            onSettled: () => setPlaceholderModalWindow(false),
-          });
-        };
         return (
           <FilteredPlayerCard
             key={player.id}
             player={player}
-            onClick={hanldeSelectPlayer}
+            onClick={() => handleSelectPlayer({ draftPlayer })}
           />
         );
       })}

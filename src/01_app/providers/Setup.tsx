@@ -13,10 +13,10 @@ const Setup = () => {
   const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const setIsLoading = useSetAtom(isLoadingAtom);
 
-  const verifyUser = useVerifyUser();
+  const { mutate } = useVerifyUser();
 
   useEffect(() => {
-    verifyUser.mutate(undefined, {
+    mutate(undefined, {
       onSuccess: () => {
         setIsAuthenticated(true);
       },
@@ -29,7 +29,7 @@ const Setup = () => {
         setIsLoading(false);
       },
     });
-  }, [setIsAuthenticated, setIsLoading]);
+  }, [setIsAuthenticated, setIsLoading, mutate]);
 
   return <ToastContainer />;
 };
