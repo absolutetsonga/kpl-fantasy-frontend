@@ -8,6 +8,7 @@ import { IDraftPlayer } from "./draft_player";
 import { IDraftPlayerData } from "./draft_player_data";
 import { ITeamTransfermarkt } from "./transfermarkt_team";
 import { IPlayerTransfermarkt } from "./transfermarkt_player";
+import { IGameWeekRes, IGameWeekCreateReq } from "./game_week";
 
 export type {
   ITeam,
@@ -20,4 +21,6 @@ export type {
   IDraftPlayerData,
   ITeamTransfermarkt,
   IPlayerTransfermarkt,
+  IGameWeekRes,
+  IGameWeekCreateReq,
 };

@@ -1,3 +1,3 @@
-import { GameweekInfo } from "./GameweekInfo";
+import { GameWeekInfo } from "./GameWeekInfo";
 
-export { GameweekInfo };
+export { GameWeekInfo };

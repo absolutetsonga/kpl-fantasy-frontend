@@ -8,6 +8,7 @@ import {
   ITeamTransfermarkt,
   IDraftPlayer,
   IDraftPlayerData,
+  IGameWeekRes,
 } from "../../models";
 
 // draft
@@ -38,11 +39,15 @@ export const createdTeamAtom = atom<ITeam>({
   players: [],
 });
 
+// game week
+export const gameWeeksAtom = atom<IGameWeekRes[]>([]);
+export const gameWeekAtom = atom<IGameWeekRes | null>(null);
+
+export const gameWeekStatusAtom = atom<string>("");
 // toggle
 export const togglePlayerModalWindowAtom = atom<boolean>(false);
 export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
 
 // auth
-
 export const isAuthenticatedAtom = atom<boolean>(false);
 export const isLoadingAtom = atom<boolean>(true);
