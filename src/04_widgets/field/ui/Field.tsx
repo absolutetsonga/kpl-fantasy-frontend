@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useAtom, useSetAtom } from "jotai";
 import { useEffect } from "react";
 
-import { useGetDraftPlayersData } from "../lib/hooks/useGetDraftPlayersData";
 import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
 import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
 import { useGetDraft, useCreateDraft } from "@/src/07_shared/lib/hooks/draft";
@@ -40,12 +39,9 @@ export const Field = () => {
   const { data: teamsData } = useGetTeams();
   const { data: draftData } = useGetDraft(userData?.id);
 
-  const { mutate } = useCreateDraft();
+  const { mutate: createDraft } = useCreateDraft();
 
   const draft_placeholder_players = generate_draft_placeholder_players();
-  const draftPlayersData = useGetDraftPlayersData({
-    draft_placeholder_players,
-  });
 
   const [togglePlayerModalWindow] = useAtom(togglePlayerModalWindowAtom);
   const [togglePlaceholderModalWindow] = useAtom(
@@ -56,9 +52,8 @@ export const Field = () => {
     if (playersData) setPlayers(playersData);
     if (draftData) setDraftPlayers(draftData.players);
     if (teamsData) setTeams(teamsData);
-    if (draftPlayersData) setDraftPlayersData(draftPlayersData);
-    if (!draftData) {
-      mutate(userData?.id, {
+    if (userData?.has_draft === false) {
+      createDraft(userData?.id, {
         onSuccess: () => {
           toast.success("Draft created successfully");
         },
@@ -67,17 +62,18 @@ export const Field = () => {
 
     setDraft(draftData);
   }, [
-    mutate,
+    createDraft,
+
     setPlayers,
     setDraftPlayers,
     setDraft,
     setTeams,
     setDraftPlayersData,
+
     playersData,
     draftData,
     userData,
     teamsData,
-    draftPlayersData,
   ]);
 
   return (
@@ -90,7 +86,7 @@ export const Field = () => {
         className="w-auto"
       />
 
-      <PopulatePlayers />
+      <PopulatePlayers draft_placeholder_players={draft_placeholder_players} />
 
       <Bench />
 

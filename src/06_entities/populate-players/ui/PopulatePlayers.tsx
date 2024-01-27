@@ -7,13 +7,24 @@ import {
   draftPlayersDataAtom,
   teamsAtom,
 } from "@/src/07_shared/lib/store";
+import { IDraftPlayer } from "@/src/07_shared/models";
+import { useGetDraftPlayersData } from "@/src/04_widgets/field/lib/hooks/useGetDraftPlayersData";
 
-export const PopulatePlayers = () => {
+type PopulatePlayersProps = {
+  draft_placeholder_players: IDraftPlayer[];
+};
+
+export const PopulatePlayers = ({
+  draft_placeholder_players,
+}: PopulatePlayersProps) => {
   const handleClick = useHandleClickOnPlayer();
 
   const draftPlayers = useAtomValue(draftPlayersAtom);
-  const draftPlayersData = useAtomValue(draftPlayersDataAtom);
   const teams = useAtomValue(teamsAtom);
+  
+  const draftPlayersData = useGetDraftPlayersData({
+    draft_placeholder_players,
+  });
 
   return (
     <>
