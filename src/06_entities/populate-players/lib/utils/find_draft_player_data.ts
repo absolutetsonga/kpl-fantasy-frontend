@@ -16,17 +16,22 @@ export const find_draft_player_data = ({
     date_updated: "",
 
     id: 0,
-    name: "",
+    team: 0,
+
+    age: 0,
     market_value: 0,
-    position: placeholderDraftPlayer.position,
     price: null,
 
     club: "",
     height: "",
     nationality_image_url: "",
-    team: 0,
+    nationality: "",
+    name: "",
+
     is_injured: false,
     is_right_foot: false,
+
+    position: placeholderDraftPlayer.position,
 
     image_url: "/images/player.png",
     gameweek_stats: [],
