@@ -19,15 +19,14 @@ export const GameWeekInfo = () => {
 
   useEffect(() => {
     if (gameWeeksData) {
-      const time = new Date();
-      const currentIsoString = time.toISOString();
+      const time = new Date().getTime();
 
-      const gameWeekData = findGameWeek(gameWeeksData);
+      const gameWeekData = findGameWeek(gameWeeksData, time);
 
       const gameWeekStatus = getGameWeekStatus(
         gameWeekData?.start_date,
         gameWeekData?.end_date,
-        currentIsoString
+        time
       );
 
       setGameWeeks(gameWeeksData);
@@ -44,14 +43,14 @@ export const GameWeekInfo = () => {
             <div className="text-center text-emerald-400 text-md md:text-lg lg:text-xl font-normal">
               {gameWeeks[0] && (
                 <h3>
-                  Game Week {gameWeek?.id}: {gameWeekStatus.process}
+                  Game Week {gameWeek?.number}: {gameWeekStatus.process}
                 </h3>
               )}
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="text-center text-fuchsia-950 text-xs sm:text-sm md:text-lg lg:text-xl font-normal">
-              Game Week {gameWeek?.id} {gameWeekStatus.status}:{" "}
+              Game Week {gameWeek?.number} {gameWeekStatus.status}:{" "}
               {gameWeekStatus.time}
             </div>
           </div>

@@ -4,14 +4,13 @@ import { formatDate } from "./formatDate";
 export const getGameWeekStatus = (
   startDateString: string,
   endDateString: string,
-  currentDateString: string
+  currentTime: number
 ): IGameWeekStatus => {
   const gameWeekStart = formatDate(startDateString);
   const gameWeekEnd = formatDate(endDateString);
 
   const startDate = new Date(startDateString).getTime();
   const endDate = new Date(endDateString).getTime();
-  const currentTime = new Date(currentDateString).getTime();
 
   if (currentTime < startDate) {
     return {

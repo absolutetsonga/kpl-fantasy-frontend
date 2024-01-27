@@ -1,5 +1,6 @@
 export interface IGameWeekRes {
-  id: 1;
+  id: number;
+  number: number;
   date_created: string;
   date_updated: string;
   start_date: string;

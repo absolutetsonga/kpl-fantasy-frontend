@@ -1,8 +1,9 @@
 import { IGameWeekRes } from "@/src/07_shared/models";
 
-export const findGameWeek = (gameWeeks: IGameWeekRes[]) => {
-  const currentTime = new Date().getTime();
-
+export const findGameWeek = (
+  gameWeeks: IGameWeekRes[],
+  currentTime: number
+) => {
   for (let i = 0; i < gameWeeks.length; i++) {
     const start = new Date(gameWeeks[i].start_date).getTime();
     const end = new Date(gameWeeks[i].end_date).getTime();
@@ -14,6 +15,5 @@ export const findGameWeek = (gameWeeks: IGameWeekRes[]) => {
     }
   }
 
-  // If the current time is after the last game week's end date
   return gameWeeks[gameWeeks.length - 1];
 };
