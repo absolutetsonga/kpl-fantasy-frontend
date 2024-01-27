@@ -90,7 +90,7 @@ export const Field = () => {
         className="w-auto"
       />
 
-      <PopulatePlayers/>
+      <PopulatePlayers />
 
       <Bench />
 

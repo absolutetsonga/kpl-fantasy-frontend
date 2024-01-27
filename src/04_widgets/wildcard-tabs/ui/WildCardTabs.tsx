@@ -5,8 +5,6 @@ import { useAtomValue } from "jotai";
 export const WildCardTabs = () => {
   const draft = useAtomValue(draftAtom);
 
-  console.log(draft);
-
   return (
     <section className="flex w-full max-w-4xl mx-auto p-1 justify-start items-start">
       <WildCard played={true} title={"Bench Boost"} />

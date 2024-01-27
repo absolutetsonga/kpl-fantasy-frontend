@@ -44,6 +44,7 @@ export const gameWeeksAtom = atom<IGameWeekRes[]>([]);
 export const gameWeekAtom = atom<IGameWeekRes | null>(null);
 
 export const gameWeekStatusAtom = atom<string>("");
+export const gameWeekStartAtom = atom<string>("");
 // toggle
 export const togglePlayerModalWindowAtom = atom<boolean>(false);
 export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
