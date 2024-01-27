@@ -9,6 +9,7 @@ import {
   IDraftPlayer,
   IDraftPlayerData,
   IGameWeekRes,
+  IGameWeekStatus,
 } from "../../models";
 
 // draft
@@ -43,7 +44,13 @@ export const createdTeamAtom = atom<ITeam>({
 export const gameWeeksAtom = atom<IGameWeekRes[]>([]);
 export const gameWeekAtom = atom<IGameWeekRes | null>(null);
 
-export const gameWeekStatusAtom = atom<string>("");
+export const gameWeekStatusAtom = atom<IGameWeekStatus>({
+  status: "",
+  process: "",
+  message: "",
+  time: "",
+});
+
 export const gameWeekStartAtom = atom<string>("");
 // toggle
 export const togglePlayerModalWindowAtom = atom<boolean>(false);

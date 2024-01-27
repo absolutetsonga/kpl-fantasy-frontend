@@ -4,14 +4,11 @@ import { useGetGameWeeks } from "@/src/07_shared/lib/hooks/game-week";
 import { useAtom } from "jotai";
 import {
   gameWeekAtom,
-  gameWeekStartAtom,
   gameWeekStatusAtom,
   gameWeeksAtom,
 } from "@/src/07_shared/lib/store";
 
-import { getGameWeekStatus } from "../lib/utils";
-import { findGameWeek } from "../lib/utils/findGameWeek";
-import { formatDate } from "../lib/utils/formatDate";
+import { getGameWeekStatus, findGameWeek } from "../lib/utils";
 
 export const GameWeekInfo = () => {
   const { data: gameWeeksData } = useGetGameWeeks();
@@ -19,7 +16,6 @@ export const GameWeekInfo = () => {
   const [gameWeeks, setGameWeeks] = useAtom(gameWeeksAtom);
   const [gameWeek, setGameWeek] = useAtom(gameWeekAtom);
   const [gameWeekStatus, setGameWeekStatus] = useAtom(gameWeekStatusAtom);
-  const [gameWeekStart, setGameWeekStart] = useAtom(gameWeekStartAtom);
 
   useEffect(() => {
     if (gameWeeksData) {
@@ -27,7 +23,6 @@ export const GameWeekInfo = () => {
       const currentIsoString = time.toISOString();
 
       const gameWeekData = findGameWeek(gameWeeksData);
-      const gameWeekStartData = formatDate(gameWeekData.start_date);
 
       const gameWeekStatus = getGameWeekStatus(
         gameWeekData?.start_date,
@@ -37,16 +32,9 @@ export const GameWeekInfo = () => {
 
       setGameWeeks(gameWeeksData);
       setGameWeek(gameWeekData);
-      setGameWeekStart(gameWeekStartData);
       setGameWeekStatus(gameWeekStatus);
     }
-  }, [
-    gameWeeksData,
-    setGameWeeks,
-    setGameWeekStatus,
-    setGameWeek,
-    setGameWeekStart,
-  ]);
+  }, [gameWeeksData, setGameWeeks, setGameWeekStatus, setGameWeek]);
 
   return (
     <section className="flex w-full items-center justify-center flex-col rounded-xl bg-field-gradient px-6 py-4">
@@ -56,15 +44,15 @@ export const GameWeekInfo = () => {
             <div className="text-center text-emerald-400 text-md md:text-lg lg:text-xl font-normal">
               {gameWeeks[0] && (
                 <h3>
-                  Game Week {gameWeek?.id}: {gameWeekStatus}
+                  Game Week {gameWeek?.id}: {gameWeekStatus.process}
                 </h3>
               )}
             </div>
           </div>
-
           <div className="flex flex-col items-center justify-center">
             <div className="text-center text-fuchsia-950 text-xs sm:text-sm md:text-lg lg:text-xl font-normal">
-              Game Week {gameWeek?.id} Start: {gameWeekStart}
+              Game Week {gameWeek?.id} {gameWeekStatus.status}:{" "}
+              {gameWeekStatus.time}
             </div>
           </div>
         </div>

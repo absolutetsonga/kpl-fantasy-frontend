@@ -10,3 +10,10 @@ export interface IGameWeekCreateReq {
   start_date: string;
   end_date: string;
 }
+
+export interface IGameWeekStatus {
+  status: string;
+  process: string;
+  message: string;
+  time: string;
+}
