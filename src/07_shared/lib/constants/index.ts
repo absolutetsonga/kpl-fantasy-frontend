@@ -15,6 +15,23 @@ export const CLUBS_TRANSFERMARKT_IDS: { [key: string]: number } = {
   "FC Zhenis": 12019,
 };
 
+export const CLUBS_SOFASCORE_IDS: { [key: string]: number } = {
+  "FC Astana": 36155,
+  "FC Ordabasy": 5366,
+  "FC Aktobe": 5355,
+  "FC Kairat": 5172,
+  "FC Qyzyljar": 5367,
+  "FC Kaysar": 36142,
+  "FC Tobol": 5362,
+  "FC Atyrau": 5356,
+  "FC Maktaaral": 90334,
+  "FC Shakhter": 5360,
+  "FC Zhetysu": 5364,
+  "FC Yelimay": 464803,
+  "FC Turan": 316183,
+  "FC Zhenis": 5363,
+};
+
 export const TEAMS_IDS: { [key: number]: string } = {
   1: "FC Astana",
   2: "FC Ordabasy",

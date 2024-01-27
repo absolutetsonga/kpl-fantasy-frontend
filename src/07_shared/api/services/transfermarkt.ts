@@ -1,5 +1,8 @@
 import { CLUBS_TRANSFERMARKT_IDS } from "../../lib/constants";
-import { APIClient, transfermarkt_client } from "../client/transfermarkt";
+import {
+  TransfermarktClient,
+  transfermarkt_client,
+} from "../client/transfermarkt";
 
 type TeamName = string;
 
@@ -12,7 +15,7 @@ class TransfermarktService implements ITransfermarktService {
   private apiClient;
   private url = process.env.NEXT_PUBLIC_RAPID_API_URL;
 
-  constructor(apiClient: APIClient) {
+  constructor(apiClient: TransfermarktClient) {
     this.apiClient = apiClient;
   }
 
