@@ -10,6 +10,7 @@ import {
   IDraftPlayerData,
   IGameWeekRes,
   IGameWeekStatus,
+  IUser,
 } from "../../models";
 
 // draft
@@ -57,5 +58,6 @@ export const togglePlayerModalWindowAtom = atom<boolean>(false);
 export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
 
 // auth
+export const userAtom = atom<IUser | null>(null);
 export const isAuthenticatedAtom = atom<boolean>(false);
 export const isLoadingAtom = atom<boolean>(true);

@@ -1,39 +1,14 @@
-import { useEffect } from "react";
-import { useGetGameWeeks } from "@/src/07_shared/lib/hooks/game-week";
-
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import {
   gameWeekAtom,
   gameWeekStatusAtom,
   gameWeeksAtom,
 } from "@/src/07_shared/lib/store";
 
-import { getGameWeekStatus, findGameWeek } from "../lib/utils";
-
 export const GameWeekInfo = () => {
-  const { data: gameWeeksData } = useGetGameWeeks();
-
-  const [gameWeeks, setGameWeeks] = useAtom(gameWeeksAtom);
-  const [gameWeek, setGameWeek] = useAtom(gameWeekAtom);
-  const [gameWeekStatus, setGameWeekStatus] = useAtom(gameWeekStatusAtom);
-
-  useEffect(() => {
-    if (gameWeeksData) {
-      const time = new Date().getTime();
-
-      const gameWeekData = findGameWeek(gameWeeksData, time);
-
-      const gameWeekStatus = getGameWeekStatus(
-        gameWeekData?.start_date,
-        gameWeekData?.end_date,
-        time
-      );
-
-      setGameWeeks(gameWeeksData);
-      setGameWeek(gameWeekData);
-      setGameWeekStatus(gameWeekStatus);
-    }
-  }, [gameWeeksData, setGameWeeks, setGameWeekStatus, setGameWeek]);
+  const gameWeeks = useAtomValue(gameWeeksAtom);
+  const gameWeek = useAtomValue(gameWeekAtom);
+  const gameWeekStatus = useAtomValue(gameWeekStatusAtom);
 
   return (
     <section className="flex w-full items-center justify-center flex-col rounded-xl bg-field-gradient px-6 py-4">
