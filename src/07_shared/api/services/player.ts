@@ -1,7 +1,7 @@
 import { TEAMS_IDS } from "../../lib/constants";
 
 import { APIClient, api_client } from "../client/index";
-import { IPlayerTransfermarkt } from "../../models";
+import { IPlayer, IPlayerTransfermarkt } from "../../models";
 
 type TeamId = number;
 type PlayerId = number;
@@ -10,6 +10,7 @@ interface IPlayerService {
   getPlayer(player_id: PlayerId): Promise<void>;
   getPlayers(): Promise<void>;
   createPlayer(player: IPlayerTransfermarkt, teamId: TeamId): Promise<void>;
+  updatePlayer(sofascore_id: number, player_id: PlayerId): Promise<void>;
   deletePlayer(): Promise<void>;
 }
 
@@ -46,6 +47,12 @@ export class PlayerService implements IPlayerService {
     };
 
     return this.apiClient.makeRequest("POST", "players/", data);
+  }
+
+  async updatePlayer(sofascore_id: number, player_id: PlayerId) {
+    return this.apiClient.makeRequest("PATCH", `players/${player_id}/`, {
+      sofascore_id,
+    });
   }
 
   async deletePlayer() {

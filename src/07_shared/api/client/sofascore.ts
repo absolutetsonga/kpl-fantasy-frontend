@@ -10,7 +10,7 @@ export class SofascoreClient implements ISofascoreClient {
       method,
       url,
       headers: {
-        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_SOFASCORE_KEY,
+        "X-RapidAPI-Key": "62414078b4mshd3956c45f382ac1p110cb4jsn087151d40b1d",
         "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPID_API_SOFASCORE_HOST,
       },
       params,

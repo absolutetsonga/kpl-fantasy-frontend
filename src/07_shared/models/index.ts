@@ -9,6 +9,8 @@ import { IDraftPlayerData } from "./draft_player_data";
 import { ITeamTransfermarkt } from "./transfermarkt_team";
 import { IPlayerTransfermarkt } from "./transfermarkt_player";
 import { IGameWeekRes, IGameWeekCreateReq, IGameWeekStatus } from "./game_week";
+import { ISofascorePlayers } from "./sofascore_player";
+import { ISofascorePlayerStats } from "./sofascore_player_stats";
 
 export type {
   ITeam,
@@ -24,4 +26,6 @@ export type {
   IGameWeekRes,
   IGameWeekCreateReq,
   IGameWeekStatus,
+  ISofascorePlayers,
+  ISofascorePlayerStats,
 };

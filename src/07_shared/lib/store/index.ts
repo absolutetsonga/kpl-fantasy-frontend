@@ -11,6 +11,8 @@ import {
   IGameWeekRes,
   IGameWeekStatus,
   IUser,
+  ISofascorePlayers,
+  ISofascorePlayerStats,
 } from "../../models";
 
 // draft
@@ -24,14 +26,9 @@ export const playersAtom = atom<IPlayer[]>([]); // for all players
 export const playerAtom = atom<IPlayer | null>(null);
 
 export const fetchedPlayersDataAtom = atom<IPosition[] | IPlayer[]>([]); // nexer used
-
-export const transfermarktPlayerAtom = atom<IPlayerTransfermarkt[]>([]);
-
 export const playerPositionAtom = atom<string>("");
 
 // team
-export const transfermarktTeamAtom = atom<ITeamTransfermarkt | null>(null);
-
 export const teamsAtom = atom<ITeam[]>([]);
 export const selectedTeamAtom = atom<string>("");
 export const createdTeamAtom = atom<ITeam>({
@@ -53,6 +50,7 @@ export const gameWeekStatusAtom = atom<IGameWeekStatus>({
 });
 
 export const gameWeekStartAtom = atom<string>("");
+
 // toggle
 export const togglePlayerModalWindowAtom = atom<boolean>(false);
 export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
@@ -61,3 +59,11 @@ export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
 export const userAtom = atom<IUser | null>(null);
 export const isAuthenticatedAtom = atom<boolean>(false);
 export const isLoadingAtom = atom<boolean>(true);
+
+// sofascore
+export const sofascorePlayersAtom = atom<ISofascorePlayers | null>(null);
+export const sofascorePlayerStatsAtom = atom<ISofascorePlayerStats | null>(null);
+
+// transfermarkt
+export const transfermarktPlayerAtom = atom<IPlayerTransfermarkt[]>([]);
+export const transfermarktTeamAtom = atom<ITeamTransfermarkt | null>(null);

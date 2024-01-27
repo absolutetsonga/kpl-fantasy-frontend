@@ -1,4 +1,3 @@
-import axios from "axios";
 import { CLUBS_SOFASCORE_IDS } from "../../lib/constants";
 import { SofascoreClient, sofascore_client } from "../client/sofascore";
 
@@ -29,8 +28,7 @@ class SofascoreService implements ISofascoreService {
       { teamId: CLUBS_SOFASCORE_IDS[teamName] }
     );
 
-    console.log(response);
-    return response.data;
+    return response;
   }
 
   async getPlayerStatisticsByGame(playerId: PlayerId, matchId: MatchId) {

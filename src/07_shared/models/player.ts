@@ -3,6 +3,7 @@ import { IGameWeekStats } from "./game_week_stats";
 export interface IPlayer {
   id: number;
   team: number;
+  sofascore_id: number;
 
   date_created: string;
   date_updated: string;
