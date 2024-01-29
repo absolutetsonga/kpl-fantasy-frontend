@@ -16,7 +16,7 @@ type FormFieldProps = {
   register: UseFormRegister<IUser>;
 };
 
-export const FormField = ({
+export const FormFieldUser = ({
   name,
   type,
   text,

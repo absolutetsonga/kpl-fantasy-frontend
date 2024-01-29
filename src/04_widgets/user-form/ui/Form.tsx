@@ -4,14 +4,14 @@ import { PopulateFormFields } from "@/src/06_entities/populate-form-fields/ui";
 import { IUser } from "@/src/07_shared/models";
 
 import { Spinner } from "@/src/07_shared/ui";
-import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/types";
+import { FormFieldInfoTypeUser } from "@/src/06_entities/populate-form-fields/lib/types";
 
 type FormProps = {
   onSubmit: () => void;
   register: UseFormRegister<IUser>;
   errors: FieldErrors<IUser>;
   status?: string;
-  formFields: FormFieldInfoType[];
+  formFields: FormFieldInfoTypeUser[];
   buttonText: string;
 };
 

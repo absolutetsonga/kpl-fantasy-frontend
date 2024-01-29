@@ -1,12 +1,12 @@
-import { FormField } from "@/src/07_shared/ui";
-import { UseFormRegister, FieldErrors, } from "react-hook-form";
+import { FormFieldUser } from "@/src/07_shared/ui";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { IUser } from "@/src/07_shared/models";
-import { FormFieldInfoType } from "../lib/types";
+import { FormFieldInfoTypeUser } from "../lib/types";
 
 type PopulateFormProps = {
   register: UseFormRegister<IUser>;
   errors: FieldErrors<IUser>;
-  formFields: FormFieldInfoType[];
+  formFields: FormFieldInfoTypeUser[];
 };
 
 export const PopulateFormFields = ({
@@ -18,7 +18,7 @@ export const PopulateFormFields = ({
     <>
       {formFields.map((ff) => {
         return (
-          <FormField
+          <FormFieldUser
             key={ff.name}
             name={ff.name}
             type={ff.type}
