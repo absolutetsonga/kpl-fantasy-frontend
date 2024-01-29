@@ -4,7 +4,6 @@ import { useAtomValue } from "jotai";
 export type Props = {
   title: string;
   value: string;
-  hasDivider?: true;
 };
 
 const TransferTab = ({ title, value }: Props) => (
@@ -24,7 +23,7 @@ export const TransferTabs = () => {
   return (
     <div className="grid grid-cols-3 justify-between items-center w-full mx-auto">
       <TransferTab title="Free Transfers" value={`${draft?.left_transfers}`} />
-      <TransferTab title="Money Remaining" value={`${draft?.total_budget}`} />
+      <TransferTab title="Money Remaining" value={`${draft?.total_budget} ₸`} />
     </div>
   );
 };

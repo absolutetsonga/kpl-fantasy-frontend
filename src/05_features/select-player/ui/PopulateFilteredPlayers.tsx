@@ -1,24 +1,21 @@
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { useMemo } from "react";
-import { useCreatePlayer } from "@/src/07_shared/lib/hooks/draft-player";
-
-import {
-  draftAtom,
-  draftPlayersAtom,
-  playerPositionAtom,
-  playersAtom,
-  togglePlaceholderModalWindowAtom,
-} from "@/src/07_shared/lib/store";
+import { useSelectPlayer } from "../lib/hooks/useSelectPlayer";
 
 import { find_draft_substitution_player_position } from "../lib/utils";
 
 import { FilteredPlayerCard } from "@/src/06_entities/filtered-player-card/ui";
-import { useSelectPlayer } from "../lib/hooks/useSelectPlayer";
+
+import {
+  draftAtom,
+  playerPositionAtom,
+  playersAtom,
+} from "@/src/07_shared/lib/store";
 
 export const PopulateFilteredPlayers = () => {
   const playerPosition = useAtomValue(playerPositionAtom);
   const players = useAtomValue(playersAtom);
-  const [draft] = useAtom(draftAtom);
+  const draft = useAtomValue(draftAtom);
 
   const handleSelectPlayer = useSelectPlayer();
   const filteredPlayers = useMemo(
