@@ -5,7 +5,7 @@ import {
   togglePlayerModalWindowAtom,
 } from "@/src/07_shared/lib/store";
 import { IPlayer, IPosition } from "@/src/07_shared/models";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 
 type useHandleClickOnPlayerParams = {
   player: IPlayer;

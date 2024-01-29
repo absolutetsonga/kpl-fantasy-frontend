@@ -10,13 +10,13 @@ import {
 import { IDraftPlayer } from "@/src/07_shared/models";
 import { useGetDraftPlayersData } from "@/src/04_widgets/field/lib/hooks/useGetDraftPlayersData";
 
-type PopulatePlayersProps = {
+type PopulateDraftPlayersProps = {
   draft_placeholder_players: IDraftPlayer[];
 };
 
-export const PopulatePlayers = ({
+export const PopulateDraftPlayers = ({
   draft_placeholder_players,
-}: PopulatePlayersProps) => {
+}: PopulateDraftPlayersProps) => {
   const handleClick = useHandleClickOnPlayer();
 
   const draftPlayers = useAtomValue(draftPlayersAtom);

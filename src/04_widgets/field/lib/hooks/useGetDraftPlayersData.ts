@@ -2,16 +2,16 @@ import { useAtomValue } from "jotai";
 import { playersAtom, draftPlayersAtom } from "@/src/07_shared/lib/store";
 
 import { PLAYERS_STYLE_POSITIONS } from "@/src/07_shared/lib/constants";
-import { find_draft_player_data } from "@/src/06_entities/populate-players/lib/utils";
+import { find_draft_player_data } from "@/src/06_entities/populate-draft-players/lib/utils";
 import { IDraftPlayer } from "@/src/07_shared/models";
 
-type PopulatePlayersProps = {
+type PopulateDraftPlayersProps = {
   draft_placeholder_players: IDraftPlayer[];
 };
 
 export const useGetDraftPlayersData = ({
   draft_placeholder_players,
-}: PopulatePlayersProps) => {
+}: PopulateDraftPlayersProps) => {
   const draftExistingPlayers = useAtomValue(draftPlayersAtom);
   const players = useAtomValue(playersAtom);
 

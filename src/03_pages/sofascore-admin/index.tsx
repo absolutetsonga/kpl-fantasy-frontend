@@ -70,7 +70,7 @@ export const AdminPage = () => {
   return (
     <div className="main-container">
       <PopulateTeams />
-
+      {selectedTeam && <div></div>}
       <div className="grid grid-cols-2 gap-4">
         <Button
           className="px-4 py-3 bg-violet-600 rounded-2xl"

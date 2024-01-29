@@ -8,7 +8,7 @@ import {
 
 import { generate_draft_placeholder_players } from "../lib/utils";
 
-import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
+import { PopulateDraftPlayers } from "@/src/06_entities/populate-draft-players/ui";
 import { PlayerModalWindow } from "@/src/05_features/modify-player/ui";
 import { PlaceholderModalWindow } from "@/src/05_features/select-player/ui";
 import { Bench } from "@/src/06_entities/bench/ui";
@@ -18,7 +18,7 @@ export const Field = () => {
   const togglePlaceholderModalWindow = useAtomValue(
     togglePlaceholderModalWindowAtom
   );
-  
+
   const draft_placeholder_players = generate_draft_placeholder_players();
 
   return (
@@ -31,7 +31,9 @@ export const Field = () => {
         className="w-auto"
       />
 
-      <PopulatePlayers draft_placeholder_players={draft_placeholder_players} />
+      <PopulateDraftPlayers
+        draft_placeholder_players={draft_placeholder_players}
+      />
 
       <Bench />
 
