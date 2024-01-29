@@ -1,4 +1,5 @@
 import { player_service } from "@/src/07_shared/api/services";
+import { IPlayer, IPlayerTransfermarkt } from "@/src/07_shared/models";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useGetPlayers = () => {
@@ -12,6 +13,13 @@ export const useGetPlayer = (id: number) => {
   return useQuery({
     queryKey: ["players"],
     queryFn: async () => await player_service.getPlayer(id),
+  });
+};
+
+export const useCreatePlayer = () => {
+  return useMutation({
+    mutationFn: async (player: IPlayer) =>
+      await player_service.createPlayer(player),
   });
 };
 

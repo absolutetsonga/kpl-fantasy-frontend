@@ -5,7 +5,7 @@ import { UseFormRegister } from "react-hook-form";
 import { IUser } from "../models";
 
 type FormFieldProps = {
-  name: keyof IUser;
+  name: any;
   text: string;
   type: string;
   errorMessage: any;
@@ -57,10 +57,10 @@ export const FormFieldUser = ({
         <input
           id={name}
           type={type}
-          required
           {...register(name)}
           placeholder={placeholder}
           className={classnames}
+          step="any"
         />
         {errorMessage && (
           <p className="mt-1 text-xs text-red-400">{errorMessage}</p>

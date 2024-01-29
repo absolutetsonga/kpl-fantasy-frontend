@@ -1,6 +1,6 @@
-import { FormFieldInfoTypePlayer, FormFieldInfoTypeUser } from "./types";
+import { FormFieldInfoType } from "./types";
 
-export const REGISTER_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
+export const REGISTER_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "first_name",
     type: "text",
@@ -28,7 +28,7 @@ export const REGISTER_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
   },
 ];
 
-export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
+export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "email",
     type: "email",
@@ -45,7 +45,7 @@ export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
   },
 ];
 
-export const REQUEST_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
+export const REQUEST_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "email",
     type: "email",
@@ -53,7 +53,7 @@ export const REQUEST_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
   },
 ];
 
-export const RESET_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
+export const RESET_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "password",
     type: "password",
@@ -66,7 +66,7 @@ export const RESET_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoTypeUser[] = [
   },
 ];
 
-export const MODIFY_PLAYER_FORM_FIELDS_INFO: FormFieldInfoTypePlayer[] = [
+export const MODIFY_PLAYER_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "name",
     type: "text",
@@ -132,5 +132,98 @@ export const MODIFY_PLAYER_FORM_FIELDS_INFO: FormFieldInfoTypePlayer[] = [
     type: "checkbox",
     placeholder: "Is Right Foot",
     text: "Is Right Foot",
+  },
+  {
+    name: "sofascore_id",
+    type: "number",
+    placeholder: "Sofascore Id",
+    text: "Sofascore Id",
+  },
+];
+
+export const CREATE_PLAYER_FORM_FIELDS_INFO: FormFieldInfoType[] = [
+  {
+    name: "name",
+    type: "text",
+    placeholder: "Name",
+    text: "Name",
+  },
+  {
+    name: "age",
+    type: "number",
+    placeholder: "Age",
+    text: "Age",
+  },
+  {
+    name: "market_value",
+    type: "number",
+    placeholder: "Market Value",
+    text: "Market Value",
+  },
+  {
+    name: "price",
+    type: "number",
+    placeholder: "Price",
+    text: "Price",
+  },
+  {
+    name: "club",
+    type: "text",
+    placeholder: "Club",
+    text: "Club",
+  },
+  {
+    name: "position",
+    type: "text",
+    placeholder: "Position",
+    text: "Position",
+  },
+  {
+    name: "height",
+    type: "text",
+    placeholder: "Height",
+    text: "Height",
+  },
+  {
+    name: "nationality",
+    type: "text",
+    placeholder: "Nationality",
+    text: "Nationality",
+  },
+  {
+    name: "image_url",
+    type: "text",
+    placeholder: "Image URL",
+    text: "Image URL",
+  },
+  {
+    name: "nationality_image_url",
+    type: "text",
+    placeholder: "Nationality Image URL",
+    text: "Nationality Image URL",
+  },
+  {
+    name: "is_injured",
+    type: "checkbox",
+    placeholder: "Is Injured",
+    text: "Is Injured",
+  },
+  {
+    name: "is_right_foot",
+    type: "checkbox",
+    placeholder: "Is Right Foot",
+    text: "Is Right Foot",
+  },
+  {
+    name: "sofascore_id",
+    type: "number",
+    placeholder: "Sofascore Id",
+    text: "Sofascore Id",
+  },
+  {
+    name: "team",
+    type: "number",
+    placeholder: "Team Id",
+    text: "Team Id",
   },
 ];
