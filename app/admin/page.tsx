@@ -1,4 +1,4 @@
-import { AdminPage } from "@/src/03_pages/sofascore-admin";
+import { AdminPage } from "@/src/03_pages/admin-pages";
 
 const page = () => {
   return <AdminPage />;
