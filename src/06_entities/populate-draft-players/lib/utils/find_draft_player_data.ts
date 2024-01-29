@@ -15,6 +15,7 @@ export const find_draft_player_data = ({
     date_created: "",
     date_updated: "",
 
+    sofascore_id: 0,
     id: 0,
     team: 0,
 
