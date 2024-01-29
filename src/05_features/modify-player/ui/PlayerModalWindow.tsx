@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { useAtomValue, useSetAtom } from "jotai";
 import {
   draftPlayersAtom,

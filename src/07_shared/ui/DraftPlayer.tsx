@@ -41,7 +41,7 @@ export const DraftPlayer = ({
         )}
       </div>
 
-      {draftPlayer?.id && (
+      {draftPlayer && (
         <Image
           src="/images/more-info.svg"
           width={20}
