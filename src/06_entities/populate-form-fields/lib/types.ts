@@ -1,7 +1,5 @@
-import { IUser } from "@/src/07_shared/models";
-
-export type FormFieldInfoTypeUser = {
-  name: keyof IUser;
+export type FormFieldInfoType = {
+  name: any;
   type: string;
   text: string;
   placeholder?: string;
@@ -10,4 +8,3 @@ export type FormFieldInfoTypeUser = {
     linkUrl: string;
   };
 };
-

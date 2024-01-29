@@ -1,4 +1,5 @@
 import Link from "next/link";
+import cn from "classnames";
 
 import { UseFormRegister } from "react-hook-form";
 import { IUser } from "../models";
@@ -7,7 +8,7 @@ type FormFieldProps = {
   name: keyof IUser;
   text: string;
   type: string;
-  errorMessage: string | undefined;
+  errorMessage: any;
   link?: {
     linkText: string;
     linkUrl: string;
@@ -25,6 +26,12 @@ export const FormFieldUser = ({
   placeholder,
   register,
 }: FormFieldProps) => {
+  const classnames = cn(
+    "block rounded-md border-0 px-2 py-1.5 shadow-sm ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-gray-950",
+    {
+      "ring-1 w-full": type !== "checkbox",
+    }
+  );
   return (
     <div>
       <div className="flex flex-row items-center justfiy-between">
@@ -53,7 +60,7 @@ export const FormFieldUser = ({
           required
           {...register(name)}
           placeholder={placeholder}
-          className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-gray-950"
+          className={classnames}
         />
         {errorMessage && (
           <p className="mt-1 text-xs text-red-400">{errorMessage}</p>

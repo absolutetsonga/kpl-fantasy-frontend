@@ -1,12 +1,12 @@
 import { FormFieldUser } from "@/src/07_shared/ui";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { IUser } from "@/src/07_shared/models";
-import { FormFieldInfoTypeUser } from "../lib/types";
+import { FormFieldInfoType } from "../lib/types";
 
 type PopulateFormProps = {
-  register: UseFormRegister<IUser>;
-  errors: FieldErrors<IUser>;
-  formFields: FormFieldInfoTypeUser[];
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
+  formFields: FormFieldInfoType[];
 };
 
 export const PopulateFormFields = ({

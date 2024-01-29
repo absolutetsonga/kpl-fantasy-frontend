@@ -1,17 +1,16 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { PopulateFormFields } from "@/src/06_entities/populate-form-fields/ui";
-import { IUser } from "@/src/07_shared/models";
 
 import { Spinner } from "@/src/07_shared/ui";
-import { FormFieldInfoTypeUser } from "@/src/06_entities/populate-form-fields/lib/types";
+import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/types";
 
 type FormProps = {
   onSubmit: () => void;
-  register: UseFormRegister<IUser>;
-  errors: FieldErrors<IUser>;
+  register: UseFormRegister<any>;
+  errors: FieldErrors<any>;
   status?: string;
-  formFields: FormFieldInfoTypeUser[];
+  formFields: FormFieldInfoType[];
   buttonText: string;
 };
 
