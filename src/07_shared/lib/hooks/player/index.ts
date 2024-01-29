@@ -25,12 +25,16 @@ export const useCreatePlayer = () => {
 
 export const useUpdatePlayer = () => {
   return useMutation({
-    mutationFn: async ({
-      player_id,
-      sofascore_id,
-    }: {
-      player_id: number;
-      sofascore_id: number;
-    }) => await player_service.updatePlayer(sofascore_id, player_id),
+    mutationFn: async (player: IPlayer) => {
+      await player_service.updatePlayer(player);
+    },
+  });
+};
+
+export const useDeletePlayer = () => {
+  return useMutation({
+    mutationFn: async (player_id: number) => {
+      await player_service.deletePlayer(player_id);
+    },
   });
 };

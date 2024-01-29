@@ -2,10 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 import { IPlayer } from "@/src/07_shared/models";
 
-export const PopulatePlayers = ({ players }: { players: IPlayer[] }) => {
+type Props = {
+  players: IPlayer[];
+  setToggleDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  setPlayerId: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export const PopulatePlayers = ({
+  players,
+  setToggleDelete,
+  setPlayerId,
+}: Props) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 relative">
       {players?.map((pl) => {
@@ -55,10 +66,18 @@ export const PopulatePlayers = ({ players }: { players: IPlayer[] }) => {
                 </div>
               </div>
             </div>
-
-            <Link href={`/admin/player/${pl.id}`}>
-              <MdEdit className="w-6 h-6 cursor-pointer" />
-            </Link>
+            <div className="flex flex-col justify-between h-full">
+              <Link href={`/admin/player/${pl.id}`}>
+                <MdEdit className="w-6 h-6 cursor-pointer" />
+              </Link>
+              <MdDelete
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => {
+                  setPlayerId(pl.id);
+                  setToggleDelete(true);
+                }}
+              />
+            </div>
           </div>
         );
       })}

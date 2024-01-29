@@ -8,8 +8,8 @@ interface IPlayerService {
   getPlayer(player_id: PlayerId): Promise<void>;
   getPlayers(): Promise<void>;
   createPlayer(player: IPlayer): Promise<void>;
-  updatePlayer(sofascore_id: number, player_id: PlayerId): Promise<void>;
-  deletePlayer(): Promise<void>;
+  updatePlayer(player: IPlayer): Promise<void>;
+  deletePlayers(): Promise<void>;
 }
 
 export class PlayerService implements IPlayerService {
@@ -28,19 +28,20 @@ export class PlayerService implements IPlayerService {
   }
 
   async createPlayer(player: IPlayer) {
-    console.log(player);
-
     return this.apiClient.makeRequest("POST", "players/", player);
   }
 
-  async updatePlayer(sofascore_id: number, player_id: PlayerId) {
-    return this.apiClient.makeRequest("PATCH", `players/${player_id}/`, {
-      sofascore_id,
-    });
+  async updatePlayer(player: IPlayer) {
+    console.log(player);
+    return this.apiClient.makeRequest("PATCH", `players/${player.id}/`, player);
   }
 
-  async deletePlayer() {
+  async deletePlayers() {
     return this.apiClient.makeRequest("DELETE", "players/delete-all/");
+  }
+
+  async deletePlayer(player_id: number) {
+    return this.apiClient.makeRequest("DELETE", `players/${player_id}/`);
   }
 }
 

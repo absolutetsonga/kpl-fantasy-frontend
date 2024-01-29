@@ -25,8 +25,8 @@ export const PopulateTeams = () => {
           return (
             <Image
               src={`/images/teams/${team.name}.png`}
-              width={60}
-              height={60}
+              width={80}
+              height={80}
               alt={team.name}
               key={team.name}
               onClick={() => handleClubClick(team.name)}
