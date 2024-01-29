@@ -1,11 +1,13 @@
-import { IPlayer } from "@/src/07_shared/models";
-import { MdEdit } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 
-const PopulatePlayers = ({ players }: { players: IPlayer[] }) => {
+import { MdEdit } from "react-icons/md";
+
+import { IPlayer } from "@/src/07_shared/models";
+
+export const PopulatePlayers = ({ players }: { players: IPlayer[] }) => {
   return (
-    <div className="w-[800px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 relative">
       {players?.map((pl) => {
         return (
           <div
@@ -31,19 +33,25 @@ const PopulatePlayers = ({ players }: { players: IPlayer[] }) => {
                     height={20}
                     className="mr-1"
                   />
-                  <p>{pl.nationality}</p>
-                  <span className="ml-2 text-sm text-gray-600">
-                    {pl.age} years old |{" "}
-                  </span>
-                  <span className="ml-2 text-sm text-gray-600">
-                    {pl.height} m |{" "}
-                  </span>
-                  <span className="ml-2 text-sm text-gray-600">
-                    {pl.is_right_foot ? <p>Right foot</p> : <p> Left foot </p>}
-                  </span>
-                  <span className="ml-2 text-sm text-gray-600">
-                    | {pl.position}
-                  </span>
+                  <div className="flex flex-col md:flex-row">
+                    <p>{pl.nationality}</p>
+                    <span className="ml-2 text-sm text-gray-600">
+                      {pl.age} years old
+                    </span>
+                    <span className="ml-2 text-sm text-gray-600">
+                      {pl.height} m
+                    </span>
+                    <span className="ml-2 text-sm text-gray-600">
+                      {pl.is_right_foot ? (
+                        <p>Right foot</p>
+                      ) : (
+                        <p> Left foot </p>
+                      )}
+                    </span>
+                    <span className="ml-2 text-sm text-gray-600">
+                      {pl.position}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,5 +65,3 @@ const PopulatePlayers = ({ players }: { players: IPlayer[] }) => {
     </div>
   );
 };
-
-export default PopulatePlayers;

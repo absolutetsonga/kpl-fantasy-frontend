@@ -2,13 +2,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useResetPasswordUser } from "@/src/07_shared/lib/hooks/auth/";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as zod from "zod";
 
 import { toast } from "react-toastify";
-
-const userSchema = zod.object({
-  email: zod.string().email("Invalid email address"),
-});
+import { resetPasswordRequestUserSchema } from "@/src/07_shared/lib/schemas";
 
 export const useResetPasswordRequestForm = () => {
   const resetPassword = useResetPasswordUser();
@@ -18,7 +14,7 @@ export const useResetPasswordRequestForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<{ email: string }>({
-    resolver: zodResolver(userSchema),
+    resolver: zodResolver(resetPasswordRequestUserSchema),
   });
 
   const onSubmit: SubmitHandler<{ email: string }> = (data) => {

@@ -20,7 +20,7 @@ export const PopulateTeams = () => {
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center flex-wrap">
         {teamsData?.map((team: ITeam) => {
           return (
             <Image
@@ -37,7 +37,7 @@ export const PopulateTeams = () => {
       </div>
 
       {selectedTeam && (
-        <div className="bg-yellow-700 px-4 py-3 font-bold">
+        <div className="bg-green-500 text-white px-4 py-3 font-bold">
           Selected Club: {selectedTeam}
         </div>
       )}

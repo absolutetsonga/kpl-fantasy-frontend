@@ -6,18 +6,13 @@ import { useSetAtom } from "jotai";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as zod from "zod";
 
 import { IUser } from "@/src/07_shared/models";
 import { isAuthenticatedAtom, isLoadingAtom } from "@/src/07_shared/lib/store";
 
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-
-const userSchema = zod.object({
-  email: zod.string().email("Invalid email address"),
-  password: zod.string().min(6, "Password must be at least 6 characters long"),
-});
+import { loginUserSchema } from "@/src/07_shared/lib/schemas";
 
 export const useLoginForm = (router: AppRouterInstance) => {
   const loginUser = useLoginUser();
@@ -30,7 +25,7 @@ export const useLoginForm = (router: AppRouterInstance) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IUser>({
-    resolver: zodResolver(userSchema),
+    resolver: zodResolver(loginUserSchema),
   });
 
   const onSubmit: SubmitHandler<IUser> = (data) => {

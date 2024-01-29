@@ -4,6 +4,7 @@ export type FormFieldInfoType = {
   name: keyof IUser;
   type: string;
   text: string;
+  placeholder?: string;
   link?: {
     linkText: string;
     linkUrl: string;

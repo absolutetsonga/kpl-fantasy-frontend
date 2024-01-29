@@ -1,16 +1,19 @@
-import { UseFormRegister } from "react-hook-form";
 import Link from "next/link";
 
+import { UseFormRegister } from "react-hook-form";
+import { IUser } from "../models";
+
 type FormFieldProps = {
-  name: "email" | "first_name" | "last_name" | "password" | "re_password";
+  name: keyof IUser;
   text: string;
   type: string;
   errorMessage: string | undefined;
-  register: UseFormRegister<any>;
   link?: {
     linkText: string;
     linkUrl: string;
   };
+  placeholder?: string;
+  register: UseFormRegister<IUser>;
 };
 
 export const FormField = ({
@@ -18,8 +21,9 @@ export const FormField = ({
   type,
   text,
   errorMessage,
-  register,
   link,
+  placeholder,
+  register,
 }: FormFieldProps) => {
   return (
     <div>
@@ -48,6 +52,7 @@ export const FormField = ({
           type={type}
           required
           {...register(name)}
+          placeholder={placeholder}
           className="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-gray-950"
         />
         {errorMessage && (
