@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Setup = () => {
   const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
   const setIsLoading = useSetAtom(isLoadingAtom);
-
   const { mutate } = useVerifyUser();
 
   useEffect(() => {

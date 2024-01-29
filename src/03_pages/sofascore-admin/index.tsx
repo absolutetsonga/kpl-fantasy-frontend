@@ -18,6 +18,7 @@ import {
   useUpdatePlayer,
 } from "@/src/07_shared/lib/hooks/player";
 import { IPlayer } from "@/src/07_shared/models";
+import { PopulateTeams } from "@/src/06_entities/populate-teams/ui";
 
 export const AdminPage = () => {
   const [selectedTeam, setSelectedTeam] = useAtom(selectedTeamAtom);
@@ -66,35 +67,9 @@ export const AdminPage = () => {
     }
   };
 
-  const handleClubClick = (clubName: string) => setSelectedTeam(clubName);
-
   return (
     <div className="main-container">
-      <div className="flex flex-col gap-10">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "10px",
-          }}
-        >
-          {Object.keys(CLUBS_SOFASCORE_IDS).map((clubName) => (
-            <button
-              key={clubName}
-              onClick={() => handleClubClick(clubName)}
-              className="bg-green-500 px-4 py-3"
-            >
-              {clubName}
-            </button>
-          ))}
-        </div>
-
-        {selectedTeam && (
-          <div className="bg-yellow-700 px-4 py-3 font-bold">
-            Selected Club: {selectedTeam}
-          </div>
-        )}
-      </div>
+      <PopulateTeams />
 
       <div className="grid grid-cols-2 gap-4">
         <Button
