@@ -1,14 +1,13 @@
 "use client";
 
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import { Button } from "@/src/07_shared/ui";
-import { CLUBS_SOFASCORE_IDS } from "@/src/07_shared/lib/constants";
 
 import {
-  playersAtom,
   selectedTeamAtom,
   sofascorePlayersAtom,
   sofascorePlayerStatsAtom,
+  teamAtom,
 } from "@/src/07_shared/lib/store";
 
 import { sofascore_service } from "@/src/07_shared/api/services/sofascore";
@@ -19,9 +18,11 @@ import {
 } from "@/src/07_shared/lib/hooks/player";
 import { IPlayer } from "@/src/07_shared/models";
 import { PopulateTeams } from "@/src/06_entities/populate-teams/ui";
+import PopulatePlayers from "@/src/06_entities/populate-players/ui/PopulatePlayers";
 
 export const AdminPage = () => {
   const [selectedTeam, setSelectedTeam] = useAtom(selectedTeamAtom);
+  const [team, setTeam] = useAtom(teamAtom);
   const [sofascorePlayers, setSofascorePlayers] = useAtom(sofascorePlayersAtom);
 
   const [sofascorePlayerStats, setSofascorePlayerStats] = useAtom(
@@ -87,31 +88,11 @@ export const AdminPage = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-        {sofascorePlayers?.players.map((el) => {
-          return (
-            <div
-              key={el.player.name}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
-            >
-              <div className="p-4">
-                <h3 className="text-lg font-semibold truncate">
-                  {el.player.id} {el.player.name}
-                </h3>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <PopulatePlayers players={team?.players ?? []} />
 
       <iframe
         id="sofa-player-embed-78954"
         src="https://widgets.sofascore.com/en/embed/player/78954?widgetBackground=Gray&v=2"
-        // style={
-        //   "height:737px!important;max-width:730px!important;width:100%!important"
-        // }
-        // frameborder="0"
-        // scrolling="no"
         className="h-[737px] max-w-[730px] w-full"
       ></iframe>
     </div>

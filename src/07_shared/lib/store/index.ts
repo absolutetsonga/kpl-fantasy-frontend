@@ -30,6 +30,7 @@ export const playerPositionAtom = atom<string>("");
 
 // team
 export const teamsAtom = atom<ITeam[]>([]);
+export const teamAtom = atom<ITeam | null>(null);
 export const selectedTeamAtom = atom<string>("");
 export const createdTeamAtom = atom<ITeam>({
   id: 0,
@@ -62,7 +63,9 @@ export const isLoadingAtom = atom<boolean>(true);
 
 // sofascore
 export const sofascorePlayersAtom = atom<ISofascorePlayers | null>(null);
-export const sofascorePlayerStatsAtom = atom<ISofascorePlayerStats | null>(null);
+export const sofascorePlayerStatsAtom = atom<ISofascorePlayerStats | null>(
+  null
+);
 
 // transfermarkt
 export const transfermarktPlayerAtom = atom<IPlayerTransfermarkt[]>([]);

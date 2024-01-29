@@ -9,7 +9,7 @@ type PlayerProps = {
   handleClick: () => void;
 };
 
-export const Player = ({
+export const DraftPlayer = ({
   player,
   draftPlayer,
   teamImage,

@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 import { PageContainer } from "./PageContainer";
-import { Player } from "./Player";
+import { DraftPlayer } from "./DraftPlayer";
 import { Spinner } from "./Spinner";
 import { FormField } from "./FormField";
 
-export { Button, Player, PageContainer, Spinner, FormField };
+export { Button, DraftPlayer, PageContainer, Spinner, FormField };

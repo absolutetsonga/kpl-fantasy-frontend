@@ -1,4 +1,4 @@
-import { Player } from "@/src/07_shared/ui";
+import { DraftPlayer } from "@/src/07_shared/ui";
 import { useHandleClickOnPlayer } from "../lib/hooks";
 
 import { useAtomValue } from "jotai";
@@ -21,7 +21,7 @@ export const PopulateDraftPlayers = ({
 
   const draftPlayers = useAtomValue(draftPlayersAtom);
   const teams = useAtomValue(teamsAtom);
-  
+
   const draftPlayersData = useGetDraftPlayersData({
     draft_placeholder_players,
   });
@@ -38,7 +38,7 @@ export const PopulateDraftPlayers = ({
         const team = teams.find((team) => team.id === player.team);
 
         return (
-          <Player
+          <DraftPlayer
             key={index}
             player={data.player}
             draftPlayer={draftPlayer}
