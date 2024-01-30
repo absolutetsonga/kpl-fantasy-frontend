@@ -27,7 +27,7 @@ export const DraftPage = () => {
         Draft Team - {user?.first_name} {user?.last_name}
       </div>
 
-      <div className="flex flex-col max-w-[880px] rounded-md shadow gap-6">
+      <div className="flex flex-col w-[90%] md:max-w-[880px] rounded-md shadow gap-6">
         <GameWeekInfo />
         <GameWeekStatusMessage />
         <TransferTabs />

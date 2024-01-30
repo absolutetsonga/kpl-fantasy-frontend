@@ -25,8 +25,7 @@ export const AdminCreatePlayerPage = () => {
 
   const onSubmit = (data: any) => {
     createPlayer(data, {
-      onSuccess: (res) => {
-        console.log(res);
+      onSuccess: () => {
         toast.success("Player created successfully");
       },
       onError: (err) => {

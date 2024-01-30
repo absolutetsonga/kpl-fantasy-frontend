@@ -5,7 +5,6 @@ type PlayerProps = {
   player: IPlayer;
   draftPlayer: IDraftPlayer | undefined;
   teamImage: string | undefined;
-  positionStyle: string;
   handleClick: () => void;
 };
 
@@ -13,7 +12,6 @@ export const DraftPlayer = ({
   player,
   draftPlayer,
   teamImage,
-  positionStyle,
   handleClick,
 }: PlayerProps) => {
   const [firstName, lastName] = player.name.split(" ");
@@ -22,24 +20,16 @@ export const DraftPlayer = ({
 
   return (
     <button
-      className={`${positionStyle} shadow-lg w-[120px] h-[120px] flex flex-col items-center justify-center z-10 rounded-2xl text-white`}
+      className={`relative shadow-lg md:w-28 md:h-28 flex flex-col items-center justify-center z-10 rounded-2xl text-white`}
     >
       <Image
         src={player.image_url}
         width={90}
         height={90}
         alt={player.name}
-        className="object-contain max-h-[90px] rounded-2xl"
+        className="object-contain rounded-2xl max-h-[70px] md:max-h-[95px]"
         onClick={handleClick}
       />
-
-      <div className="w-full rounded-b-2xl bg-[#37003C] ">
-        {name ? (
-          <p className="w-full text-xs font-bold px-2 py-[0.4em]">{name}</p>
-        ) : (
-          <p className="w-full px-4 py-3"> </p>
-        )}
-      </div>
 
       {draftPlayer && (
         <Image
@@ -80,6 +70,14 @@ export const DraftPlayer = ({
           className="absolute right-1 top-6"
         />
       )}
+
+      <div className="w-full rounded-b-2xl bg-[#37003C]">
+        {name ? (
+          <p className="w-full text-xs font-bold px-2 py-[0.4em]">{name}</p>
+        ) : (
+          <p className="w-full px-4 py-3"> </p>
+        )}
+      </div>
     </button>
   );
 };
