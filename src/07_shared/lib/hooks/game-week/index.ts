@@ -2,6 +2,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { game_week_service } from "@/src/07_shared/api/services/game_week";
 import { IGameWeekCreateReq } from "@/src/07_shared/models/game_week";
+import { useAtomValue } from "jotai";
+import { userAtom } from "../../store";
+import { toast } from "react-toastify";
 
 export function useGetGameWeeks() {
   return useQuery({
@@ -18,15 +21,31 @@ export function useGetGameWeek(game_week_id: number) {
 }
 
 export function useCreateGameWeek() {
+  const user = useAtomValue(userAtom);
+
   return useMutation({
-    mutationFn: async (game_week: IGameWeekCreateReq) =>
-      await game_week_service.createGameWeek(game_week),
+    mutationFn: async (game_week: IGameWeekCreateReq) => {
+      if (!user?.is_staff) {
+        toast.error("Unauthorized: Only staff can create players.");
+        throw new Error("Unauthorized: Only staff can create players.");
+      }
+
+      await game_week_service.createGameWeek(game_week);
+    },
   });
 }
 
 export function useDeleteGameWeek() {
+  const user = useAtomValue(userAtom);
+
   return useMutation({
-    mutationFn: async (game_week_id: number) =>
-      await game_week_service.deleteGameWeek(game_week_id),
+    mutationFn: async (game_week_id: number) => {
+      if (!user?.is_staff) {
+        toast.error("Unauthorized: Only staff can create players.");
+        throw new Error("Unauthorized: Only staff can create players.");
+      }
+
+      await game_week_service.deleteGameWeek(game_week_id);
+    },
   });
 }

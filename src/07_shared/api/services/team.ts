@@ -18,12 +18,6 @@ export class TeamService implements ITeamService {
     this.apiClient = apiClient;
   }
 
-  async createTeam(team: ITeam) {
-    const data = { name: team.name, image_url: team.image_url };
-
-    return this.apiClient.makeRequest("POST", "teams/", data);
-  }
-
   async getTeams() {
     return this.apiClient.makeRequest("GET", `teams/`);
   }
@@ -36,6 +30,20 @@ export class TeamService implements ITeamService {
     const params = { name: teamName };
 
     return this.apiClient.makeRequest("GET", "teams/get-by-name/", {}, params);
+  }
+
+  async createTeam(team: ITeam) {
+    const data = { name: team.name, image_url: team.image_url };
+
+    return this.apiClient.makeRequest("POST", "teams/", data);
+  }
+
+  async updateTeam(team: ITeam) {
+    return this.apiClient.makeRequest("PUT", `teams/${team.id}`, team);
+  }
+
+  async deleteTeam(team: number) {
+    return this.apiClient.makeRequest("DELETE", `teams/${team}`);
   }
 }
 

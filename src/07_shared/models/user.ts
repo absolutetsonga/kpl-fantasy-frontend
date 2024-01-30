@@ -4,4 +4,6 @@ export interface IUser {
   email: string;
   password: string;
   re_password: string;
+  has_draft?: boolean;
+  is_staff?: boolean;
 }

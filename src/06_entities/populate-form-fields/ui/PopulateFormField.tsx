@@ -1,6 +1,5 @@
 import { FormFieldUser } from "@/src/07_shared/ui";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
-import { IUser } from "@/src/07_shared/models";
 import { FormFieldInfoType } from "../lib/types";
 
 type PopulateFormProps = {
