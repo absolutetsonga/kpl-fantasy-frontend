@@ -7,6 +7,7 @@ import { useLoginUser } from "./useLoginUser";
 import { useLogoutUser } from "./useLogoutUser";
 import { useResetPasswordUser } from "./usePasswordResetUser";
 import { useResetPasswordConfirmUser } from "./usePasswordConfirmUser";
+import { useReAuth } from "./useReAuth";
 
 export {
   useGetUser,
@@ -18,4 +19,5 @@ export {
   useLogoutUser,
   useResetPasswordUser,
   useResetPasswordConfirmUser,
+  useReAuth,
 };
