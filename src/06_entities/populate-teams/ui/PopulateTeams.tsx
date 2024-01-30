@@ -15,7 +15,12 @@ export const PopulateTeams = () => {
   const handleClubClick = (clubName: string) => {
     setSelectedTeam(clubName);
 
-    setTeam(teamsData.filter((team: ITeam) => team.name === clubName)[0]);
+    const team = teamsData.filter((team: ITeam) => {
+      return team.name === clubName;
+    })[0];
+
+    console.log(team);
+    setTeam(team);
   };
 
   return (

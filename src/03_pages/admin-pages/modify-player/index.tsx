@@ -12,7 +12,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/src/04_widgets/form/ui";
 import { MODIFY_PLAYER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { toast } from "react-toastify";
-import { IPlayer } from "@/src/07_shared/models";
 
 type Params = {
   params: {

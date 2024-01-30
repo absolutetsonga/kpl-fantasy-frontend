@@ -1,4 +1,5 @@
-import { CLUBS_TRANSFERMARKT_IDS } from "../../lib/constants";
+import { CLUBS_TRANSFERMARKT_IDS, TEAMS_IDS } from "../../lib/constants";
+import { IPlayerTransfermarkt } from "../../models";
 import {
   TransfermarktClient,
   transfermarkt_client,
