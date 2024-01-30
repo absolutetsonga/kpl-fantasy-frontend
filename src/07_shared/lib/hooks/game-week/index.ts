@@ -26,8 +26,8 @@ export function useCreateGameWeek() {
   return useMutation({
     mutationFn: async (game_week: IGameWeekCreateReq) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
 
       await game_week_service.createGameWeek(game_week);
@@ -41,8 +41,8 @@ export function useDeleteGameWeek() {
   return useMutation({
     mutationFn: async (game_week_id: number) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
 
       await game_week_service.deleteGameWeek(game_week_id);

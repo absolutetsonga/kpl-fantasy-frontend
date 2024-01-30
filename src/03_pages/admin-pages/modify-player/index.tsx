@@ -46,7 +46,6 @@ export const AdminEditPlayerPage = ({ params }: Params) => {
       },
       onError: (err) => {
         console.error(err);
-        toast.error("Something went wrong");
       },
     });
   };

@@ -28,8 +28,8 @@ export const useCreateTeam = () => {
   return useMutation({
     mutationFn: async (team: ITeam) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
 
       await team_service.createTeam(team);
@@ -43,8 +43,8 @@ export const useUpdateTeam = () => {
   return useMutation({
     mutationFn: async (team: ITeam) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
 
       await team_service.updateTeam(team);
@@ -58,8 +58,8 @@ export const useDeleteTeam = () => {
   return useMutation({
     mutationFn: async (team: ITeam) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
 
       await team_service.deleteTeam(team.id ?? 0);

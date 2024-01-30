@@ -28,8 +28,8 @@ export const AdminPage = () => {
       onSuccess: () => {
         toast.success("Player deleted successfully");
       },
-      onError: () => {
-        toast.error("Something went wrong");
+      onError: (err: Error) => {
+        console.error(err);
       },
     });
   };

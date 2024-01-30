@@ -26,8 +26,8 @@ export const useCreatePlayer = () => {
   return useMutation({
     mutationFn: async (player: IPlayer) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
       await player_service.createPlayer(player);
     },
@@ -40,8 +40,8 @@ export const useUpdatePlayer = () => {
   return useMutation({
     mutationFn: async (player: IPlayer) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
 
       await player_service.updatePlayer(player);
@@ -55,8 +55,8 @@ export const useDeletePlayer = () => {
   return useMutation({
     mutationFn: async (player_id: number) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only staff can create players.");
-        throw new Error("Unauthorized: Only staff can create players.");
+        toast.error("Unauthorized: Only admins can create players.");
+        throw new Error("Unauthorized: Only admins can create players.");
       }
       await player_service.deletePlayer(player_id);
     },
