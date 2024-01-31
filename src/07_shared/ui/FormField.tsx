@@ -27,11 +27,15 @@ export const FormFieldUser = ({
   register,
 }: FormFieldProps) => {
   const classnames = cn(
-    "block rounded-md border-0 px-2 py-1.5 shadow-sm ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-gray-950",
+    "block rounded-md border-0 px-2 py-1.5 shadow-sm ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-gray-950",
     {
       "ring-1 w-full": type !== "checkbox",
+    },
+    {
+      "w-full h-[200px] sm:text-sm sm:leading-6": type === "message",
     }
   );
+  
   return (
     <div>
       <div className="flex flex-row items-center justfiy-between">
@@ -54,14 +58,23 @@ export const FormFieldUser = ({
       </div>
 
       <div className="mt-2">
-        <input
-          id={name}
-          type={type}
-          {...register(name)}
-          placeholder={placeholder}
-          className={classnames}
-          step="any"
-        />
+        {type === "message" ? (
+          <textarea
+            id={name}
+            {...register(name)}
+            placeholder={placeholder}
+            className={classnames}
+          />
+        ) : (
+          <input
+            id={name}
+            type={type}
+            {...register(name)}
+            placeholder={placeholder}
+            className={classnames}
+            step="any"
+          />
+        )}
         {errorMessage && (
           <p className="mt-1 text-xs text-red-400">{errorMessage}</p>
         )}

@@ -1,6 +1,10 @@
 import { z, ZodSchema } from "zod";
 import { IGameWeekStats, IPlayer, IUser } from "@/src/07_shared/models";
 
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
+
 export const gameWeekStatsSchema: ZodSchema<IGameWeekStats> = z.object({
   id: z.number(),
   gameweek: z.number(),
@@ -72,4 +76,10 @@ export const loginUserSchema = z.object({
 
 export const resetPasswordRequestUserSchema = z.object({
   email: z.string().email("Invalid email address"),
+});
+
+export const contactSupportTeamSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  phone_number: z.string().regex(phoneRegex, "Invalid Number!"),
+  message: z.string(),
 });

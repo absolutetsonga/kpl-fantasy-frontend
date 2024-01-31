@@ -60,6 +60,7 @@ export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
 export const userAtom = atom<IUser | null>(null);
 export const isAuthenticatedAtom = atom<boolean>(false);
 export const isLoadingAtom = atom<boolean>(true);
+export const hasAgreedAtom = atom<boolean>(false);
 
 // sofascore
 export const sofascorePlayersAtom = atom<ISofascorePlayers | null>(null);

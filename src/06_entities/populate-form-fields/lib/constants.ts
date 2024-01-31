@@ -66,6 +66,24 @@ export const RESET_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   },
 ];
 
+export const CONTACT_FORM_FIELDS_INFO: FormFieldInfoType[] = [
+  {
+    name: "email",
+    type: "email",
+    text: "Email",
+  },
+  {
+    name: "phone_number",
+    type: "text",
+    text: "Phone Number",
+  },
+  {
+    name: "message",
+    type: "message",
+    text: "Message",
+  },
+];
+
 export const MODIFY_PLAYER_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "name",

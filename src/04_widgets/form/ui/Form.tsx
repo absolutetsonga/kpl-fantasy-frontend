@@ -3,15 +3,18 @@ import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { PopulateFormFields } from "@/src/06_entities/populate-form-fields/ui";
 
 import { Spinner } from "@/src/07_shared/ui";
+
 import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/types";
+import { SwitchButton } from "@/src/07_shared/ui/SwitchButton";
 
 type FormProps = {
   onSubmit: () => void;
   register: UseFormRegister<any>;
   errors: FieldErrors<any>;
-  status?: string;
   formFields: FormFieldInfoType[];
   buttonText: string;
+  status?: string;
+  hasPolicyAgreed?: boolean;
 };
 
 export const Form = ({
@@ -21,6 +24,7 @@ export const Form = ({
   status,
   formFields,
   buttonText,
+  hasPolicyAgreed,
 }: FormProps) => {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm text-gray-950">
@@ -30,6 +34,8 @@ export const Form = ({
           errors={errors}
           formFields={formFields}
         />
+
+        {hasPolicyAgreed && <SwitchButton />}
 
         <div>
           <button
