@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSupportTeamSchema } from "@/src/07_shared/lib/schemas";
 import { CONTACT_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { PageTitle } from "@/src/07_shared/ui";
+import { useCreateContactMessage } from "@/src/07_shared/lib/hooks/contact";
+import { toast } from "react-toastify";
 
 export function ContactPage() {
   const {
@@ -16,16 +18,18 @@ export function ContactPage() {
     resolver: zodResolver(contactSupportTeamSchema),
   });
 
+  const { mutate: createContact } = useCreateContactMessage();
+
   const onSubmit = (data: any) => {
-    // createPlayer(data, {
-    //   onSuccess: () => {
-    //     toast.success("Player created successfully");
-    //   },
-    //   onError: (err) => {
-    //     console.error(err);
-    //     toast.error("Something went wrong");
-    //   },
-    // });
+    createContact(data, {
+      onSuccess: () => {
+        toast.success("Player created successfully");
+      },
+      onError: (err) => {
+        toast.error("Something went wrong");
+      },
+    });
+
     console.log(data);
   };
 
