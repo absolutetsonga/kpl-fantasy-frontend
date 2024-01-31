@@ -7,7 +7,7 @@ import { useResetPasswordRequestForm } from "@/src/05_features/auth-user/lib/hoo
 import { REQUEST_PASSWORD_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 
 import { Metadata } from "next";
-import { PageTitle } from "@/src/06_entities/page-title";
+import { PageTitle } from "@/src/07_shared/ui";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Password Request Page",
@@ -20,7 +20,7 @@ export const PasswordRequestPage = () => {
 
   return (
     <PageContainer>
-      <PageTitle>Reset your password</PageTitle>
+      <PageTitle title="Reset your password" />
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}

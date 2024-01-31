@@ -10,7 +10,7 @@ import { Form } from "@/src/04_widgets/form/ui";
 import { Metadata } from "next";
 import { useLoginForm } from "@/src/05_features/auth-user/lib/hooks";
 import { SocialButtons } from "@/src/04_widgets/social-auth/ui";
-import { PageTitle } from "@/src/06_entities/page-title";
+import { PageTitle } from "@/src/07_shared/ui";
 
 export const metadata: Metadata = {
   title: "KPL Fantasy | Login Page",
@@ -25,7 +25,7 @@ export const Login = () => {
 
   return (
     <PageContainer>
-      <PageTitle>Log in</PageTitle>
+      <PageTitle title="Log in" />
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSupportTeamSchema } from "@/src/07_shared/lib/schemas";
 import { CONTACT_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
+import { PageTitle } from "@/src/07_shared/ui";
 
 export function ContactPage() {
   const {
@@ -32,16 +33,10 @@ export function ContactPage() {
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
-      <div
-        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
-        aria-hidden="true"
-      ></div>
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Contact Support Team
-        </h2>
-        
-      </div>
+      <PageTitle
+        title="Contact Support Team"
+        description="Aute magna irure deserunt veniam aliqua magna enim voluptate."
+      />
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}

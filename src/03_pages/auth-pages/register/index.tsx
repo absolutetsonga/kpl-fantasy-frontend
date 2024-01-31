@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Metadata } from "next";
 
 import { SocialButtons } from "@/src/04_widgets/social-auth/ui";
-import { PageTitle } from "@/src/06_entities/page-title";
+import { PageTitle } from "@/src/07_shared/ui";
 
 import { REGISTER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 
@@ -25,7 +25,7 @@ export const Register = () => {
 
   return (
     <PageContainer>
-      <PageTitle>Sign up for your account</PageTitle>
+      <PageTitle title="Sign up for your account" />
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}
