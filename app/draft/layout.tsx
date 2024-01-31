@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  return <PageLayout>{children}</PageLayout>;
+  return <PageLayout admin={false}>{children}</PageLayout>;
 };
 
 export default Layout;
