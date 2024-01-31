@@ -11,7 +11,7 @@ import { Spinner } from "@/src/07_shared/ui";
 
 export default function RequireAuth({
   children,
-  admin = false,
+  admin,
 }: {
   children: React.ReactNode;
   admin: boolean;
