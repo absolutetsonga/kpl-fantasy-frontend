@@ -8,7 +8,7 @@ export const TermsConditionsPage = () => {
           Last updated: February 1, 2024
         </p>
         <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">
-          Privacy policy
+          Terms and conditions
         </h1>
 
         <div className="mt-16">

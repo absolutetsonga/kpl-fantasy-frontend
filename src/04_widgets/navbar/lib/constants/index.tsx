@@ -23,6 +23,13 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
       <NavLink isMobile={isMobile} onClick={handleLogout}>
         Logout
       </NavLink>
+      <NavLink
+        isSelected={isSelected("/contact")}
+        isMobile={isMobile}
+        href="/contact"
+      >
+        Contact Support Team
+      </NavLink>
     </>
   );
 };
@@ -47,6 +54,13 @@ export const GuestLinks = ({ isMobile }: LinkProps) => {
         href="/auth/register"
       >
         Register
+      </NavLink>
+      <NavLink
+        isSelected={isSelected("/contact")}
+        isMobile={isMobile}
+        href="/contact"
+      >
+        Contact Support Team
       </NavLink>
     </>
   );

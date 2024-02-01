@@ -34,6 +34,7 @@ export const Register = () => {
         status={status}
         formFields={REGISTER_FORM_FIELDS_INFO}
         buttonText={"Sign in"}
+        hasPolicyAgreed
       />
 
       <SocialButtons />

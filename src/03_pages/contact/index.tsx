@@ -2,14 +2,19 @@
 
 import { Form } from "@/src/04_widgets/form/ui";
 import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { contactSupportTeamSchema } from "@/src/07_shared/lib/schemas";
-import { CONTACT_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
+
 import { PageTitle } from "@/src/07_shared/ui";
+
 import { useCreateContactMessage } from "@/src/07_shared/lib/hooks/contact";
+import { useAtomValue } from "jotai";
+
 import { toast } from "react-toastify";
 import { hasAgreedAtom } from "@/src/07_shared/lib/store";
-import { useAtomValue } from "jotai";
+
+import { CONTACT_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
+import { contactSupportTeamSchema } from "@/src/07_shared/lib/schemas";
 
 export function ContactPage() {
   const hasAgreed = useAtomValue(hasAgreedAtom);
