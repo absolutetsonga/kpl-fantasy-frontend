@@ -28,10 +28,7 @@ export function ContactPage() {
     if (hasAgreed) {
       createContact(data, {
         onSuccess: () => {
-          toast.success("Player created successfully");
-        },
-        onError: () => {
-          toast.error("Something went wrong");
+          toast.success("Message created successfully. Check your email");
         },
       });
     } else {
