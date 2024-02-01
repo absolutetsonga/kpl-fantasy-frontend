@@ -42,7 +42,7 @@ export const PlayerModalWindow = () => {
   const benchPositions = ["SGK", "SD", "SM", "SS"];
 
   return (
-    <div className="flex flex-col gap-10 rounded-2xl bg-white text-fuchsia-50 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl bg-gradient-to-b from-emerald-500 via-sky-200 to-sky-100">
+    <div className="w-full sm:w-auto flex flex-col gap-10 rounded-2xl bg-white text-fuchsia-50 right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl bg-gradient-to-b from-emerald-500 via-sky-200 to-sky-100">
       <div className="mt-3 text-center">
         <div className="flex flex-row items-center justify-between">
           <h3 className="flex-1 text-lg leading-6 font-bold text-center">
