@@ -7,14 +7,17 @@ import Link from "next/link";
 
 export const SwitchButton = () => {
   const [hasAgreed, setHasAgreed] = useAtom(hasAgreedAtom);
-  
+
   function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(" ");
   }
 
   return (
     <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
-      <div className="flex h-6 items-center">
+      <div
+        className="flex h-6 items-center"
+        onClick={() => setHasAgreed(!hasAgreed)}
+      >
         <Switch
           checked={hasAgreed}
           onChange={setHasAgreed}
@@ -23,7 +26,6 @@ export const SwitchButton = () => {
             "flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           )}
         >
-          <span className="sr-only">Agree to policies</span>
           <span
             aria-hidden="true"
             className={classNames(

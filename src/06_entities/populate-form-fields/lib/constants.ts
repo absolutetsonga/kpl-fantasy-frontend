@@ -73,11 +73,6 @@ export const CONTACT_FORM_FIELDS_INFO: FormFieldInfoType[] = [
     text: "Email",
   },
   {
-    name: "phone_number",
-    type: "text",
-    text: "Phone Number",
-  },
-  {
     name: "message",
     type: "message",
     text: "Message",

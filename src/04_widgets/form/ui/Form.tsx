@@ -1,10 +1,10 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
+import cn from "classnames";
 
 import { PopulateFormFields } from "@/src/06_entities/populate-form-fields/ui";
+import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/types";
 
 import { Spinner } from "@/src/07_shared/ui";
-
-import { FormFieldInfoType } from "@/src/06_entities/populate-form-fields/lib/types";
 import { SwitchButton } from "@/src/07_shared/ui/SwitchButton";
 
 type FormProps = {
@@ -40,7 +40,9 @@ export const Form = ({
         <div>
           <button
             type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className={
+              "flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm bg-indigo-600 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            }
           >
             {status === "pending" ? <Spinner /> : buttonText}
           </button>

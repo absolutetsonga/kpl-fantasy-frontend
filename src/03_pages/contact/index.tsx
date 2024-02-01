@@ -8,8 +8,12 @@ import { CONTACT_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields
 import { PageTitle } from "@/src/07_shared/ui";
 import { useCreateContactMessage } from "@/src/07_shared/lib/hooks/contact";
 import { toast } from "react-toastify";
+import { hasAgreedAtom } from "@/src/07_shared/lib/store";
+import { useAtomValue } from "jotai";
 
 export function ContactPage() {
+  const hasAgreed = useAtomValue(hasAgreedAtom);
+
   const {
     register,
     handleSubmit,
@@ -21,16 +25,18 @@ export function ContactPage() {
   const { mutate: createContact } = useCreateContactMessage();
 
   const onSubmit = (data: any) => {
-    createContact(data, {
-      onSuccess: () => {
-        toast.success("Player created successfully");
-      },
-      onError: (err) => {
-        toast.error("Something went wrong");
-      },
-    });
-
-    console.log(data);
+    if (hasAgreed) {
+      createContact(data, {
+        onSuccess: () => {
+          toast.success("Player created successfully");
+        },
+        onError: () => {
+          toast.error("Something went wrong");
+        },
+      });
+    } else {
+      toast.error("You must agree with our privacy policy");
+    }
   };
 
   const onInvalid = () => console.error(errors);

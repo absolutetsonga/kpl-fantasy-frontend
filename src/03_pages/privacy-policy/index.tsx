@@ -1,9 +1,3 @@
-import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
-
 export function PrivacyPolicyPage() {
   return (
     <div className="relative overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-0">

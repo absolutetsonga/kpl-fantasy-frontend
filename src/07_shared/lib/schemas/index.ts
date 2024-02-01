@@ -80,6 +80,5 @@ export const resetPasswordRequestUserSchema = z.object({
 
 export const contactSupportTeamSchema = z.object({
   email: z.string().email("Invalid email address"),
-  phone_number: z.string().regex(phoneRegex, "Invalid Number!"),
   message: z.string(),
 });
