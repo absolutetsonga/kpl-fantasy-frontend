@@ -47,7 +47,7 @@ export function ContactPage() {
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       <PageTitle
         title="Contact Support Team"
-        description="Aute magna irure deserunt veniam aliqua magna enim voluptate."
+        description="Describe under 70 words what problem have you faced and provide active email address, where we will respond you."
       />
 
       <Form
