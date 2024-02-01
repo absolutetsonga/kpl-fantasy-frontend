@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { togglePlaceholderModalWindowAtom } from "@/src/07_shared/lib/store";
 import { useSetAtom } from "jotai";
 
@@ -12,8 +10,8 @@ export const PlaceholderModalWindow = () => {
   );
 
   return (
-    <div className="w-[600px] rounded-2xl right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-gradient-to-b from-emerald-500 via-sky-200 to-sky-100">
-      <div className="max-h-[600px] flex flex-col gap-4 overflow-scroll px-8 py-4 overflow-x-hidden">
+    <div className="h-full w-[400px] md:w-[600px] rounded-2xl right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-gradient-to-b from-emerald-500 via-sky-200 to-sky-100">
+      <div className="h-[95%] flex flex-col gap-4 px-8 py-4 overflow-x-hidden overflow-scroll">
         <div className="flex self-end">
           <CloseButton
             onClick={() => setPlaceholderModalWindow(false)}

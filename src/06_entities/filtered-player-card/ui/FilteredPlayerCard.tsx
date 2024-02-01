@@ -25,14 +25,15 @@ export const FilteredPlayerCard = ({
     <button
       key={player.id}
       onClick={onClick}
-      className="flex flex-row bg-white text-black p-4 rounded-lg shadow-md gap-4"
+      className="flex flex-row items-center bg-white text-black p-4 rounded-lg shadow-md gap-4"
     >
       <div className="flex-shrink-0">
         <Image
-          src={player.image_url}
-          alt={player.name}
+          src={player?.image_url}
+          alt={player?.name}
           width={50}
           height={64.84}
+          style={{ width: "auto", height: "auto" }}
           className="rounded-full"
         />
       </div>
@@ -43,12 +44,12 @@ export const FilteredPlayerCard = ({
 
           <h3 className="break-words">{name}</h3>
         </div>
-        <p className="text-sm text-gray-600">{player.position}</p>
+        <p className="text-sm text-gray-600">{player?.position}</p>
         <p className="text-sm">
-          {player.price ? `$${player.price} ₸` : "Price not available"}
+          {player?.price ? `$${player.price} ₸` : "Price not available"}
         </p>
       </div>
-      <div>Total Points: 0</div>
+      <div>0</div>
     </button>
   );
 };
