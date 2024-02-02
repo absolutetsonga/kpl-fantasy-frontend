@@ -8,6 +8,7 @@ import {
   userAtom,
 } from "@/src/07_shared/lib/store";
 import { Spinner } from "@/src/07_shared/ui";
+import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
 
 export default function RequireAuth({
   children,
@@ -17,8 +18,7 @@ export default function RequireAuth({
   admin: boolean;
 }) {
   const isLoading = useAtomValue(isLoadingAtom);
-  const isAuthenticated = useAtomValue(isAuthenticatedAtom);
-  const user = useAtomValue(userAtom);
+  const { data: userData } = useGetUser();
 
   if (isLoading) {
     return (
@@ -28,12 +28,8 @@ export default function RequireAuth({
     );
   }
 
-  if (!isAuthenticated) {
-    redirect("/auth/login");
-  }
-
   if (admin) {
-    if (!user?.is_staff) {
+    if (userData?.is_staff === false) {
       redirect("/auth/login");
     }
   }
