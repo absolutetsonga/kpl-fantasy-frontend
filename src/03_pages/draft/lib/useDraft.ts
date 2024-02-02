@@ -4,7 +4,7 @@ import {
 } from "@/src/06_entities/gameweek-info/lib/utils";
 import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
 import { useCreateDraft, useGetDraft } from "@/src/07_shared/lib/hooks/draft";
-import { useGetGameWeeks } from "@/src/07_shared/lib/hooks/game-week";
+import { useGetGameWeeks } from "@/src/07_shared/lib/hooks/gameweek";
 import { useGetPlayers } from "@/src/07_shared/lib/hooks/player";
 import { useGetTeams } from "@/src/07_shared/lib/hooks/team";
 import {

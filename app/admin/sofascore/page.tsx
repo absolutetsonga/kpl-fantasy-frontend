@@ -1,4 +1,4 @@
-import { AdminSofascorePage } from "@/src/03_pages/admin-pages/sofascore";
+import { AdminSofascorePage } from "@/src/03_pages/admin-pages/sofascore/AdminSofascorePage";
 
 const Page = () => {
   return <AdminSofascorePage />;

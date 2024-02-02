@@ -1,8 +1,9 @@
+import { PageContainer } from "@/src/07_shared/ui";
 import Link from "next/link";
 
 export const TermsConditionsPage = () => {
   return (
-    <div className="relative overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-0">
+    <PageContainer>
       <div className="mx-auto max-w-2xl">
         <p className="text-base font-semibold text-indigo-600">
           Last updated: February 1, 2024
@@ -101,6 +102,6 @@ export const TermsConditionsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };

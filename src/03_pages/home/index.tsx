@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { PageContainer } from "@/src/07_shared/ui";
 
 export const metadata: Metadata = {
   title: "Full Auth | Home",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export const Home = () => {
   return (
-    <main>
+    <PageContainer>
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
@@ -42,6 +43,6 @@ export const Home = () => {
           </div>
         </div>
       </div>
-    </main>
+    </PageContainer>
   );
 };

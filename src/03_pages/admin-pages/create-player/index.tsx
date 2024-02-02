@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { CREATE_PLAYER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { toast } from "react-toastify";
+import { PageContainer } from "@/src/07_shared/ui";
 
 export const AdminCreatePlayerPage = () => {
   const { mutate: createPlayer } = useCreatePlayer();
@@ -38,7 +39,7 @@ export const AdminCreatePlayerPage = () => {
   const onInvalid = () => console.error(errors);
 
   return (
-    <div className="container mx-auto p-4">
+    <PageContainer>
       <h2 className="text-2xl font-bold mb-4">Create Player</h2>
 
       <Form
@@ -48,6 +49,6 @@ export const AdminCreatePlayerPage = () => {
         formFields={CREATE_PLAYER_FORM_FIELDS_INFO}
         buttonText={"Create Player"}
       />
-    </div>
+    </PageContainer>
   );
 };

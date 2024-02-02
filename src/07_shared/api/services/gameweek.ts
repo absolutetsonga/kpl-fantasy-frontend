@@ -34,4 +34,4 @@ export class GameWeekService implements IGameWeekService {
   }
 }
 
-export const game_week_service = new GameWeekService(api_client);
+export const gameweek_service = new GameWeekService(api_client);

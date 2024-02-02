@@ -9,7 +9,7 @@ import {
   transfermarkt_service,
 } from "@/src/07_shared/api/services";
 
-import { Button } from "@/src/07_shared/ui";
+import { Button, PageContainer } from "@/src/07_shared/ui";
 
 import {
   selectedTeamAtom,
@@ -62,7 +62,7 @@ export const AdminTranfermarktPage = () => {
   const handleClubClick = (clubName: string) => setSelectedTeam(clubName);
 
   return (
-    <div className="main-container">
+    <PageContainer>
       <div className="flex flex-col gap-10">
         <div
           style={{
@@ -155,6 +155,6 @@ export const AdminTranfermarktPage = () => {
           );
         })}
       </div>
-    </div>
+    </PageContainer>
   );
 };

@@ -240,3 +240,54 @@ export const CREATE_PLAYER_FORM_FIELDS_INFO: FormFieldInfoType[] = [
     text: "Team Id",
   },
 ];
+
+export const CREATE_GAMEWEEK_STATS_FIELD_INFO: FormFieldInfoType[] = [
+  {
+    name: "player",
+    type: "text",
+    placeholder: "Player ID",
+    text: "Player ID",
+  },
+  {
+    name: "gameweek",
+    type: "text",
+    placeholder: "Gameweek ID",
+    text: "Gameweek ID",
+  },
+  {
+    name: "goals_scored",
+    type: "number",
+    placeholder: "Goals Scored",
+    text: "Goals Scored",
+  },
+  {
+    name: "assists",
+    type: "number",
+    placeholder: "Assists",
+    text: "Assists",
+  },
+  {
+    name: "own_goals_scored",
+    type: "number",
+    placeholder: "Own Goals Scored",
+    text: "Own Goals Scored",
+  },
+  {
+    name: "clean_sheets",
+    type: "number",
+    placeholder: "Clean Sheets",
+    text: "Clean Sheets",
+  },
+  {
+    name: "yellow_cards",
+    type: "number",
+    placeholder: "Yellow Cards",
+    text: "Yellow Cards",
+  },
+  {
+    name: "red_cards",
+    type: "number",
+    placeholder: "Red Cards",
+    text: "Red Cards",
+  },
+];

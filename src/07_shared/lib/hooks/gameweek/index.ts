@@ -1,21 +1,23 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-import { game_week_service } from "@/src/07_shared/api/services/game_week";
-import { IGameWeekCreateReq } from "@/src/07_shared/models/game_week";
+import { gameweek_service } from "@/src/07_shared/api/services";
+import { IGameWeekCreateReq } from "@/src/07_shared/models";
+
 import { useAtomValue } from "jotai";
 import { userAtom } from "../../store";
+
 import { toast } from "react-toastify";
 
 export function useGetGameWeeks() {
   return useQuery({
-    queryFn: async () => await game_week_service.getGameWeeks(),
+    queryFn: async () => await gameweek_service.getGameWeeks(),
     queryKey: ["draft"],
   });
 }
 
 export function useGetGameWeek(game_week_id: number) {
   return useQuery({
-    queryFn: async () => await game_week_service.getGameWeek(game_week_id),
+    queryFn: async () => await gameweek_service.getGameWeek(game_week_id),
     queryKey: ["draft", game_week_id],
   });
 }
@@ -30,7 +32,7 @@ export function useCreateGameWeek() {
         throw new Error("Unauthorized: Only admins can create players.");
       }
 
-      await game_week_service.createGameWeek(game_week);
+      await gameweek_service.createGameWeek(game_week);
     },
   });
 }
@@ -45,7 +47,7 @@ export function useDeleteGameWeek() {
         throw new Error("Unauthorized: Only admins can create players.");
       }
 
-      await game_week_service.deleteGameWeek(game_week_id);
+      await gameweek_service.deleteGameWeek(game_week_id);
     },
   });
 }

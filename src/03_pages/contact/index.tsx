@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { PageTitle } from "@/src/07_shared/ui";
+import { PageContainer, PageTitle } from "@/src/07_shared/ui";
 
 import { useCreateContactMessage } from "@/src/07_shared/lib/hooks/contact";
 import { useAtomValue } from "jotai";
@@ -44,7 +44,7 @@ export function ContactPage() {
   const onInvalid = () => console.error(errors);
 
   return (
-    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <PageContainer>
       <PageTitle
         title="Contact Support Team"
         description="Describe under 70 words what problem have you faced and provide active email address, where we will respond you."
@@ -58,6 +58,6 @@ export function ContactPage() {
         buttonText={"Submit"}
         hasPolicyAgreed={true}
       />
-    </div>
+    </PageContainer>
   );
 }

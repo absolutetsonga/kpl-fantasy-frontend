@@ -1,16 +1,12 @@
 "use client";
-
-import { useAtom, useAtomValue } from "jotai";
-import { Button } from "@/src/07_shared/ui";
+import { useAtom } from "jotai";
+import { Button, PageContainer } from "@/src/07_shared/ui";
 import { CLUBS_SOFASCORE_IDS } from "@/src/07_shared/lib/constants";
-
 import {
-  playersAtom,
   selectedTeamAtom,
   sofascorePlayersAtom,
   sofascorePlayerStatsAtom,
 } from "@/src/07_shared/lib/store";
-
 import { sofascore_service } from "@/src/07_shared/api/services/sofascore";
 import { ISofascorePlayer } from "@/src/07_shared/models/sofascore_player";
 import {
@@ -66,7 +62,7 @@ export const AdminSofascorePage = () => {
   const handleClubClick = (clubName: string) => setSelectedTeam(clubName);
 
   return (
-    <div className="main-container">
+    <PageContainer>
       <div className="flex flex-col gap-10">
         <div
           style={{
@@ -136,6 +132,6 @@ export const AdminSofascorePage = () => {
         // scrolling="no"
         className="h-[737px] max-w-[730px] w-full"
       ></iframe>
-    </div>
+    </PageContainer>
   );
 };

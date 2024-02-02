@@ -14,6 +14,7 @@ import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
 import { useDeletePlayer } from "@/src/07_shared/lib/hooks/player";
 import { toast } from "react-toastify";
+import { PageContainer } from "@/src/07_shared/ui";
 
 export const AdminPage = () => {
   const team = useAtomValue(teamAtom);
@@ -35,9 +36,9 @@ export const AdminPage = () => {
   };
 
   return (
-    <div className="relative main-container">
+    <PageContainer>
       <Link href="admin/player/create">
-        <IoMdAdd className="absolute top-2 right-2 w-8 h-8" />
+        <IoMdAdd className="w-8 h-8" />
       </Link>
 
       <PopulateTeams />
@@ -80,6 +81,6 @@ export const AdminPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
