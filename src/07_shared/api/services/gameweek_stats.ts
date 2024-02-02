@@ -15,7 +15,11 @@ export class GameWeekStatsService implements IGameWeekStatsService {
   async createGameWeekStat(gameweek_stats: IGameWeekStats) {
     console.log(gameweek_stats);
 
-    return this.apiClient.makeRequest("POST", "gameweek/", { gameweek_stats });
+    return this.apiClient.makeRequest(
+      "POST",
+      "gameweek_stats/",
+      gameweek_stats
+    );
   }
 }
 

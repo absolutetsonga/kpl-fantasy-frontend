@@ -1,15 +1,12 @@
 "use client";
-
 import { Form } from "@/src/04_widgets/form/ui";
-
 import { useCreateGameWeekStats } from "@/src/07_shared/lib/hooks/gameweek-stats";
 import { useForm } from "react-hook-form";
-
-import { playerSchema } from "@/src/07_shared/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CREATE_GAMEWEEK_STATS_FIELD_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { toast } from "react-toastify";
 import { PageContainer } from "@/src/07_shared/ui";
+import { createGameWeekStatsSchema } from "@/src/07_shared/lib/schemas";
 
 export const AdminCreateGameweekStatsPage = () => {
   const { mutate: createGameWeekStats } = useCreateGameWeekStats();
@@ -19,7 +16,7 @@ export const AdminCreateGameweekStatsPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(playerSchema),
+    resolver: zodResolver(createGameWeekStatsSchema),
   });
 
   const onSubmit = (data: any) => {

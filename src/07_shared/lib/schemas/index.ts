@@ -82,3 +82,14 @@ export const contactSupportTeamSchema = z.object({
   email: z.string().email("Invalid email address"),
   message: z.string(),
 });
+
+export const createGameWeekStatsSchema = z.object({
+  player: z.coerce.number(),
+  gameweek: z.coerce.number(),
+  goals_scored: z.coerce.number(),
+  assists: z.coerce.number(),
+  own_goals_scored: z.coerce.number(),
+  clean_sheets: z.coerce.number(),
+  yellow_cards: z.coerce.number(),
+  red_cards: z.coerce.number(),
+});
