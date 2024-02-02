@@ -12,9 +12,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CREATE_PLAYER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { toast } from "react-toastify";
 import { PageContainer } from "@/src/07_shared/ui";
+import { useRouter } from "next/navigation";
 
 export const AdminCreatePlayerPage = () => {
   const { mutate: createPlayer } = useCreatePlayer();
+  const router = useRouter()
 
   const {
     register,
@@ -28,6 +30,7 @@ export const AdminCreatePlayerPage = () => {
     createPlayer(data, {
       onSuccess: () => {
         toast.success("Player created successfully");
+        router.push('/admin')
       },
       onError: (err) => {
         console.error(err);

@@ -5,6 +5,9 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 import { IPlayer } from "@/src/07_shared/models";
+import { useAtomValue, useSetAtom } from "jotai";
+import { selectedTeamAtom, teamAtom } from "@/src/07_shared/lib/store";
+import { useEffect } from "react";
 
 type Props = {
   players: IPlayer[];
@@ -17,6 +20,9 @@ export const PopulatePlayers = ({
   setToggleDelete,
   setPlayerId,
 }: Props) => {
+  const selectedTeam = useAtomValue(selectedTeamAtom);
+  const setTeam = useSetAtom(teamAtom);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 relative">
       {players?.map((pl) => {

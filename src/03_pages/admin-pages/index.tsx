@@ -7,14 +7,15 @@ import { teamAtom } from "@/src/07_shared/lib/store";
 
 import { PopulateTeams } from "@/src/06_entities/populate-teams/ui";
 import { PopulatePlayers } from "@/src/06_entities/populate-players/ui";
+import { PageContainer } from "@/src/07_shared/ui";
 
 import { IoMdAdd } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 
 import { useState } from "react";
 import { useDeletePlayer } from "@/src/07_shared/lib/hooks/player";
+
 import { toast } from "react-toastify";
-import { PageContainer } from "@/src/07_shared/ui";
 
 export const AdminPage = () => {
   const team = useAtomValue(teamAtom);

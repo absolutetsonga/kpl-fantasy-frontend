@@ -1,4 +1,5 @@
 import { NavLink } from "@/src/06_entities/nav-link";
+import { useGetUser } from "@/src/07_shared/lib/hooks/auth";
 import { usePathname } from "next/navigation";
 
 type LinkProps = {
@@ -10,6 +11,7 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
   const pathname = usePathname();
 
   const isSelected = (path: string) => (pathname === path ? true : false);
+  const { data: userData } = useGetUser();
 
   return (
     <>
@@ -30,6 +32,15 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
       >
         Contact Support Team
       </NavLink>
+      {userData.is_staff && (
+        <NavLink
+          isSelected={isSelected("/admin")}
+          isMobile={isMobile}
+          href="/admin"
+        >
+          Admin
+        </NavLink>
+      )}
     </>
   );
 };

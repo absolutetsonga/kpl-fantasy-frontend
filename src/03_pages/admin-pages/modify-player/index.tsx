@@ -13,6 +13,7 @@ import { Form } from "@/src/04_widgets/form/ui";
 import { MODIFY_PLAYER_FORM_FIELDS_INFO } from "@/src/06_entities/populate-form-fields/lib/constants";
 import { toast } from "react-toastify";
 import { PageContainer } from "@/src/07_shared/ui";
+import { useRouter } from "next/navigation";
 
 type Params = {
   params: {
@@ -21,6 +22,7 @@ type Params = {
 };
 
 export const AdminEditPlayerPage = ({ params }: Params) => {
+  const router = useRouter();
   const { data: playerData } = useGetPlayer(params.id);
   const { mutate: updatePlayer } = useUpdatePlayer();
 
@@ -43,9 +45,7 @@ export const AdminEditPlayerPage = ({ params }: Params) => {
     updatePlayer(data, {
       onSuccess: () => {
         toast.success("Player updated successfully");
-      },
-      onError: (err) => {
-        console.error(err);
+        router.push("/admin");
       },
     });
   };

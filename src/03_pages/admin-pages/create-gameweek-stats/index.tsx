@@ -7,9 +7,11 @@ import { CREATE_GAMEWEEK_STATS_FIELD_INFO } from "@/src/06_entities/populate-for
 import { toast } from "react-toastify";
 import { PageContainer } from "@/src/07_shared/ui";
 import { createGameWeekStatsSchema } from "@/src/07_shared/lib/schemas";
+import { useRouter } from "next/navigation";
 
 export const AdminCreateGameweekStatsPage = () => {
   const { mutate: createGameWeekStats } = useCreateGameWeekStats();
+  const router = useRouter()
 
   const {
     register,
@@ -23,6 +25,7 @@ export const AdminCreateGameweekStatsPage = () => {
     createGameWeekStats(data, {
       onSuccess: () => {
         toast.success("Player updated successfully");
+        router.push("/admin");
       },
       onError: (err) => {
         console.error(err);

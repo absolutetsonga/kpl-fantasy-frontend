@@ -54,6 +54,7 @@ export const createPlayerSchema = z.object({
   nationality_image_url: z.string().url(),
   is_injured: z.boolean(),
   is_right_foot: z.boolean(),
+
 });
 
 export const registerUserSchema: ZodSchema<IUser> = z.object({

@@ -5,12 +5,22 @@ import { useAtom, useSetAtom } from "jotai";
 import { useGetTeams } from "@/src/07_shared/lib/hooks/team";
 
 import { ITeam } from "@/src/07_shared/models";
+import { useEffect } from "react";
 
 export const PopulateTeams = () => {
   const [selectedTeam, setSelectedTeam] = useAtom(selectedTeamAtom);
-
-  const { data: teamsData } = useGetTeams();
   const setTeam = useSetAtom(teamAtom);
+  const { data: teamsData } = useGetTeams();
+
+  useEffect(() => {
+    if (selectedTeam) {
+      const team = teamsData.filter((team: ITeam) => {
+        return team.name === selectedTeam;
+      })[0];
+
+      setTeam(team);
+    }
+  }, [selectedTeam, teamsData, setTeam]);
 
   const handleClubClick = (clubName: string) => {
     setSelectedTeam(clubName);
@@ -19,7 +29,6 @@ export const PopulateTeams = () => {
       return team.name === clubName;
     })[0];
 
-    console.log(team);
     setTeam(team);
   };
 
