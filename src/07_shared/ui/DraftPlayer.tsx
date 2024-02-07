@@ -22,14 +22,16 @@ export const DraftPlayer = ({
     <button
       className={`relative shadow-lg md:w-28 md:h-28 flex flex-col items-center justify-center z-10 rounded-2xl text-white`}
     >
-      <Image
-        src={player.image_url}
-        width={90}
-        height={90}
-        alt={player.name}
-        className="object-contain rounded-2xl max-h-[70px] md:max-h-[95px]"
-        onClick={handleClick}
-      />
+      {player.image_url && (
+        <Image
+          src={player.image_url}
+          width={90}
+          height={90}
+          alt={player.name}
+          className="object-contain rounded-2xl max-h-[70px] md:max-h-[95px]"
+          onClick={handleClick}
+        />
+      )}
 
       {draftPlayer && (
         <Image
