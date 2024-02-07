@@ -19,7 +19,13 @@ export const FilteredPlayerCard = ({
   const name = `${lastName ? `${firstName[0]}.` : `${firstName}`} ${
     lastName ? lastName : ""
   }`;
+
+  console.log(teams);
   const team = teams.filter((tm) => tm.name === player.club)[0];
+
+  console.log({ team });
+  console.log({ teamImage: team.image_url });
+  console.log({ playerImage: player.image_url });
 
   return (
     <button
@@ -28,7 +34,7 @@ export const FilteredPlayerCard = ({
       className="flex flex-row items-center bg-white text-black p-4 rounded-lg shadow-md gap-4"
     >
       <div className="flex-shrink-0">
-        {player.image_url && (
+        {player?.image_url && (
           <Image
             src={player?.image_url}
             alt={player?.name}
@@ -42,7 +48,7 @@ export const FilteredPlayerCard = ({
 
       <div className="flex-1 text-left">
         <div className="flex flex-row items-center text-lg font-semibold gap-1">
-          {team.image_url && (
+          {team?.image_url && (
             <Image
               src={team.image_url}
               width={30}
