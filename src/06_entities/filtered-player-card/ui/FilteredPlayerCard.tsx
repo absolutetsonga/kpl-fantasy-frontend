@@ -28,19 +28,28 @@ export const FilteredPlayerCard = ({
       className="flex flex-row items-center bg-white text-black p-4 rounded-lg shadow-md gap-4"
     >
       <div className="flex-shrink-0">
-        <Image
-          src={player?.image_url}
-          alt={player?.name}
-          width={50}
-          height={64.84}
-          style={{ width: "auto", height: "auto" }}
-          className="rounded-full"
-        />
+        {player.image_url && (
+          <Image
+            src={player?.image_url}
+            alt={player?.name}
+            width={50}
+            height={64.84}
+            style={{ width: "auto", height: "auto" }}
+            className="rounded-full"
+          />
+        )}
       </div>
 
       <div className="flex-1 text-left">
         <div className="flex flex-row items-center text-lg font-semibold gap-1">
-          <Image src={team.image_url} width={30} height={30} alt={team.name} />
+          {team.image_url && (
+            <Image
+              src={team.image_url}
+              width={30}
+              height={30}
+              alt={team.name}
+            />
+          )}
 
           <h3 className="break-words">{name}</h3>
         </div>
