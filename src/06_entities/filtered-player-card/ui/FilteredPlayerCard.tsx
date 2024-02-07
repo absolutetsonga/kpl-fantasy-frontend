@@ -47,7 +47,7 @@ export const FilteredPlayerCard = ({
       </div>
 
       <div className="flex-1 text-left">
-        <div className="flex flex-row items-center text-lg font-semibold gap-1">
+        {/* <div className="flex flex-row items-center text-lg font-semibold gap-1">
           {team?.image_url && (
             <Image
               src={team.image_url}
@@ -58,7 +58,7 @@ export const FilteredPlayerCard = ({
           )}
 
           <h3 className="break-words">{name}</h3>
-        </div>
+        </div> */}
         <p className="text-sm text-gray-600">{player?.position}</p>
         <p className="text-sm">
           {player?.price ? `$${player.price} ₸` : "Price not available"}
