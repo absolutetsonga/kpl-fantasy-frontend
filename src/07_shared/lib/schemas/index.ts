@@ -18,10 +18,10 @@ export const gameWeekStatsSchema: ZodSchema<IGameWeekStats> = z.object({
   red_cards: z.number(),
 });
 
-export const playerSchema: ZodSchema<IPlayer> = z.object({
+export const playerSchema = z.object({
   id: z.coerce.number(),
   team: z.coerce.number(),
-  sofascore_id: z.coerce.number(),
+  sofascore_id: z.coerce.number().nullable(),
   date_created: z.string(),
   date_updated: z.string(),
   age: z.coerce.number(),
@@ -41,7 +41,7 @@ export const playerSchema: ZodSchema<IPlayer> = z.object({
 
 export const createPlayerSchema = z.object({
   team: z.coerce.number(),
-  sofascore_id: z.coerce.number(),
+  sofascore_id: z.coerce.number().nullable(),
   age: z.coerce.number(),
   market_value: z.coerce.number(),
   price: z.coerce.number().nullable(),
@@ -54,7 +54,6 @@ export const createPlayerSchema = z.object({
   nationality_image_url: z.string().url(),
   is_injured: z.boolean(),
   is_right_foot: z.boolean(),
-
 });
 
 export const registerUserSchema: ZodSchema<IUser> = z.object({
