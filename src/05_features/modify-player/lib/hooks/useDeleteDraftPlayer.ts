@@ -19,8 +19,13 @@ export const useDeleteDraftPlayer = (draftPlayerId: number | undefined) => {
             (drPl) => drPl.id !== draftPlayerId
           );
 
+          console.log(updatedDraftPlayers);
+
           setDraftPlayers(updatedDraftPlayers);
           toast.success("Player deleted successfully");
+        },
+        onError: (error) => {
+          console.log(error);
         },
         onSettled: () => setPlayerModalWindow(false),
       });

@@ -34,7 +34,7 @@ export const find_draft_player_data = ({
 
     position: placeholderDraftPlayer.position,
 
-    image_url: "/images/player.png",
+    image_url: "/images/player-image-placeholder.png",
     gameweek_stats: [],
   };
 

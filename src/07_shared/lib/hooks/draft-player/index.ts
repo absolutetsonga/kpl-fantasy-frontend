@@ -44,6 +44,8 @@ export function useDeletePlayer() {
   return useMutation<number, AxiosError, number>({
     mutationFn: async (draftPlayerId: number) =>
       await draft_player_service.deleteDraftPlayer(draftPlayerId),
+    onMutate: () => {},
+
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["draft"] }),
     onError: (error) => {
       toast.error(
