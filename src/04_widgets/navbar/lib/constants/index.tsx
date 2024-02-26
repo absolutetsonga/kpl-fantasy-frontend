@@ -32,7 +32,7 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
       >
         Contact Support Team
       </NavLink>
-      {userData.is_staff && (
+      {userData?.is_staff && (
         <NavLink
           isSelected={isSelected("/admin")}
           isMobile={isMobile}
