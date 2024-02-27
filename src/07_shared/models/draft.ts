@@ -4,7 +4,9 @@ export interface IDraft {
   id: number;
   user: number;
   left_transfers: number;
+
   total_budget: number;
+  total_points: number;
 
   date_created: string;
   date_updated: string;

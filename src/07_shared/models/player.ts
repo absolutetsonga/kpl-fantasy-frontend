@@ -11,6 +11,7 @@ export interface IPlayer {
   age: number;
   market_value: number;
   price: number | null;
+  points: number;
 
   name: string;
   club: string;

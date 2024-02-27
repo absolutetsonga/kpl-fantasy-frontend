@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 export const AdminCreateGameweekStatsPage = () => {
   const { mutate: createGameWeekStats } = useCreateGameWeekStats();
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     register,
@@ -37,6 +37,8 @@ export const AdminCreateGameweekStatsPage = () => {
 
   return (
     <PageContainer>
+      <button>Get Player Stats</button>
+
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}
         register={register}

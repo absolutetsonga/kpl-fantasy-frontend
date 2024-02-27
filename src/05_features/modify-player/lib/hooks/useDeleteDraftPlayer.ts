@@ -19,14 +19,11 @@ export const useDeleteDraftPlayer = (draftPlayerId: number | undefined) => {
           const updatedDraftPlayers = draftPlayers.filter(
             (drPl) => drPl.id !== draftPlayerId
           );
-
-          console.log(updatedDraftPlayers);
-
           setDraftPlayers(updatedDraftPlayers);
           toast.success("Player deleted successfully");
         },
         onError: (error) => {
-          console.log(error);
+          console.error(error);
         },
         onSettled: () => setPlayerModalWindow(false),
       });

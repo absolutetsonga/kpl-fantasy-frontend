@@ -24,6 +24,7 @@ export const TransferTabs = () => {
     <div className="grid grid-cols-3 justify-between items-center w-full mx-auto">
       <TransferTab title="Free Transfers" value={`${draft?.left_transfers}`} />
       <TransferTab title="Money Remaining" value={`${draft?.total_budget} ₸`} />
+      <TransferTab title="Total Points" value={`${draft?.total_points}`} />
     </div>
   );
 };

@@ -41,16 +41,13 @@ export function useUpdatePlayer() {
 }
 
 export function useDeletePlayer() {
-  const draft = useAtomValue(draftAtom);
   const queryClient = useQueryClient();
 
   return useMutation<number, AxiosError, number>({
     mutationFn: async (draftPlayerId: number) =>
       await draft_player_service.deleteDraftPlayer(draftPlayerId),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["draft", draft?.id] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["draft"] }),
     onError: (error) => {
-      console.log(error);
       toast.error(
         (error.response?.data as ApiErrorResponse).detail || "An error occurred"
       );

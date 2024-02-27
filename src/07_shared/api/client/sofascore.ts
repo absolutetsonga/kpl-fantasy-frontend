@@ -10,7 +10,7 @@ export class SofascoreClient implements ISofascoreClient {
       method,
       url,
       headers: {
-        "X-RapidAPI-Key": "62414078b4mshd3956c45f382ac1p110cb4jsn087151d40b1d",
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_SOFASCORE_KEY,
         "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPID_API_SOFASCORE_HOST,
       },
       params,
@@ -22,4 +22,18 @@ export class SofascoreClient implements ISofascoreClient {
   }
 }
 
+export class SofascorePlayerStatsClient implements ISofascoreClient {
+  async makeRequest(method: string, url: string) {
+    const options: AxiosRequestConfig = {
+      method,
+      url,
+    };
+
+    const response = await axios.request(options);
+
+    console.log(response);
+  }
+}
+
 export const sofascore_client = new SofascoreClient();
+export const sofascore_player_stats_client = new SofascorePlayerStatsClient();

@@ -99,7 +99,7 @@ export const AdminSofascorePage = () => {
 
         <Button
           className="px-4 py-3 bg-violet-600 rounded-2xl"
-          onClick={() => handleGetSofascorePlayerStats(12, 12)}
+          onClick={() => handleGetSofascorePlayerStats(60133, 11035640)}
         >
           Get Player Stats (Sofascore API)
         </Button>

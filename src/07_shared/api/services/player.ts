@@ -2,7 +2,6 @@ import { APIClient, api_client } from "../client/index";
 import { IPlayer, IPlayerTransfermarkt } from "../../models";
 import { TEAMS_IDS } from "../../lib/constants";
 
-type TeamId = number;
 type PlayerId = number;
 
 interface IPlayerService {

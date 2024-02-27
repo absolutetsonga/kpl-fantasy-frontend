@@ -59,7 +59,7 @@ export const FilteredPlayerCard = ({
           {player?.price ? `$${player.price} ₸` : "Price not available"}
         </p>
       </div>
-      <div>0</div>
+      <div>Points: {player.points}</div>
     </button>
   );
 };
