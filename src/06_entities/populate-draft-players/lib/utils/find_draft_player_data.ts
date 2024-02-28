@@ -19,6 +19,8 @@ export const find_draft_player_data = ({
     id: 0,
     team: 0,
 
+    points: 0,
+
     age: 0,
     market_value: 0,
     price: null,
