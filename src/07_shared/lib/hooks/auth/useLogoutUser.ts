@@ -6,6 +6,5 @@ export const useLogoutUser = () => {
 
   return useMutation({
     mutationFn: async () => await user_service.logoutUser(),
-    onSuccess: () => query_client.invalidateQueries({ queryKey: ["users"] }),
   });
 };

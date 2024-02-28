@@ -4,35 +4,18 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { useAtom } from "jotai";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { isAuthenticatedAtom } from "@/src/07_shared/lib/store";
 
 import { AuthLinks, GuestLinks } from "../lib/constants";
-import { useLogoutUser } from "@/src/07_shared/lib/hooks/auth";
-import { toast } from "react-toastify";
+import { useHandleLogout } from "../lib/utils/useHandleLogout";
 
 export const Navbar = () => {
-  const logoutUser = useLogoutUser();
+  const router = useRouter();
 
+  const handleLogout = useHandleLogout(router);
   const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
-
-  const handleLogout = () => {
-    logoutUser.mutate(undefined, {
-      onSuccess: () => {
-        toast.success("Successfully logged out");
-        setIsAuthenticated(false);
-      },
-
-      onError: () => {
-        toast.error("Failed to log out");
-      },
-
-      onSettled: () => {
-        redirect("/auth/login");
-      },
-    });
-  };
 
   return (
     <Disclosure as="nav" className="bg-[#37003C]">
