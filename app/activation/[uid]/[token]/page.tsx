@@ -1,4 +1,4 @@
-import { Activation } from "@/src/03_pages/auth-pages/activation";
+import { ActivationPage } from "@/src/03_pages/auth-pages/activation";
 
 type Params = {
   params: {
@@ -8,7 +8,7 @@ type Params = {
 };
 
 const page = ({ params }: Params) => {
-  return <Activation params={params} />;
+  return <ActivationPage params={params} />;
 };
 
 export default page;

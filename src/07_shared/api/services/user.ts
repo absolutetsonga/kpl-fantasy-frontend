@@ -95,6 +95,8 @@ class UserService implements IUserService {
       { uid, token }
     );
 
+    console.log(response);
+
     return response;
   }
 
