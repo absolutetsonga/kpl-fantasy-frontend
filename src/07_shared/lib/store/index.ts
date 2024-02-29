@@ -55,6 +55,7 @@ export const gameWeekStartAtom = atom<string>("");
 // toggle
 export const togglePlayerModalWindowAtom = atom<boolean>(false);
 export const togglePlaceholderModalWindowAtom = atom<boolean>(false);
+export const toggleDeleteAtom = atom<boolean>(false);
 
 // auth
 export const userAtom = atom<IUser | null>(null);

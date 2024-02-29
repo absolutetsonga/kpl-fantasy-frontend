@@ -4,24 +4,19 @@ import Link from "next/link";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
+import { useSetAtom } from "jotai";
+
+import { toggleDeleteAtom } from "@/src/07_shared/lib/store";
+
 import { IPlayer } from "@/src/07_shared/models";
-import { useAtomValue, useSetAtom } from "jotai";
-import { selectedTeamAtom, teamAtom } from "@/src/07_shared/lib/store";
-import { useEffect } from "react";
 
 type Props = {
   players: IPlayer[];
-  setToggleDelete: React.Dispatch<React.SetStateAction<boolean>>;
   setPlayerId: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const PopulatePlayers = ({
-  players,
-  setToggleDelete,
-  setPlayerId,
-}: Props) => {
-  const selectedTeam = useAtomValue(selectedTeamAtom);
-  const setTeam = useSetAtom(teamAtom);
+export const PopulatePlayers = ({ players, setPlayerId }: Props) => {
+  const setToggleDelete = useSetAtom(toggleDeleteAtom);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 relative">

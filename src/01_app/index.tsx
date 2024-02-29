@@ -20,6 +20,13 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     <JotaiProvider>
       <ReactQueryProvider>
         <html lang="en">
+          <head>
+            <link
+              rel="icon"
+              href="/images/logo.png"
+              sizes="any"
+            />
+          </head>
           <body className={`${inter.className}`}>
             <SetupNoSSR />
             <Navbar />

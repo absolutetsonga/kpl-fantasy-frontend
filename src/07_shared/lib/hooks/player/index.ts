@@ -75,6 +75,7 @@ export const useDeletePlayer = () => {
       }
       await player_service.deletePlayer(player_id);
     },
+
     onError: (error) => {
       toast.error(
         (error.response?.data as ApiErrorResponse).detail || "An error occurred"
