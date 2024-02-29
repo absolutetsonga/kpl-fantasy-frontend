@@ -3,10 +3,11 @@ import { useHandleClickOnPlayer } from "../lib/hooks";
 
 import { useAtomValue } from "jotai";
 import { draftPlayersAtom, teamsAtom } from "@/src/07_shared/lib/store";
-import { IDraftPlayer } from "@/src/07_shared/models";
+import { IDraftPlayer, ITeam } from "@/src/07_shared/models";
 import { useGetDraftPlayersData } from "@/src/04_widgets/field/lib/hooks/useGetDraftPlayersData";
 
 import cn from "classnames";
+import { useGetTeams } from "@/src/07_shared/lib/hooks/team";
 
 type PopulateDraftPlayersProps = {
   draft_placeholder_players: IDraftPlayer[];
@@ -27,9 +28,8 @@ export const PopulateDraftPlayers = ({
   });
 
   const handleClick = useHandleClickOnPlayer();
-
+  const { data: teamsData } = useGetTeams();
   const draftPlayers = useAtomValue(draftPlayersAtom);
-  const teams = useAtomValue(teamsAtom);
 
   const draftPlayersData = useGetDraftPlayersData({
     draft_placeholder_players,
@@ -49,7 +49,7 @@ export const PopulateDraftPlayers = ({
             drPlData.player === player.id && drPlData.position === "GK"
         );
 
-        const team = teams?.find((team) => team.id === player.team);
+        const team = teamsData?.find((team: ITeam) => team.id === player.team);
 
         return (
           <DraftPlayer
