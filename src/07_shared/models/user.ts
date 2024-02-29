@@ -6,5 +6,5 @@ export interface IUser {
   re_password: string;
   has_draft?: boolean;
   is_staff?: boolean;
-  team_admin: null | number;
+  team_admin?: null | number;
 }
