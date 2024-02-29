@@ -49,7 +49,7 @@ export const PopulateDraftPlayers = ({
             drPlData.player === player.id && drPlData.position === "GK"
         );
 
-        const team = teams.find((team) => team.id === player.team);
+        const team = teams?.find((team) => team.id === player.team);
 
         return (
           <DraftPlayer

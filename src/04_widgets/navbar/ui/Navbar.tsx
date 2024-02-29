@@ -19,7 +19,7 @@ export const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useAtom(isAuthenticatedAtom);
 
   return (
-    <Disclosure as="nav" className="bg-[#270060]">
+    <Disclosure as="nav" className="bg-primary">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

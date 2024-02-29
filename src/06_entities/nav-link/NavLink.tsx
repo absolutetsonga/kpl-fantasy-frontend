@@ -22,8 +22,8 @@ export const NavLink = ({
     rest.className,
     "text-white rounded-md px-3 py-2 font-medium",
     {
-      "bg-[#4c0f52]": isSelected,
-      "text-gray-300 hover:bg-[#52134d] hover:text-white":
+      "bg-active": isSelected,
+      "text-gray-300 hover:bg-hover hover:text-white":
         !isSelected && !isBanner,
       "block text-base": isMobile,
       "text-sm": !isMobile,

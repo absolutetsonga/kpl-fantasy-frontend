@@ -19,6 +19,11 @@ const config: Config = {
         "field-image": "url('/images/squad-pitch.svg')",
         "field-bench-image": "url('/images/substitution-background.svg')",
       },
+      backgroundColor: {
+        primary: "#270060",
+        hover: "#4F4FB7",
+        active: "#8F8FF7",
+      },
     },
   },
   plugins: [],

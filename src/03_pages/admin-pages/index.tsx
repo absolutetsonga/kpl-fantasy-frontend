@@ -38,19 +38,19 @@ export const AdminPage = () => {
   };
 
   console.log(teamData);
-  const goalkeepers = teamData?.players.filter(
+  const goalkeepers = teamData?.players?.filter(
     (pl: IPlayer) => pl.position === "Goalkeeper"
   );
 
-  const defenders = teamData?.players.filter(
+  const defenders = teamData?.players?.filter(
     (pl: IPlayer) => pl.position === "Defender"
   );
 
-  const middlefielders = teamData?.players.filter(
+  const middlefielders = teamData?.players?.filter(
     (pl: IPlayer) => pl.position === "Mittelfeld"
   );
 
-  const strikers = teamData?.players.filter(
+  const strikers = teamData?.players?.filter(
     (pl: IPlayer) => pl.position === "Striker"
   );
 
