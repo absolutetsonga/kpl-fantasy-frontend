@@ -5,6 +5,7 @@ export interface IGameWeekRes {
   date_updated: string;
   start_date: string;
   end_date: string;
+  updated: boolean;
 }
 
 export interface IGameWeekCreateReq {

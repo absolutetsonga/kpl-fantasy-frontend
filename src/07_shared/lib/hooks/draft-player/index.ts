@@ -3,8 +3,6 @@ import { draft_player_service } from "@/src/07_shared/api/services";
 import { IDraftPlayer } from "@/src/07_shared/models";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
-import { useAtomValue } from "jotai";
-import { draftAtom } from "../../store";
 
 interface ApiErrorResponse {
   detail: string;

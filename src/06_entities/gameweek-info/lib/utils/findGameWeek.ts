@@ -12,6 +12,12 @@ export const findGameWeek = (
       return i === 0 ? gameWeeks[0] : gameWeeks[i - 1];
     } else if (currentTime >= start && currentTime <= end) {
       return gameWeeks[i];
+    } else if (currentTime > end) {
+      if (gameWeeks[i].updated) {
+        return gameWeeks[i + 1];
+      }
+
+      return gameWeeks[i];
     }
   }
 

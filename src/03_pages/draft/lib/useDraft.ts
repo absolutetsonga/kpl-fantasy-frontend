@@ -60,7 +60,8 @@ export const useDraft = () => {
       const time = new Date().getTime();
 
       const gameWeekData = findGameWeek(gameWeeksData, time);
-
+      console.log(gameWeekData);
+      
       const gameWeekStatus = getGameWeekStatus(
         gameWeekData?.start_date,
         gameWeekData?.end_date,
