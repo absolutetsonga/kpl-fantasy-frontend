@@ -101,6 +101,8 @@ export const AdminSofascorePage = () => {
 
           console.log({
             playerName: home_team.players[j].name,
+            playerSofascoreId: home_team.players[j].sofascore_id,
+
             playerStats,
           });
         }
@@ -114,10 +116,11 @@ export const AdminSofascorePage = () => {
 
           console.log({
             playerName: home_team.players[k].name,
+            playerSofascoreId: home_team.players[k].sofascore_id,
             playerStats,
           });
         }
-        
+
         console.log(home_team);
         console.log(away_team);
       }

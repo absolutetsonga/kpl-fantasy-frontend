@@ -49,8 +49,7 @@ class SofascoreService implements ISofascoreService {
       }
     );
 
-    console.log(response);
-    return response.data;
+    return response;
   }
 }
 
