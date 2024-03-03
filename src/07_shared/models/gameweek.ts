@@ -6,6 +6,7 @@ export interface IGameWeekRes {
   start_date: string;
   end_date: string;
   updated: boolean;
+  games: IGame[];
 }
 
 export interface IGameWeekCreateReq {
@@ -18,4 +19,20 @@ export interface IGameWeekStatus {
   process: string;
   message: string;
   time: string;
+}
+
+export interface IGame {
+  id: number;
+
+  sofascore_id: number;
+  gameweek: number;
+
+  date_created: string;
+  date_updated: string;
+
+  home_score: number;
+  away_score: number;
+
+  home_team: number;
+  away_team: number;
 }

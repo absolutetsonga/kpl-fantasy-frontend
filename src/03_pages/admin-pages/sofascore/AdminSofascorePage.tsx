@@ -1,21 +1,31 @@
 "use client";
-import { useAtom } from "jotai";
-import { Button, PageContainer } from "@/src/07_shared/ui";
-import { CLUBS_SOFASCORE_IDS } from "@/src/07_shared/lib/constants";
-import {
-  selectedTeamAtom,
-  sofascorePlayersAtom,
-  sofascorePlayerStatsAtom,
-} from "@/src/07_shared/lib/store";
-import { sofascore_service } from "@/src/07_shared/api/services/sofascore";
-import { ISofascorePlayer } from "@/src/07_shared/models/sofascore_player";
+
 import {
   useGetPlayers,
   useUpdatePlayer,
 } from "@/src/07_shared/lib/hooks/player";
-import { IPlayer } from "@/src/07_shared/models";
+import { useAtom } from "jotai";
+
+import { IPlayer, ITeam } from "@/src/07_shared/models";
+import { ISofascorePlayer } from "@/src/07_shared/models/sofascore_player";
+
+import { gameweek_service } from "@/src/07_shared/api/services";
+import { sofascore_service } from "@/src/07_shared/api/services/sofascore";
+
+import {
+  gameWeekAtom,
+  selectedTeamAtom,
+  sofascorePlayersAtom,
+  sofascorePlayerStatsAtom,
+} from "@/src/07_shared/lib/store";
+
+import { CLUBS_SOFASCORE_IDS } from "@/src/07_shared/lib/constants";
+import { Button, PageContainer } from "@/src/07_shared/ui";
+import { useGetTeams } from "@/src/07_shared/lib/hooks/team";
+import { useCreateGameWeekStats } from "@/src/07_shared/lib/hooks/gameweek-stats";
 
 export const AdminSofascorePage = () => {
+  const [currentGameweek, setCurrentGameweek] = useAtom(gameWeekAtom);
   const [selectedTeam, setSelectedTeam] = useAtom(selectedTeamAtom);
   const [sofascorePlayers, setSofascorePlayers] = useAtom(sofascorePlayersAtom);
 
@@ -24,7 +34,10 @@ export const AdminSofascorePage = () => {
   );
 
   const { data: playersData } = useGetPlayers();
+  const { data: teamsData } = useGetTeams();
+
   const { mutate: updatePlayer } = useUpdatePlayer();
+  const { mutate: createGameWeekStats } = useCreateGameWeekStats();
 
   const handleGetPlayers = async () => {
     if (selectedTeam) {
@@ -57,6 +70,63 @@ export const AdminSofascorePage = () => {
 
       setSofascorePlayerStats(playerStats);
     }
+  };
+
+  const handleGetCurrentGameweek = async (number: number) => {
+    const gameweek = await gameweek_service.getGameWeek(number);
+
+    console.log(gameweek);
+    setCurrentGameweek(gameweek);
+  };
+
+  const handleSetGameweekStats = async () => {
+    const games = currentGameweek?.games;
+
+    if (games) {
+      for (let i = 0; i < games?.length; i++) {
+        const home_team = teamsData.find((t: ITeam) => {
+          return games[i].home_team === t.id;
+        });
+
+        const away_team = teamsData.find((t: ITeam) => {
+          return games[i].away_team === t.id;
+        });
+
+        // home team players length
+        for (let j = 0; j < home_team.players.length; j++) {
+          const playerStats = await sofascore_service.getPlayerStatisticsByGame(
+            home_team.players[j].sofascore_id,
+            games[i].sofascore_id
+          );
+
+          console.log({
+            playerName: home_team.players[j].name,
+            playerStats,
+          });
+        }
+
+        // away team players length
+        for (let k = 0; k < away_team.players.length; k++) {
+          const playerStats = await sofascore_service.getPlayerStatisticsByGame(
+            home_team.players[k].sofascore_id,
+            games[i].sofascore_id
+          );
+
+          console.log({
+            playerName: home_team.players[k].name,
+            playerStats,
+          });
+        }
+        
+        console.log(home_team);
+        console.log(away_team);
+      }
+    }
+
+    // const playerStats = await sofascore_service.getPlayerStatisticsByGame(
+    //   playerId,
+    //   matchId
+    // );
   };
 
   const handleClubClick = (clubName: string) => setSelectedTeam(clubName);
@@ -102,6 +172,20 @@ export const AdminSofascorePage = () => {
           onClick={() => handleGetSofascorePlayerStats(60133, 11035640)}
         >
           Get Player Stats (Sofascore API)
+        </Button>
+
+        <Button
+          className="px-4 py-3 bg-violet-600 rounded-2xl"
+          onClick={() => handleGetCurrentGameweek(1)}
+        >
+          Get Current Gameweek (1st)
+        </Button>
+
+        <Button
+          className="px-4 py-3 bg-violet-600 rounded-2xl"
+          onClick={handleSetGameweekStats}
+        >
+          Set Gameweek Stats of the player (1st)
         </Button>
       </div>
 

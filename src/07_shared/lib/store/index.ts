@@ -29,7 +29,6 @@ export const fetchedPlayersDataAtom = atom<IPosition[] | IPlayer[]>([]); // nexe
 export const playerPositionAtom = atom<string>("");
 
 // team
-export const teamsAtom = atom<ITeam[]>([]);
 export const teamAtom = atom<ITeam | null>(null);
 export const selectedTeamAtom = atom<string>("");
 export const createdTeamAtom = atom<ITeam>({
