@@ -8,11 +8,11 @@ export const useHandleLogout = (router: AppRouterInstance) => {
   const handleLogout = () => {
     logoutUser.mutateAsync(undefined, {
       onSuccess: () => {
-        return toast.success("Successfully logged out");
+        return toast.success("Вы вышли с аккаунта");
       },
 
       onError: () => {
-        return toast.error("Failed to log out");
+        return toast.error("Не удалось войти в аккаунт. Попробуйте еще раз");
       },
 
       onSettled: () => {

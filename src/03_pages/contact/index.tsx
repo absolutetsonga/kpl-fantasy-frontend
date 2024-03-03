@@ -33,11 +33,11 @@ export function ContactPage() {
     if (hasAgreed) {
       createContact(data, {
         onSuccess: () => {
-          toast.success("Message created successfully. Check your email");
+          toast.success("Сообщение отправлено. Ожидайте ответ в течении дня.");
         },
       });
     } else {
-      toast.error("You must agree with our privacy policy");
+      toast.error("Согласитесь с политикой конфиденциальности прежде чем отправить сообщение");
     }
   };
 
@@ -46,8 +46,8 @@ export function ContactPage() {
   return (
     <PageContainer>
       <PageTitle
-        title="Contact Support Team"
-        description="Describe under 70 words what problem have you faced and provide active email address, where we will respond you."
+        title="Служба поддержки"
+        description="Опишите менее чем в 70 словах, с какой проблемой вы столкнулись, и укажите активный адрес электронной почты, по которому мы вам ответим."
       />
 
       <Form
@@ -55,7 +55,7 @@ export function ContactPage() {
         register={register}
         errors={errors}
         formFields={CONTACT_FORM_FIELDS_INFO}
-        buttonText={"Submit"}
+        buttonText={"Отправить"}
         hasPolicyAgreed={true}
       />
     </PageContainer>

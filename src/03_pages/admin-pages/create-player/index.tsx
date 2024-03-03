@@ -29,12 +29,12 @@ export const AdminCreatePlayerPage = () => {
   const onSubmit = (data: any) => {
     createPlayer(data, {
       onSuccess: () => {
-        toast.success("Player created successfully");
+        toast.success("Игрок создан");
         router.push('/admin')
       },
       onError: (err) => {
         console.error(err);
-        toast.error("Something went wrong");
+        toast.error("Упс. Что-то пошло не так");
       },
     });
   };

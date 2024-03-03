@@ -37,9 +37,9 @@ export const SwitchButton = () => {
       </div>
 
       <Switch.Label className="text-sm leading-6 text-gray-600">
-        By selecting this, you agree to our{" "}
+        Выбирая это, вы соглашаетесь с нашей{" "}
         <Link href="/privacy-policy" className="font-semibold text-indigo-600">
-          privacy&nbsp;policy
+          политикой конфиденциальности{" "}
         </Link>
         .
       </Switch.Label>

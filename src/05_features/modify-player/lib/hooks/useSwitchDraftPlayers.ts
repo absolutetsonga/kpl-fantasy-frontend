@@ -56,7 +56,7 @@ export const useSwitchDraftPlayers = ({ draftPlayer }: CustomHookParams) => {
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
         onSuccess: () => {
-          toast.success("Player substituted successfully");
+          toast.success("Вы заменили игрока");
         },
         onError: (error: any) => {
           const errorMessage = error.response.data.detail;
@@ -66,7 +66,7 @@ export const useSwitchDraftPlayers = ({ draftPlayer }: CustomHookParams) => {
 
       updatePlayer.mutate(substitutePlayerUpdatedData, {
         onSuccess: () => {
-          toast.success("Player substituted successfully");
+          toast.success("Игрок вышел из замены");
         },
         onError: (error: any) => {
           const errorMessage = error.response.data.detail;

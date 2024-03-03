@@ -24,7 +24,7 @@ export const AdminCreateGameweekStatsPage = () => {
   const onSubmit = (data: any) => {
     createGameWeekStats(data, {
       onSuccess: () => {
-        toast.success("Player updated successfully");
+        toast.success("Информация об игроке обновлена");
         router.push("/admin");
       },
       onError: (err) => {

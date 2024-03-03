@@ -29,7 +29,7 @@ export const AdminPage = () => {
   const onDelete = () => {
     deletePlayer(playerId, {
       onSuccess: () => {
-        toast.success("Player deleted successfully");
+        toast.success("Игрок удален");
       },
       onError: (err: Error) => {
         console.error(err);

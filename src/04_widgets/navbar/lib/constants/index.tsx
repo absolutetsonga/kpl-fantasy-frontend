@@ -20,17 +20,15 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
         isMobile={isMobile}
         href="/draft"
       >
-        Draft
+        Драфт
       </NavLink>
-      <NavLink isMobile={isMobile} onClick={handleLogout}>
-        Logout
-      </NavLink>
+
       <NavLink
         isSelected={isSelected("/contact")}
         isMobile={isMobile}
         href="/contact"
       >
-        Contact Support Team
+        Служба поддержки
       </NavLink>
       {userData?.is_staff && (
         <NavLink
@@ -38,9 +36,13 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
           isMobile={isMobile}
           href="/admin"
         >
-          Admin
+          Админ
         </NavLink>
       )}
+
+      <NavLink isMobile={isMobile} onClick={handleLogout}>
+        Выйти
+      </NavLink>
     </>
   );
 };
@@ -57,21 +59,21 @@ export const GuestLinks = ({ isMobile }: LinkProps) => {
         isMobile={isMobile}
         href="/auth/login"
       >
-        Login
+        Войти
       </NavLink>
       <NavLink
         isSelected={isSelected("/auth/register")}
         isMobile={isMobile}
         href="/auth/register"
       >
-        Register
+        Создать аккаунт
       </NavLink>
       <NavLink
         isSelected={isSelected("/contact")}
         isMobile={isMobile}
         href="/contact"
       >
-        Contact Support Team
+        Служба поддержки
       </NavLink>
     </>
   );

@@ -14,23 +14,24 @@ export const getGameWeekStatus = (
 
   if (currentTime < startDate) {
     return {
-      status: "Start",
-      process: "Not started yet",
-      message: `Complete all changes until: ${gameWeekStart}`,
+      status: "Старт",
+      process: "Тур еще не начался",
+      message: `Завершите все изменения состава до: ${gameWeekStart}`,
       time: gameWeekStart,
     };
   } else if (currentTime >= startDate && currentTime <= endDate) {
     return {
-      status: "End",
-      process: "In the process",
-      message: `You can not make any changes until: ${gameWeekEnd}`,
+      status: "Конец",
+      process: "Тур разыгрывается...",
+      message: `Вы не можете изменять свой состав до: ${gameWeekEnd}`,
       time: gameWeekStart,
     };
   } else {
     return {
-      status: "Database Update",
-      process: "Ended, updating database...",
-      message: "Please wait until we update our database...",
+      status: "Обновляем статистику игроков",
+      process:
+        "Тур закончился, обновляем статистику игроков...",
+      message: "Пожалуйста подождите пока мы обновим статистику игроков...",
       time: "",
     };
   }

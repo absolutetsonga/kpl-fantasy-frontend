@@ -24,10 +24,10 @@ export default async function continueWithSocialAuth(
     if (res.status === 200 && typeof window !== "undefined") {
       window.location.replace(data.authorization_url);
     } else {
-      toast.error("Something went wrong");
+      toast.error("Что-то пошло не так");
     }
   } catch (err) {
     console.log(err);
-    toast.error("Something went wrong");
+    toast.error("Что-то пошло не так");
   }
 }

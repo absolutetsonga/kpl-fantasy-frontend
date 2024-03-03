@@ -20,10 +20,14 @@ export const useResetPasswordRequestForm = () => {
   const onSubmit: SubmitHandler<{ email: string }> = (data) => {
     resetPassword.mutate(data.email, {
       onSuccess: async () => {
-        toast.success("Request sent, check your email for reset link");
+        toast.success(
+          "Сообщение для сброса пароля отправлено, проверьте свою почту"
+        );
       },
       onError: () => {
-        toast.error("Failed to send request");
+        toast.error(
+          "Не удалось отправить сообщение для сброса пароля, попробуйте еще раз или напишите в Службу Поддержки"
+        );
       },
     });
   };

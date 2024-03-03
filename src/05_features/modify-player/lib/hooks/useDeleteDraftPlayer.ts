@@ -20,7 +20,7 @@ export const useDeleteDraftPlayer = (draftPlayerId: number | undefined) => {
             (drPl) => drPl.id !== draftPlayerId
           );
           setDraftPlayers(updatedDraftPlayers);
-          toast.success("Player deleted successfully");
+          toast.success("Игрок удален");
         },
         onError: (error) => {
           console.error(error);

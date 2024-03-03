@@ -18,14 +18,14 @@ export const GameWeekInfo = () => {
             <div className="text-center text-emerald-400 text-md md:text-lg lg:text-xl font-normal">
               {gameWeeks[0] && (
                 <h3>
-                  Game Week {gameWeek?.number}: {gameWeekStatus.process}
+                  Игровая неделя {gameWeek?.number}: {gameWeekStatus.process}
                 </h3>
               )}
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="text-center text-fuchsia-950 text-xs sm:text-sm md:text-lg lg:text-xl font-normal">
-              Game Week {gameWeek?.number} {gameWeekStatus.status}:{" "}
+              Игровая неделя {gameWeek?.number} {gameWeekStatus.status}:{" "}
               {gameWeekStatus.time}
             </div>
           </div>

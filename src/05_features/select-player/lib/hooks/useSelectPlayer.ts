@@ -20,7 +20,7 @@ export const useSelectPlayer = () => {
   const handleSelectPlayer = ({ draftPlayer }: Props) => {
     mutate(draftPlayer, {
       onSuccess: () => {
-        toast.success("Player added successfully");
+        toast.success("Игрок добавлен в команду");
       },
       onSettled: () => setPlaceholderModalWindow(false),
     });

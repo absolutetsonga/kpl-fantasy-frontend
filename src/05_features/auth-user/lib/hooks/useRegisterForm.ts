@@ -23,11 +23,15 @@ export const useRegisterForm = (router: AppRouterInstance) => {
   const onSubmit: SubmitHandler<IUser> = (data) => {
     registerUser.mutate(data, {
       onSuccess: () => {
-        toast.success("Please check email to verify account");
+        toast.success(
+          "Пожалуйста, проверьте вашу почту для подтверждения аккаунта"
+        );
         router.push("/auth/login");
       },
       onError: () => {
-        toast.error("Failed to register account");
+        toast.error(
+          "Не удалось зарегистрироваться, попробуйте еще раз или напишите в Службу Поддержки"
+        );
       },
     });
   };

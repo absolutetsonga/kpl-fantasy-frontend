@@ -17,7 +17,7 @@ export function useCreatePlayer() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["draft"] }),
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });
@@ -32,7 +32,7 @@ export function useUpdatePlayer() {
     onSuccess: () => query_client.invalidateQueries({ queryKey: ["draft"] }),
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });
@@ -47,7 +47,7 @@ export function useDeletePlayer() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["draft"] }),
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });

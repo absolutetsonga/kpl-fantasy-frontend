@@ -15,10 +15,10 @@ export function useCreateGameWeekStats() {
     mutationFn: async (gameweek_stats: IGameWeekStats) => {
       if (!user?.is_staff) {
         toast.error(
-          "Unauthorized: Only admins can create game week statistics of the user."
+          "Неавторизованный: Только администраторы могут создавать статистику игрока за игровую неделю."
         );
         throw new Error(
-          "Unauthorized: Only admins can create game week statistics of the user."
+          "Неавторизованный: Только администраторы могут создавать статистику игрока за игровую неделю."
         );
       }
 

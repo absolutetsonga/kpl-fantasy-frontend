@@ -32,11 +32,11 @@ export const ActivationPage = ({ params }: Props) => {
       { uid, token },
       {
         onSuccess: () => {
-          return toast.success("Account activated");
+          return toast.success("Аккаунт активирован");
         },
 
         onError: () => {
-          return toast.error("Failed to activate account");
+          return toast.error("Не удалось активировать аккаунт");
         },
 
         onSettled: () => {

@@ -31,14 +31,18 @@ export const useCreatePlayer = () => {
   return useMutation<any, AxiosError, any>({
     mutationFn: async (player: IPlayer) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only admins can create players.");
-        throw new Error("Unauthorized: Only admins can create players.");
+        toast.error(
+          "Неавторизованный: только администраторы могут создавать игроков."
+        );
+        throw new Error(
+          "Неавторизованный: только администраторы могут создавать игроков."
+        );
       }
       await player_service.createPlayer(player);
     },
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });
@@ -50,15 +54,19 @@ export const useUpdatePlayer = () => {
   return useMutation<any, AxiosError, any>({
     mutationFn: async (player: IPlayer) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only admins can create players.");
-        throw new Error("Unauthorized: Only admins can create players.");
+        toast.error(
+          "Неавторизованный: Только администраторы могут обновлять игроков."
+        );
+        throw new Error(
+          "Неавторизованный: Только администраторы могут обновлять игроков."
+        );
       }
 
       await player_service.updatePlayer(player);
     },
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });
@@ -70,15 +78,19 @@ export const useDeletePlayer = () => {
   return useMutation<any, AxiosError, any>({
     mutationFn: async (player_id: number) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only admins can create players.");
-        throw new Error("Unauthorized: Only admins can create players.");
+        toast.error(
+          "Неавторизованный: Только администраторы могут удалять игроков."
+        );
+        throw new Error(
+          "Неавторизованный: Только администраторы могут удалять игроков."
+        );
       }
       await player_service.deletePlayer(player_id);
     },
 
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });

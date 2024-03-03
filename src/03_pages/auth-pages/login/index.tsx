@@ -25,7 +25,7 @@ export const Login = () => {
 
   return (
     <PageContainer>
-      <PageTitle title="Log in" />
+      <PageTitle title="Войти" />
 
       <Form
         onSubmit={handleSubmit(onSubmit, onInvalid)}
@@ -33,10 +33,10 @@ export const Login = () => {
         errors={errors}
         status={status}
         formFields={LOGIN_FORM_FIELDS_INFO}
-        buttonText={"Sign in"}
+        buttonText={"Войти"}
       />
 
-      <SocialButtons />
+      {/* <SocialButtons /> */}
     </PageContainer>
   );
 };

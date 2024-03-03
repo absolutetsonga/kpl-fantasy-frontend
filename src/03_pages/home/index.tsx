@@ -17,27 +17,25 @@ export const Home = () => {
               Kazakhstan Fantasy Premier League
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              A fantasy league is a game where participants act as owners or
-              managers of virtual teams composed of real-life players from a
-              professional sport. For example, in a football fantasy league,
-              points might be awarded for goals, assists, clean sheets, and
-              more. Fantasy teams compete against each other, either in
-              head-to-head matchups or based on total points accumulated over a
-              season. Participants can make transfers, change players on their
-              team, and adjust lineups to maximize points.
+              Фэнтезий лига - это игра, в которой участники формируют
+              виртуальную команду футболистов (фэнтези-команду), чьи прототипы
+              принимают участие в реальных соревнованиях (турнирах) и, в
+              зависимости от актуальной статистики их выступлений, набирают очки
+              в пользу своих виртуальных профилей (фэнтези-футболистов). В игре
+              нет денежных вложений или ставок.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/auth/login"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Log into your account
+                Войти в аккаунт
               </Link>
               <Link
                 href="/auth/register"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
-                Or create an account <span aria-hidden="true">&rarr;</span>
+                Создайте аккаунт <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>

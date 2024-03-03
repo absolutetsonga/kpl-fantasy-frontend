@@ -48,7 +48,7 @@ export const useMakeViceCaptainDraftPlayer = ({
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
         onSuccess: () => {
-          toast.success("New vice-captain added successfully");
+          toast.success("Вы добавили вице-капитана");
         },
         onSettled: () => setPlayerModalWindow(false),
       });

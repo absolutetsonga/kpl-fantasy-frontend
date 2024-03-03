@@ -28,8 +28,12 @@ export const useCreateTeam = () => {
   return useMutation({
     mutationFn: async (team: ITeam) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only admins can create players.");
-        throw new Error("Unauthorized: Only admins can create players.");
+        toast.error(
+          "Неавторизованный: только администраторы могут создавать команду."
+        );
+        throw new Error(
+          "Неавторизованный: только администраторы могут создавать команду."
+        );
       }
 
       await team_service.createTeam(team);
@@ -43,8 +47,12 @@ export const useUpdateTeam = () => {
   return useMutation({
     mutationFn: async (team: ITeam) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only admins can create players.");
-        throw new Error("Unauthorized: Only admins can create players.");
+        toast.error(
+          "Неавторизованный: только администраторы могут обновлять команду."
+        );
+        throw new Error(
+          "Неавторизованный: только администраторы могут обновлять команду."
+        );
       }
 
       await team_service.updateTeam(team);
@@ -58,8 +66,12 @@ export const useDeleteTeam = () => {
   return useMutation({
     mutationFn: async (team: ITeam) => {
       if (!user?.is_staff) {
-        toast.error("Unauthorized: Only admins can create players.");
-        throw new Error("Unauthorized: Only admins can create players.");
+        toast.error(
+          "Неавторизованный: только администраторы могут удалять команду."
+        );
+        throw new Error(
+          "Неавторизованный: только администраторы могут удалять команду."
+        );
       }
 
       await team_service.deleteTeam(team.id ?? 0);

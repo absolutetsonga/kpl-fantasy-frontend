@@ -24,7 +24,7 @@ export const DraftPage = () => {
   return (
     <PageContainer>
       <div className="text-fuchsia-950 text-[25px] text-left">
-        Draft Team - {user?.first_name} {user?.last_name}
+        Драфт - {user?.first_name} {user?.last_name}
       </div>
 
       <div className="flex flex-col w-[90%] md:max-w-[880px] rounded-md shadow gap-6">
@@ -32,7 +32,7 @@ export const DraftPage = () => {
         <GameWeekStatusMessage />
         <TransferTabs />
         <Field />
-        <WildCardTabs />
+        {/* <WildCardTabs /> */}
       </div>
     </PageContainer>
   );

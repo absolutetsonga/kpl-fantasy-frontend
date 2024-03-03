@@ -44,7 +44,7 @@ export const useMakeCaptainDraftPlayer = ({
 
       updatePlayer.mutate(draftPlayerUpdatedData, {
         onSuccess: () => {
-          toast.success(`You added captain`);
+          toast.success(`Вы добавили капитана`);
         },
         onSettled: () => setPlayerModalWindow(false),
       });

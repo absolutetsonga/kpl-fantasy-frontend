@@ -36,12 +36,14 @@ export const useResetPasswordConfirmForm = ({
   const onSubmit: SubmitHandler<IConfirmPassword> = (data) => {
     confirmUser.mutate(data, {
       onSuccess: async () => {
-        toast.success("Password confirmed and changed successfully");
+        toast.success("Пароль подтвержден и успешно изменен");
         router.push("/auth/login");
       },
       onError: (error) => {
         console.error(error);
-        toast.error("Failed to confirm and change the password");
+        toast.error(
+          "Не удалось подвердить и изменить пароль, попробуйте позже или напишите в Службу Поддержки"
+        );
       },
     });
   };

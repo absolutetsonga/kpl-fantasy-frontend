@@ -12,7 +12,7 @@ export function useCreateContactMessage() {
     mutationFn: async (data: any) => await contact_service.createContact(data),
     onError: (error) => {
       toast.error(
-        (error.response?.data as ApiErrorResponse).detail || "An error occurred"
+        (error.response?.data as ApiErrorResponse).detail || "Произошла ошибка"
       );
     },
   });

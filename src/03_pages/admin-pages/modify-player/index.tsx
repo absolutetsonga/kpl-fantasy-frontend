@@ -44,7 +44,7 @@ export const AdminEditPlayerPage = ({ params }: Params) => {
   const onSubmit = (data: any) => {
     updatePlayer(data, {
       onSuccess: () => {
-        toast.success("Player updated successfully");
+        toast.success("Информация об игроке обновлена");
         router.push("/admin");
       },
     });

@@ -32,14 +32,14 @@ export const LOGIN_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "email",
     type: "email",
-    text: "Email",
+    text: "Почта",
   },
   {
     name: "password",
     type: "password",
-    text: "Password",
+    text: "Пароль",
     link: {
-      linkText: "Forgot password?",
+      linkText: "Забыли пароль?",
       linkUrl: "/password-reset",
     },
   },
@@ -49,7 +49,7 @@ export const REQUEST_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "email",
     type: "email",
-    text: "Email",
+    text: "Почта",
   },
 ];
 
@@ -57,12 +57,12 @@ export const RESET_PASSWORD_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "password",
     type: "password",
-    text: "Password",
+    text: "Пароль",
   },
   {
     name: "re_password",
     type: "password",
-    text: "Confirm Password",
+    text: "Повторите пароль",
   },
 ];
 
@@ -70,12 +70,12 @@ export const CONTACT_FORM_FIELDS_INFO: FormFieldInfoType[] = [
   {
     name: "email",
     type: "email",
-    text: "Email",
+    text: "Почта",
   },
   {
     name: "message",
     type: "message",
-    text: "Message",
+    text: "Сообщение",
   },
 ];
 

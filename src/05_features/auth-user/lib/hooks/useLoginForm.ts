@@ -31,7 +31,7 @@ export const useLoginForm = (router: AppRouterInstance) => {
   const onSubmit: SubmitHandler<IUser> = (data) => {
     loginUser.mutate(data, {
       onSuccess: async (resData) => {
-        toast.success("Successfully logged in");
+        toast.success("Вы успешно вошли в аккаунт");
 
         setIsAuthenticated(true);
         setIsLoading(false);
@@ -43,7 +43,7 @@ export const useLoginForm = (router: AppRouterInstance) => {
       },
       onError: (error) => {
         console.error(error);
-        toast.error("Failed to log in");
+        toast.error("Не удалось войти, попробуйте еще раз или напишите в Службу Поддержки");
       },
     });
   };

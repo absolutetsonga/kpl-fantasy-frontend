@@ -52,7 +52,7 @@ export const useDraft = () => {
     if (userData?.has_draft === false) {
       createDraft(userData?.id, {
         onSuccess: () => {
-          toast.success("Draft created successfully");
+          toast.success("Драфт успешно создан");
         },
       });
     }
