@@ -24,7 +24,7 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
       </NavLink>
 
       <NavLink
-        isSelected={isSelected("/contact")}
+        isSelected={isSelected("/rules")}
         isMobile={isMobile}
         href="/rules"
       >

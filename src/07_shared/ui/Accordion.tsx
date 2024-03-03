@@ -9,10 +9,10 @@ const Accordion = () => {
       id: 1,
       title: "Выбор вашего первоначального состава",
       content: (
-        <>
-          Flowbite is an open-source library of interactive components built on
-          top of Tailwind CSS including buttons, dropdowns, modals, navbars, and
-          more. Check out this guide to learn how to{" "}
+        <div className="flex flex-col">
+          <h4 className="font-bold text-xl">Размер команды</h4>
+          Чтобы присоединиться к игре, выберите команду по фэнтезийному футболу
+          из 15 игроков, состоящую из:
           <a
             href="/docs/getting-started/introduction/"
             className="text-blue-600 dark:text-blue-500 hover:underline"
@@ -21,7 +21,7 @@ const Accordion = () => {
           </a>{" "}
           and start developing websites even faster with components on top of
           Tailwind CSS.
-        </>
+        </div>
       ),
     },
     {
