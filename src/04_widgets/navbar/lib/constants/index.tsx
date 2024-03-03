@@ -26,6 +26,14 @@ export const AuthLinks = ({ isMobile, handleLogout }: LinkProps) => {
       <NavLink
         isSelected={isSelected("/contact")}
         isMobile={isMobile}
+        href="/rules"
+      >
+        Правила игры
+      </NavLink>
+
+      <NavLink
+        isSelected={isSelected("/contact")}
+        isMobile={isMobile}
         href="/contact"
       >
         Служба поддержки
@@ -74,6 +82,13 @@ export const GuestLinks = ({ isMobile }: LinkProps) => {
         href="/contact"
       >
         Служба поддержки
+      </NavLink>
+      <NavLink
+        isSelected={isSelected("/contact")}
+        isMobile={isMobile}
+        href="/rules"
+      >
+        Правила игры
       </NavLink>
     </>
   );
