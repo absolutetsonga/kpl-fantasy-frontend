@@ -36,6 +36,7 @@ export const AdminSofascorePage = () => {
   const { data: playersData } = useGetPlayers();
   const { data: teamsData } = useGetTeams();
 
+  console.log(teamsData);
   const { mutate: updatePlayer } = useUpdatePlayer();
   const { mutate: createGameWeekStats } = useCreateGameWeekStats();
 
@@ -92,7 +93,7 @@ export const AdminSofascorePage = () => {
           return games[i].away_team === t.id;
         });
 
-        // home team players length
+        // home team players 
         for (let j = 0; j < home_team.players.length; j++) {
           const playerStats = await sofascore_service.getPlayerStatisticsByGame(
             home_team.players[j].sofascore_id,
@@ -107,7 +108,7 @@ export const AdminSofascorePage = () => {
           });
         }
 
-        // away team players length
+        // away team players 
         for (let k = 0; k < away_team.players.length; k++) {
           const playerStats = await sofascore_service.getPlayerStatisticsByGame(
             home_team.players[k].sofascore_id,

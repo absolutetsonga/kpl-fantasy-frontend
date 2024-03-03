@@ -8,6 +8,7 @@ import { Navbar } from "@/src/04_widgets/navbar/ui";
 import { Footer } from "@/src/04_widgets/footer/ui";
 
 import dynamic from "next/dynamic";
+import { Banner } from "../07_shared/ui";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,15 +22,12 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <ReactQueryProvider>
         <html lang="en">
           <head>
-            <link
-              rel="icon"
-              href="/images/logo.png"
-              sizes="any"
-            />
+            <link rel="icon" href="/images/logo.png" sizes="any" />
           </head>
           <body className={`${inter.className}`}>
             <SetupNoSSR />
             <Navbar />
+            <Banner />
             <div className="flex items-center justify-center">{children}</div>
             <Footer />
           </body>
